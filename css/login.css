@@ -1,0 +1,14 @@
+.loginform{
+  margin: 4em auto;
+  padding: 3em 2em 2em 2em;
+  height: 50%;
+  width: 50%;
+  border: 1em solid gray;
+  padding-left: 50px;
+  padding-bottom: 30px;
+}
+
+.login{
+padding-top: 70px;
+  text-align: center;
+}
