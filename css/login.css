@@ -1,14 +1,15 @@
-.loginform{
-  margin: 4em auto;
-  padding: 3em 2em 2em 2em;
-  height: 50%;
-  width: 50%;
-  border: 1em solid gray;
-  padding-left: 50px;
-  padding-bottom: 30px;
-}
-
 .login{
-padding-top: 70px;
+  background: #fff;
+  margin: 30px;
+  width: 40%;
+  padding: 3em 2em 2em 2em;
   text-align: center;
 }
+  .md-button.md-raised { 
+   background-color: #fb0;
+   width:300px;
+  }
+  
+  md-toolbar:not(.md-menu-toolbar) {
+    color: black;
+  }

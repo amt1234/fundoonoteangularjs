@@ -1,34 +1,101 @@
 {
-  "name": "angular-aria",
-  "version": "1.6.9",
-  "description": "AngularJS module for making accessibility easy",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/angular/angular.js.git"
-  },
-  "keywords": [
-    "angular",
-    "framework",
-    "browser",
-    "accessibility",
-    "a11y",
-    "client-side"
+  "_args": [
+    [
+      "angular-aria@1.7.0",
+      "/home/bridgelabz"
+    ]
   ],
-  "author": "Angular Core Team <angular-core+npm@google.com>",
-  "license": "MIT",
+  "_from": "angular-aria@1.7.0",
+  "_id": "angular-aria@1.7.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/angular-aria",
+  "_nodeVersion": "8.11.1",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/angular-aria_1.7.0_1526050980698_0.6622093675001657"
+  },
+  "_npmUser": {
+    "email": "angular-core+npm@google.com",
+    "name": "angularcore"
+  },
+  "_npmVersion": "5.6.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "angular-aria",
+    "raw": "angular-aria@1.7.0",
+    "rawSpec": "1.7.0",
+    "scope": null,
+    "spec": "1.7.0",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/angular-aria/-/angular-aria-1.7.0.tgz",
+  "_shasum": "fb96f5650959a86f30695ea814a071387e6e71b2",
+  "_shrinkwrap": null,
+  "_spec": "angular-aria@1.7.0",
+  "_where": "/home/bridgelabz",
+  "author": {
+    "email": "angular-core+npm@google.com",
+    "name": "Angular Core Team"
+  },
   "bugs": {
     "url": "https://github.com/angular/angular.js/issues"
   },
+  "dependencies": {},
+  "description": "AngularJS module for making accessibility easy",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "fileCount": 8,
+    "integrity": "sha512-Va2FxLqXRfNGHd7BO49PrAPVUKo3k8bIpfNDp+TF+e2W14hfiyb0CxLdg+jgUatzIsg/+dCWnuEhCd062XOQvg==",
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa9bClCRA9TVsSAnZWagAAdT8P/1cOy7CNW543IidA6wg5\nX6YgQq2qjNBrcFAAGooI7nDrPiVjf/rZ4ntrM4QPvKzNkD22jbUd9ij7B1kW\nTS6mVe1BNLja2N+tjGA+iRrEf8MI9JdnD8QnKXa03gDrwmEaX12547K/gRiy\nxKQJkeibpcwLxvkeYUXeIK7Jo4HqTezhNq7jgjjID0Qkb8kPr+lU0C5Slb1o\nCv8BCv6+7ZcOcB+qH1FH33F8HfhhDNiuccRdfGd87T/LPYtaDx8Tm+SSYhnp\nKtD9rWiRnY0ToEB2KdWYRLrjPBvmKspg+JouVIWN6lbPkJODCLo7GEMh5IuC\na6m/g8n6/7GMxYxoThDJGJOFvKVWmb6C3VflSF1qOSZ1QBx2ETJqxTOZiukp\ndTDCKhpCQCQ2jcHCmxveQqOAR2F4ppsyF3PImHaB+iGMi5yrhd3Q+tFfFeX5\naRlgoPSXlak+CkbQrxSJx2yCX9fkvf/Mxn08gTwtYLADFhOeoRrHWNHgocvG\nJWB05/ImeekYkz9yjgWFwi+aIfGwflRiHHXrxuDU5laX0v7ScyUHPGuXwHyT\nmb83cPifxkKli3H4Qmyjk7bSK4br5+m4wyIDZWDSztaxvQJKsqXvcBHZ3ALk\ndl+cMgC7c1pJaclCuSjFx0X7EuPIjBytGr1F5LEdd327krKo2L7lZi18ne+s\nIW4L\r\n=CHXR\r\n-----END PGP SIGNATURE-----\r\n",
+    "shasum": "fb96f5650959a86f30695ea814a071387e6e71b2",
+    "tarball": "https://registry.npmjs.org/angular-aria/-/angular-aria-1.7.0.tgz",
+    "unpackedSize": 32034
+  },
+  "gitHead": "2480afd9c4a995fe8e42ae54a713accfbb7a2084",
   "homepage": "http://angularjs.org",
   "jspm": {
     "shim": {
       "angular-aria": {
-        "deps": ["angular"]
+        "deps": [
+          "angular"
+        ]
       }
     }
-  }
+  },
+  "keywords": [
+    "a11y",
+    "accessibility",
+    "angular",
+    "browser",
+    "client-side",
+    "framework"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "name": "angularcore",
+      "email": "angular-core+npm@google.com"
+    },
+    {
+      "name": "petebd",
+      "email": "pete@bacondarwin.com"
+    }
+  ],
+  "name": "angular-aria",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angular/angular.js.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.7.0"
 }

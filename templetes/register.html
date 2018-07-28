@@ -1,0 +1,44 @@
+<div layout="column" layout-gt-sm="row" layout-align="center center" layout-padding>
+    <div form class="login">
+        <!-- toolbar for Registration -->
+        <md-toolbar layout-padding style="background-color:#fb0;">
+            <div class="md-toolbar-tools" layout-align="center center">
+                <h2>Register</h2>
+            </div>
+        </md-toolbar>
+        <br/>
+        <br/>
+        <!-- user name -->
+        <md-input-container>
+            <input type="userName" ng-model="userName" placeholder="Enter your name" required/>
+        </md-input-container>
+        <br/>
+        <!-- email -->
+        <md-input-container>
+            <input type="email" ng-model="userEmail" placeholder="Enter your email" required/>
+        </md-input-container>
+        <br/>
+        <!-- password -->
+        <md-input-container>
+            <input type="password" ng-model="password" placeholder="Enter your password" required/>
+        </md-input-container>
+        <br/>
+        <!-- phoneNumber -->
+        <md-input-container>
+            <input type="tel" ng-model="phoneNumber" placeholder="Enter your phoneNumber" 
+          ng-pattern="/[0-9]{1,7}$/" ng-minlength="10" ng-maxlength="12"  required/>
+        </md-input-container>
+        <br/>
+        <!-- date -->
+        <md-input-container>
+            <input type="date" ng-model="dateOfBirth" placeholder="Enter your dateOfBirth" required/>
+        </md-input-container>
+        <br/>
+        <!-- sumbitbutton -->
+        <md-input-container>
+            <md-button type="submit" name="button" class="md-raised" ng-click="register()">Register</md-button>
+        </md-input-container>
+        <br/>
+        </form>
+    </div>
+</div>

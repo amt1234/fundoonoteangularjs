@@ -1,33 +1,104 @@
 {
-  "name": "angular-animate",
-  "version": "1.6.9",
-  "description": "AngularJS module for animations",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/angular/angular.js.git"
-  },
-  "keywords": [
-    "angular",
-    "framework",
-    "browser",
-    "animation",
-    "client-side"
+  "_args": [
+    [
+      "angular-animate@1.7.0",
+      "/home/bridgelabz"
+    ]
   ],
-  "author": "Angular Core Team <angular-core+npm@google.com>",
-  "license": "MIT",
+  "_from": "angular-animate@1.7.0",
+  "_id": "angular-animate@1.7.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/angular-animate",
+  "_nodeVersion": "8.11.1",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/angular-animate_1.7.0_1526050920792_0.08382426768735862"
+  },
+  "_npmUser": {
+    "email": "angular-core+npm@google.com",
+    "name": "angularcore"
+  },
+  "_npmVersion": "5.6.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "angular-animate",
+    "raw": "angular-animate@1.7.0",
+    "rawSpec": "1.7.0",
+    "scope": null,
+    "spec": "1.7.0",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/angular-animate/-/angular-animate-1.7.0.tgz",
+  "_shasum": "c04293068ee0986dc00ba154626d74bf51f25576",
+  "_shrinkwrap": null,
+  "_spec": "angular-animate@1.7.0",
+  "_where": "/home/bridgelabz",
+  "author": {
+    "email": "angular-core+npm@google.com",
+    "name": "Angular Core Team"
+  },
   "bugs": {
     "url": "https://github.com/angular/angular.js/issues"
   },
+  "dependencies": {},
+  "description": "AngularJS module for animations",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "fileCount": 8,
+    "integrity": "sha512-508uYJLhcX85cKqOlp3stzv1WEnlEtKPGC2J1ljn8sxhwUhENWte2lGI8DJev26Lsk5dHpinBSJC/J0f7jj53w==",
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa9bBpCRA9TVsSAnZWagAAE60P+QHp6BVbbyCpO2lNvc0Q\nXaRhOhcJBLyM/i5LZzIML3cuACOzpMa0snpHmpQ3m6wV7gEoPtxuiSYx7VlQ\nzpc3yKC5GNLeJG/O5i7SCQr3cyO5E+ecet8QNFbTOiT5h8m4Ri0NGRcQjAnd\nSs2hrj4idryJEgRaawi6pA++aA4qDN0cGWlwHDx2YunHA9xROfzK31txvwIT\n/Xudm0IEJGca6RJmaw8ouw/HioYEi96XdfKAuMfsrQWqm6IFqvgZ9IjIyqsA\nDUthJqFsuaVWn29aOZaLThhLOoV6/9NR5uKx10lhkhXLgRfpDk0nGyUqHoQI\n79UbYo4+DM+Ag30t9/nBfZIsATifKb0St5ei8sp9uhb8cQC67pEMAZVnTbzD\nlhxXWL8PwOTQi8KZ8gYzvNXKb629x/11fs7X4QXtpPtugahruwxyH5oxBewA\noIT8lZXicT3o3vzADu/f9cnIVpN2hLMMdxQ3oVm9C1GRkWqeDJVtl6DP0bzO\nN1k3jLorPd+kGSGvYEzTbCjVyNJuyHU3vVuq1XFgwB3mbhdi9YIk33TWhy48\nXgJB/+uMtGGwSkf6+CKUZ398nDH+q0jcPoIms+0yHxK/3PPdjxe714vLb7E2\n0J/1sZYnmFUN7fOF14JBEqqCRWx4g5ZIoOP+kxAta8zqMTEy7ztAzIFG3JGq\nLBYh\r\n=2cNX\r\n-----END PGP SIGNATURE-----\r\n",
+    "shasum": "c04293068ee0986dc00ba154626d74bf51f25576",
+    "tarball": "https://registry.npmjs.org/angular-animate/-/angular-animate-1.7.0.tgz",
+    "unpackedSize": 251728
+  },
+  "gitHead": "b726f24037a78d0a0fcb99ca2d32a831ecbeadce",
   "homepage": "http://angularjs.org",
   "jspm": {
     "shim": {
       "angular-animate": {
-        "deps": ["angular"]
+        "deps": [
+          "angular"
+        ]
       }
     }
-  }
+  },
+  "keywords": [
+    "angular",
+    "animation",
+    "browser",
+    "client-side",
+    "framework"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "name": "akalinovski",
+      "email": "a.kalinovski@gmail.com"
+    },
+    {
+      "name": "angularcore",
+      "email": "angular-core+npm@google.com"
+    },
+    {
+      "name": "petebd",
+      "email": "pete@bacondarwin.com"
+    }
+  ],
+  "name": "angular-animate",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angular/angular.js.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.7.0"
 }

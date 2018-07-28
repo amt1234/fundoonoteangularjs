@@ -1,25 +1,90 @@
 {
-  "name": "angular",
-  "version": "1.6.9",
-  "description": "HTML enhanced for web apps",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/angular/angular.js.git"
-  },
-  "keywords": [
-    "angular",
-    "framework",
-    "browser",
-    "client-side"
+  "_args": [
+    [
+      "angular@1.7.0",
+      "/home/bridgelabz"
+    ]
   ],
-  "author": "Angular Core Team <angular-core+npm@google.com>",
-  "license": "MIT",
+  "_from": "angular@1.7.0",
+  "_id": "angular@1.7.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/angular",
+  "_nodeVersion": "8.11.1",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/angular_1.7.0_1526050897454_0.8466584509205273"
+  },
+  "_npmUser": {
+    "email": "angular-core+npm@google.com",
+    "name": "angularcore"
+  },
+  "_npmVersion": "5.6.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "angular",
+    "raw": "angular@1.7.0",
+    "rawSpec": "1.7.0",
+    "scope": null,
+    "spec": "1.7.0",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/angular/-/angular-1.7.0.tgz",
+  "_shasum": "e45d679fc8d81040a4894c7ccc16a4e1ad0a9ca6",
+  "_shrinkwrap": null,
+  "_spec": "angular@1.7.0",
+  "_where": "/home/bridgelabz",
+  "author": {
+    "email": "angular-core+npm@google.com",
+    "name": "Angular Core Team"
+  },
   "bugs": {
     "url": "https://github.com/angular/angular.js/issues"
   },
-  "homepage": "http://angularjs.org"
+  "dependencies": {},
+  "description": "HTML enhanced for web apps",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "fileCount": 10,
+    "integrity": "sha512-3LboCLjrOuC7dWh953O0+dI3dJ7PexYRSCIrfqoN5qoHyja/wak3eWoxPKb2Sl2qwiPbrUV5KJXwgpUQ48McBQ==",
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa9bBTCRA9TVsSAnZWagAAYR0P/jFSINAI9knu64w4U7O/\n1P0O164KvkxVIVkFjZEsc8fn2zL2QgSaKXQLtuKNNMSHq/YLCLa8e6FcBwZD\nEBZHnuW7Nbv2OF9Xh7V6IJk/P2dBSoy/3iW4L2QAHdZlKdqkPCUVyWT/BnGj\njJxuMOZa7Fiz+Tv21pvZ2BkvBf83eAUUCHYy/4XKSDs5XlDYVLhZSqC4L1Pa\nP0lbzUC2nh+oiox7YQzE7rcQfdXR6BLy3nGpbLAUjjnobwo1hD0YySQUlVPM\nwAH1fPwd/FQiwjqLOK96PMaf+FFuATvEQ/K0BSwe80CU/Uw3lhadnJo6qHhD\nedOSkF6cWewHco2nHRzjzHMt0fks6da2wImfnZFQ31xIG1UyB3YEvfQYN2gz\nsunV1vjx7RfNY33aEz3nAvQ5zZpXRi8ve+elVRh5hI3KSBqQ+Zv+retNj/Gu\nWaXuQxki9rAfhU6P3oOfGegHUzDKluye2HCAjWQ+EZSwktIXVPo5Snz14MKm\nNhCxrQEBoR4CLd66c8deUiYsWmy6dKjph1WMkyrEjNUDVOviQs48Xyraha+Z\nRh/QrL+PksSYPAVWEI5uYF+XyTCUHDEjjtwX9fq1Ks6JCl0ZencJEYQnYrP7\n4MqHXKXOdxRsO1wAwif+5Fw/i24pgOGpOdCEpq9Dk0EnGzQnNz10ZITl9x55\nFQUh\r\n=DUBl\r\n-----END PGP SIGNATURE-----\r\n",
+    "shasum": "e45d679fc8d81040a4894c7ccc16a4e1ad0a9ca6",
+    "tarball": "https://registry.npmjs.org/angular/-/angular-1.7.0.tgz",
+    "unpackedSize": 2012738
+  },
+  "gitHead": "77291a65c1e2c0d2711760ee74475f147934ed47",
+  "homepage": "http://angularjs.org",
+  "keywords": [
+    "angular",
+    "browser",
+    "client-side",
+    "framework"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "name": "angularcore",
+      "email": "angular-core+npm@google.com"
+    },
+    {
+      "name": "petebd",
+      "email": "pete@bacondarwin.com"
+    }
+  ],
+  "name": "angular",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angular/angular.js.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.7.0"
 }

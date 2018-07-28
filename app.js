@@ -13,6 +13,21 @@ app.config(function($stateProvider,$urlRouterProvider){
     url:'/home',
     templateUrl:'templetes/home.html',
     controller:'homeController'
+  })
+  .state('register',{
+    url:"/register",
+    templateUrl:"templetes/register.html",
+    controller:"loginController"
+  })
+  .state('forgotpassword',{
+    url:"/forgotpassword",
+    templateUrl:"templetes/forgotpassword.html",
+    controller:"loginController"
+  })
+  .state('reset',{
+    url:"/reset",
+    templateUrl:"templetes/resetpassword.html",
+    controller:"loginController"
   });
   $urlRouterProvider.otherwise('/login');
 });

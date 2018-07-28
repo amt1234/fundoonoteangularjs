@@ -1,32 +1,99 @@
 {
-  "name": "angular-messages",
-  "version": "1.6.9",
-  "description": "AngularJS module that provides enhanced support for displaying messages within templates",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/angular/angular.js.git"
-  },
-  "keywords": [
-    "angular",
-    "framework",
-    "browser",
-    "client-side"
+  "_args": [
+    [
+      "angular-messages@1.7.0",
+      "/home/bridgelabz"
+    ]
   ],
-  "author": "Angular Core Team <angular-core+npm@google.com>",
-  "license": "MIT",
+  "_from": "angular-messages@1.7.0",
+  "_id": "angular-messages@1.7.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/angular-messages",
+  "_nodeVersion": "8.11.1",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/angular-messages_1.7.0_1526051102564_0.9063037011573638"
+  },
+  "_npmUser": {
+    "email": "angular-core+npm@google.com",
+    "name": "angularcore"
+  },
+  "_npmVersion": "5.6.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "angular-messages",
+    "raw": "angular-messages@1.7.0",
+    "rawSpec": "1.7.0",
+    "scope": null,
+    "spec": "1.7.0",
+    "type": "version"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/angular-messages/-/angular-messages-1.7.0.tgz",
+  "_shasum": "ae0ec5fec710898dbbe9f0146ca87e0649f6c3d6",
+  "_shrinkwrap": null,
+  "_spec": "angular-messages@1.7.0",
+  "_where": "/home/bridgelabz",
+  "author": {
+    "email": "angular-core+npm@google.com",
+    "name": "Angular Core Team"
+  },
   "bugs": {
     "url": "https://github.com/angular/angular.js/issues"
   },
+  "dependencies": {},
+  "description": "AngularJS module that provides enhanced support for displaying messages within templates",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "fileCount": 8,
+    "integrity": "sha512-77NqLV2EQgSirRcb5bUSSbyc1GJexBl5PrbpBlXp6EalAL7N27wgEOcSP59ViIusyjY0kezT7RmO2YGzzA56YQ==",
+    "npm-signature": "-----BEGIN PGP SIGNATURE-----\r\nVersion: OpenPGP.js v3.0.4\r\nComment: https://openpgpjs.org\r\n\r\nwsFcBAEBCAAQBQJa9bEfCRA9TVsSAnZWagAAveAP/0LBF/Ts5CghJQJiXhn9\nbeCKOYYCO4ofIolPGzhH0OeZqko+pej5VCAtRBLLXjASSjLBOkFtiKpJbNbs\nVt2C/voFRwuxnj4zq6ZV22PcUU7O2eo0vmbAjByYirIkOV0Cmfn3AaD0mNs6\nIgz/ebeJecvXMLCRbXJk+VO9hQdkzznHN4J+H7yb+ZJPCm9oxCnowAaNmyQ4\n3r/hdqEnkALNZ8QcAO5NV24nZRf2t8Cza0sVaGwfWNrrooy2Tl4Q4qbJpaNl\naNVtHE4Og7rg9AebRtmUxb9gch89LIkbty0jZuJ6nSV7DS66RvB5sRxCDCvF\ngESccTxDLKe45p7u08kVnYogBpuKTeypzhlI2RIVjULNZSrW9szrFBDBwjW7\nuUct1n7Hn1YVaTmPrSodI1EkAXsCvl9MvffnwKVQkttXd+F4GNHEktNTXJmy\nL1lPuxbCxkEHSKxAryq1DWrpogVl/7Ty7CpdIeVxh8gEme1szX5fbQ2ZDfT+\n9lN3Wwj5IOCpXZ/3V+gTha4ZKkncZrvTsq5N+q76cfTwnBh6p1zAJteTaAhT\nvIfWB2EjlHjDvmJWzKk2d5uwDgbgavoa/JWH9oPhKJWVgdus9j+7t+qw1+co\nKfOH6aMO4oUrXqiSH0JqeApGfxjd6EMutLYymF0BnKC4UtSt/1JLB8L+UNRS\nOSen\r\n=xPnA\r\n-----END PGP SIGNATURE-----\r\n",
+    "shasum": "ae0ec5fec710898dbbe9f0146ca87e0649f6c3d6",
+    "tarball": "https://registry.npmjs.org/angular-messages/-/angular-messages-1.7.0.tgz",
+    "unpackedSize": 43791
+  },
+  "gitHead": "6bfe4a69690f8b3409a914140207ceb552778118",
   "homepage": "http://angularjs.org",
   "jspm": {
     "shim": {
       "angular-messages": {
-        "deps": ["angular"]
+        "deps": [
+          "angular"
+        ]
       }
     }
-  }
+  },
+  "keywords": [
+    "angular",
+    "browser",
+    "client-side",
+    "framework"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "name": "angularcore",
+      "email": "angular-core+npm@google.com"
+    },
+    {
+      "name": "petebd",
+      "email": "pete@bacondarwin.com"
+    }
+  ],
+  "name": "angular-messages",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angular/angular.js.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.7.0"
 }

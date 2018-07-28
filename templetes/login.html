@@ -1,30 +1,52 @@
-<div class="login" layout="row" layout-align="center center">
-  <div form class="loginform" flex-lg="60" flex-md="80" flex-sm="50">
+<div layout="column" layout-gt-sm="row" layout-align="center center" layout-padding>
+  <div form class="login" name="myForm" novalidate>
+    <!-- toolbar for Sign in -->
+    <md-toolbar layout-padding style="background-color:#fb0;">
+      <div class="md-toolbar-tools" layout-align="center center">
+        <h2>Sign In</h2>
+      </div>
+    </md-toolbar>
+    <br/>
+    <br/>
+    <img src="assets/images/round-account-button-with-user-inside.svg">
+    <!-- email input -->
+    <md-input-container>  
+      
+     <input type="email" name="userEmail" ng-model="userEmail" placeholder="Enter your email" required/>
+     <span style="color:red" ng-show="myForm.userEmail.$dirty && myForm.userEmail.$invalid">
 
-  <form>
-      <md-input-container>
-      <input type="email" ng-model="userEmail" placeholder="Enter your name"/>
-      </md-input-container>
-      <br>
-      <md-input-container>
-          <input type="password" ng-model="password" placeholder="Enter your password"/>
+        <span ng-show="myForm.userEmail.$error.required">Username is required</span>
+    </span>
+    </md-input-container>
+    <br/>
+    <img src="assets/images/https-symbol.svg">
+    <!-- password input -->
+    <md-input-container>
+      <input type="password" ng-model="password" placeholder="Enter your password" required/>
+    </md-input-container>
+    <br />
+    <!-- Sign in button -->
+    <md-input-container>
+      <md-button type="submit" name="button" ng-disabled="myForm.userEmail.$dirty && myForm.userEmail.$invalid" class="md-raised" ng-click="login()">Login</md-button>
+    </md-input-container>
+    <br/>
+    <!-- Remember me -->
+    <md-input-container>
+      <span>
+        <md-checkbox ng-disabled="false">Remember me </md-checkbox>
+      </span>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <!-- Forgot password -->
+      <span>
+        <a ui-sref="forgotpassword">Forgot password?</a>
+      </span>
+    </md-input-container>
+    <br/>
 
-      </md-input-container>
-<br>
-  <md-input-container>
-    <md-button  type="submit" name="button" class="md-raised" ng-click="login()">Login</md-button>
-  </md-input-container>
-  </form>
-</md-card>
+    <!-- Register -->
+    <p>Not a member?
+      <a ui-sref="register">Register</a>
+    </p>
+    </form>
+  </div>
 </div>
-
-<!-- <div layout="row">
-  <md-card flex-lg="30" flex-gt-md="44" flex-md="44">
-  <md-input-container>
-  <input type="text" >
-</md-input-container>
-<md-input-container>
-  <button type="submit">button</button>
-</md-input-container>
-</md-card>
-</div> -->
