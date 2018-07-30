@@ -87,9 +87,10 @@
         <div layout="row" layout-padding>
           <div aria-label="Main menu" role="button">
             <!-- <img src="/assets/images/mainmenu.svg"> -->
-            <i class="material-icons">&#xE5D2; </i>
+            <md-icon md-svg-src="assets/images/mainmenu.svg" aria-label="mainmenu">
+            </md-icon>
           </div>
-          <div>
+          <div class="before">
             <span>
               <a href="#">Keep</a>
             </span>
@@ -101,18 +102,57 @@
             <form method="GET" layout="row">
 
               <button class="searchbutton" aria-label="search" role="button">
-                <img src="assets/images/search.svg" alt="search" />
+                <md-icon md-svg-src="assets/images/search.svg" aria-label="searchbutton">
+                </md-icon>
               </button>
 
               <div>
                 <input class="inputsearch" aria-label="search" placeholder="search" role="combobox" aria-hidden="false" type="text">
               </div>
               <button class="closesearch" aria-label="Clear search" type="button" style="visibility: visible;">
-                <img src="assets/images/closebutton.svg">
+                <md-icon md-svg-src="assets/images/closebutton.svg" aria-label="closesearch">
+                </md-icon>
               </button>
             </form>
           </div>
+        </div>
 
+        <!-- refresh And view -->
+        <div class="refreshAndview" layout="row" layout-padding>
+          <!-- refresh -->
+          <div class="refresh" role="button" aria-label="Refrash">
+            <md-icon md-svg-src="assets/images/baseline-refresh-24px.svg" aria-label="refresh">
+            </md-icon>
+          </div>
+          <!-- list view -->
+          <div class="view" role="button" aria-lable="list view">
+            <md-icon md-svg-src="assets/images/view_stream-24px.svg" aria-label="view">
+            </md-icon>
+          </div>
+        </div>
+
+        <!-- google app ,Notification And SignOut -->
+        <div class="googleapp_NotifyAndSignOut" layout="row" layout-padding>
+          <div>
+            <!-- Google app -->
+            <div class="googleapp" role="button" aria-lable="Google app">
+              <a href="https://www.google.co.in/intl/en/options/" role="button">
+                <md-icon md-svg-src="assets/images/googleapp.svg" aria-label="googleapp">
+                </md-icon>
+              </a>
+            </div>
+            <!-- Notification -->
+            <div class="notification" role="button" aria-lable="notification" >
+              <a href="https://www.google.co.in/intl/en/options/" role="button">
+                <md-icon md-svg-src="assets/images/notification.svg" aria-label="notification">
+                </md-icon>
+              </a>
+            </div>
+            <!-- SignOut -->
+            <div>
+
+            </div>
+          </div>
         </div>
       </div>
     </div>

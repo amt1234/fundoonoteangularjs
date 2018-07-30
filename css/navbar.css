@@ -5,7 +5,7 @@
 {
   size: 1291*64;
 }
-span::before {
+.before::before {
   content: "Google";
 }
 a:link {
@@ -44,4 +44,22 @@ a:link {
   padding: 0px 4px;
   box-sizing: border-box;
 }
-background-image: url(data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjE4cHgiIHdpZHRoPSIxOHB4IiB4bWxuc…MtMi4xNiA1LjktNWgtMS41MmMtMC40NiAyLTIuMjQgMy41LTQuMzggMy41eiIvPgo8L3N2Zz4K);
+.refreshAndview{
+  background-size: 24px 24px;
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  height:48px;
+  width: 48px;
+  border: 1px solid transparent;
+  
+}
+.googleapp{
+  padding-left: 70px;
+  flex: 0 0 auto;
+   display: inline-block;
+}
+.notification{
+  padding-left: 20px;
+  flex: 0 0 auto;
+  display: inline-block;
+} 
