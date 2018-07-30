@@ -1,17 +1,23 @@
-<div position="fixed" >
+<!-- <div position="fixed" >
   <md-toolbar  position="fixed" id="navbarId">
     <div class="md-toolbar-tools">
       <md-button class="md-icon-button" aria-label="Settings" ng-disabled="false" ng-click="toggleLeft()">
         <i class="material-icons">&#xE5D2;</i>
       </md-button>
-
+      
       <h2 flex md-truncate><b>Google</b> Keep</h2>
+      <div>
+        <form class="search" method="GET">
+          <md-button>jkllkl</md-button>
+        </form>
+      </div>
       <md-card-actions layout="row" layout-align="end center" ng-click="signout()" >
         <md-button> Sign Out </md-button>
       </md-card-actions>
     </div>
   </md-toolbar>
-</div>
+</div> -->
+
 
 <!-- <md-toolbar layout-padding>
   <div class="md-toolbar-tools">
@@ -73,3 +79,43 @@
   <div flex-gt-md="10"></div>
 
 </div> -->
+
+<div class="navbar" style="height:64px;">
+  <header class="header" layout="row" layout-padding style="background-color: #fb0">
+    <div>
+      <div style="background-color: rgb(255,187,0);" layout="row">
+        <div layout="row" layout-padding>
+          <div aria-label="Main menu" role="button">
+            <!-- <img src="/assets/images/mainmenu.svg"> -->
+            <i class="material-icons">&#xE5D2; </i>
+          </div>
+          <div>
+            <span>
+              <a href="#">Keep</a>
+            </span>
+          </div>
+        </div>
+        <!-- serch -->
+        <div class="search" layout="row">
+          <div>
+            <form method="GET" layout="row">
+
+              <button class="searchbutton" aria-label="search" role="button">
+                <img src="assets/images/search.svg" alt="search" />
+              </button>
+
+              <div>
+                <input class="inputsearch" aria-label="search" placeholder="search" role="combobox" aria-hidden="false" type="text">
+              </div>
+              <button class="closesearch" aria-label="Clear search" type="button" style="visibility: visible;">
+                <img src="assets/images/closebutton.svg">
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </header>
+</div>

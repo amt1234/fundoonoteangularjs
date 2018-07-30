@@ -1,3 +1,47 @@
-#navbarId{
+/* #navbarId{
   background-color:#fb0 ;
+} */
+.header
+{
+  size: 1291*64;
 }
+span::before {
+  content: "Google";
+}
+a:link {
+  text-decoration: none;
+  color: black;
+}a:hover {
+  text-decoration: underline;
+}
+.search{
+  background:rgba(0,0,0,0.04);
+  border:  solid rgba(0,0,0,0);
+  border-radius:4px; 
+  /* display: block; */
+  /* padding: 100px 0 0; */
+  /* padding: 11px 16px 11px 16px; */
+  width: 720px;
+  height: 46px;
+  text-decoration-color: black;
+  position: relative;
+}
+.inputsearch{
+  background: transparent;
+  border: none;
+  height: 46px;
+  /* padding: 11px 16px 11px 16px; */
+  width: 616px;
+  /* box-sizing: border-box; */
+}
+.searchbutton{
+  background: transparent;
+  border: none;
+}
+.closesearch{
+  background: transparent;
+  border: none;
+  padding: 0px 4px;
+  box-sizing: border-box;
+}
+background-image: url(data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjE4cHgiIHdpZHRoPSIxOHB4IiB4bWxuc…MtMi4xNiA1LjktNWgtMS41MmMtMC40NiAyLTIuMjQgMy41LTQuMzggMy41eiIvPgo8L3N2Zz4K);

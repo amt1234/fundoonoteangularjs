@@ -33,8 +33,8 @@ app.controller('loginController', function ($scope, $state, Userfactory,$locatio
       function errorCallback(response) {
         console.log("error registration");
       });
-
   }
+  
   //forgot password
   $scope.forgotpassword = function () {
     var userforgotpassword = {
