@@ -85,7 +85,7 @@
     <div>
       <div style="background-color: rgb(255,187,0);" layout="row">
         <div layout="row" layout-padding>
-          <div aria-label="Main menu" role="button">
+          <div aria-label="Main menu" role="button" ng-click="toggleLeft()">
             <!-- <img src="/assets/images/mainmenu.svg"> -->
             <md-icon md-svg-src="assets/images/mainmenu.svg" aria-label="mainmenu">
             </md-icon>
@@ -142,15 +142,20 @@
               </a>
             </div>
             <!-- Notification -->
-            <div class="notification" role="button" aria-lable="notification" >
+            <div class="notification" role="button" aria-lable="notification">
               <a href="https://www.google.co.in/intl/en/options/" role="button">
                 <md-icon md-svg-src="assets/images/notification.svg" aria-label="notification">
                 </md-icon>
               </a>
             </div>
             <!-- SignOut -->
-            <div>
-
+            <div class="signout" aria-label="signout">
+              <div layout="row" layout-align="end end">
+                <a href="https://accounts.google.com/SignOutOptions?hl=en&continue=https://keep.google.com/u/0/">
+                  <md-icon md-svg-src="assets/images/exit_to_app-24px.svg" aria-label="notification">
+                  </md-icon>
+                </a>
+              </div>
             </div>
           </div>
         </div>

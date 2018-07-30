@@ -17,6 +17,5 @@ app.factory('Userfactory', function ($http) {
             data:userlogin
         })
     };
-
     return factory;
 });

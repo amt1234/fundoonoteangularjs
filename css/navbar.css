@@ -18,9 +18,6 @@ a:link {
   background:rgba(0,0,0,0.04);
   border:  solid rgba(0,0,0,0);
   border-radius:4px; 
-  /* display: block; */
-  /* padding: 100px 0 0; */
-  /* padding: 11px 16px 11px 16px; */
   width: 720px;
   height: 46px;
   text-decoration-color: black;
@@ -30,9 +27,7 @@ a:link {
   background: transparent;
   border: none;
   height: 46px;
-  /* padding: 11px 16px 11px 16px; */
   width: 616px;
-  /* box-sizing: border-box; */
 }
 .searchbutton{
   background: transparent;
@@ -51,7 +46,6 @@ a:link {
   height:48px;
   width: 48px;
   border: 1px solid transparent;
-  
 }
 .googleapp{
   padding-left: 70px;
@@ -63,3 +57,8 @@ a:link {
   flex: 0 0 auto;
   display: inline-block;
 } 
+.signout{
+  padding-left: 20px;
+  flex: 0 0 auto;
+  display: inline-block;
+}
