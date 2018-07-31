@@ -1,4 +1,4 @@
-var app=angular.module('fundoonote',['ui.router', 'ngMaterial', 'ngMessages', 'ngAnimate']);
+var app=angular.module('fundoonote',['ui.router', 'ngMaterial', 'ngMessages', 'ngAnimate','ngAria']);
 app.config(function($stateProvider,$urlRouterProvider){
 
   $stateProvider
@@ -28,6 +28,11 @@ app.config(function($stateProvider,$urlRouterProvider){
     url:"/reset",
     templateUrl:"templetes/resetpassword.html",
     controller:"loginController"
+  })
+  .state('home.dashboard',{
+    url:"/home.dashboard",
+    templateUrl:"templetes/dashboard.html",
+    controller:"dashboardController"
   });
   $urlRouterProvider.otherwise('/login');
 });

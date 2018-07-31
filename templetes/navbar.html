@@ -1,25 +1,74 @@
-<!-- <div position="fixed" >
-  <md-toolbar  position="fixed" id="navbarId">
+<div position="fixed">
+  <md-toolbar md-scroll-shrink="true" position="fixed" id="navbarId">
     <div class="md-toolbar-tools">
-      <md-button class="md-icon-button" aria-label="Settings" ng-disabled="false" ng-click="toggleLeft()">
-        <i class="material-icons">&#xE5D2;</i>
+      <md-button class="md-icon-button" aria-label="Settings" ng-disabled="false" ng-click="toggleLeft()" >
+        <md-icon md-svg-src="assets/images/mainmenu.svg" aria-label="mainmenu">
+        </md-icon>
       </md-button>
-      
-      <h2 flex md-truncate><b>Google</b> Keep</h2>
-      <div>
-        <form class="search" method="GET">
-          <md-button>jkllkl</md-button>
-        </form>
+
+      <div class="before">
+        <span>
+          <a href="#">Keep</a>
+        </span>
       </div>
-      <md-card-actions layout="row" layout-align="end center" ng-click="signout()" >
-        <md-button> Sign Out </md-button>
-      </md-card-actions>
-    </div>
+      <!-- serch -->
+      <div class="search" layout="row" layout-align="space-between center">
+        
+            <md-button class="searchbutton icon-button" aria-label="search" role="button">
+              <md-icon md-svg-src="assets/images/search.svg" aria-label="searchbutton">
+              </md-icon>
+            </md-button>
+
+            <input class="inputsearch" aria-label="search" placeholder="search" role="combobox" aria-hidden="false" type="text">
+            <md-button class="closesearch" aria-label="Clear search" type="button" style="visibility: visible;">
+              <md-icon md-svg-src="assets/images/closebutton.svg" aria-label="closesearch">
+              </md-icon>
+            </md-button>
+            
+      </div>
+      <!-- refresh And view -->
+      <div class="refreshAndview" layout="row">
+        <!-- refresh -->
+        <md-button class="refresh icon-button" role="button" aria-label="Refrash">
+          <md-icon md-svg-src="assets/images/baseline-refresh-24px.svg" aria-label="refresh">
+          </md-icon>
+        </md-button>
+        <!-- list view -->
+        <md-button class="view icon-button" role="button" aria-lable="list view">
+          <md-icon md-svg-src="assets/images/view_stream-24px.svg" aria-label="view">
+          </md-icon>
+        </md-button>
+      </div>
+
+      <!-- google app ,Notification And SignOut -->
+      <div class="googleapp_NotifyAndSignOut" layout="row">
+        <!-- Google app -->
+        <md-button class="googleapp icon-button" role="button" aria-lable="Google app">
+          <a href="https://www.google.co.in/intl/en/options/" role="button">
+            <md-icon md-svg-src="assets/images/googleapp.svg" title="googleapp" aria-label="googleapp">
+            </md-icon>
+          </a>
+        </md-button>
+        <!-- Notification -->
+        <md-button class="notification icon-button" role="button" aria-lable="notification">
+          <a href="https://www.google.co.in/intl/en/options/" role="button">
+            <md-icon md-svg-src="assets/images/notification.svg" aria-label="notification">
+            </md-icon>
+          </a>
+        </md-button>
+        <!-- signout -->
+          <md-button class="signout icon-button" layout="row" layout-align="start end" aria-label="signout">
+            <a href="https://accounts.google.com/SignOutOptions?hl=en&continue=https://keep.google.com/u/0/">
+              <md-icon md-svg-src="assets/images/exit_to_app-24px.svg" aria-label="notification">
+              </md-icon>
+            </a>
+          </md-button>
+      </div>
   </md-toolbar>
-</div> -->
+  </div>
 
 
-<!-- <md-toolbar layout-padding>
+  <!-- <md-toolbar layout-padding>
   <div class="md-toolbar-tools">
     <h2>Welcome to Angular Material</h2>
   </div>
@@ -28,7 +77,7 @@
   <textarea rows="5" cols="50" placeholder="text field 1"></textarea>
   <textarea rows="5" cols="50" placeholder="text field 2"></textarea>
   </div> -->
-<!-- <div layout="column" layout-align="center center">
+  <!-- <div layout="column" layout-align="center center">
   <h2>Welcome </h2>
   <div>
     <strong flex="30">Enter the name</strong>
@@ -47,7 +96,7 @@
   <input flex type="text" placeholder="text 3"></input>
   <input flex type="text" placeholder="text 4"></input>
 </div>-->
-<!-- <div layout="column" layout-gt-sm="row" layout-padding>
+  <!-- <div layout="column" layout-gt-sm="row" layout-padding>
   <div>
     <input flex type="text" placeholder="text 1"></input>
     <input flex type="text" placeholder="text 2"></input>
@@ -57,7 +106,7 @@
     <input flex type="text" placeholder="text 4"></input>
   </div>
 </div> -->
-<!-- <div layout="column" layout-gt-sm="row" layout-align="center center" layout-padding>
+  <!-- <div layout="column" layout-gt-sm="row" layout-align="center center" layout-padding>
   <div>
     <strong>AngularJS</strong>
     <div>Superheroic JavaScript framework</div>
@@ -71,7 +120,7 @@
     <div>Twitter: @angularjs</div>
   </div>
 </div> -->
-<!-- <div layout="row" flex layout-padding>
+  <!-- <div layout="row" flex layout-padding>
   <div show-gt-sm hide><p>fhfhfgh small screen</p></div>
   <div flex-gt-md="80" flex>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem
     ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum
@@ -79,88 +128,3 @@
   <div flex-gt-md="10"></div>
 
 </div> -->
-
-<div class="navbar" style="height:64px;">
-  <header class="header" layout="row" layout-padding style="background-color: #fb0">
-    <div>
-      <div style="background-color: rgb(255,187,0);" layout="row">
-        <div layout="row" layout-padding>
-          <div aria-label="Main menu" role="button" ng-click="toggleLeft()">
-            <!-- <img src="/assets/images/mainmenu.svg"> -->
-            <md-icon md-svg-src="assets/images/mainmenu.svg" aria-label="mainmenu">
-            </md-icon>
-          </div>
-          <div class="before">
-            <span>
-              <a href="#">Keep</a>
-            </span>
-          </div>
-        </div>
-        <!-- serch -->
-        <div class="search" layout="row">
-          <div>
-            <form method="GET" layout="row">
-
-              <button class="searchbutton" aria-label="search" role="button">
-                <md-icon md-svg-src="assets/images/search.svg" aria-label="searchbutton">
-                </md-icon>
-              </button>
-
-              <div>
-                <input class="inputsearch" aria-label="search" placeholder="search" role="combobox" aria-hidden="false" type="text">
-              </div>
-              <button class="closesearch" aria-label="Clear search" type="button" style="visibility: visible;">
-                <md-icon md-svg-src="assets/images/closebutton.svg" aria-label="closesearch">
-                </md-icon>
-              </button>
-            </form>
-          </div>
-        </div>
-
-        <!-- refresh And view -->
-        <div class="refreshAndview" layout="row" layout-padding>
-          <!-- refresh -->
-          <div class="refresh" role="button" aria-label="Refrash">
-            <md-icon md-svg-src="assets/images/baseline-refresh-24px.svg" aria-label="refresh">
-            </md-icon>
-          </div>
-          <!-- list view -->
-          <div class="view" role="button" aria-lable="list view">
-            <md-icon md-svg-src="assets/images/view_stream-24px.svg" aria-label="view">
-            </md-icon>
-          </div>
-        </div>
-
-        <!-- google app ,Notification And SignOut -->
-        <div class="googleapp_NotifyAndSignOut" layout="row" layout-padding>
-          <div>
-            <!-- Google app -->
-            <div class="googleapp" role="button" aria-lable="Google app">
-              <a href="https://www.google.co.in/intl/en/options/" role="button">
-                <md-icon md-svg-src="assets/images/googleapp.svg" aria-label="googleapp">
-                </md-icon>
-              </a>
-            </div>
-            <!-- Notification -->
-            <div class="notification" role="button" aria-lable="notification">
-              <a href="https://www.google.co.in/intl/en/options/" role="button">
-                <md-icon md-svg-src="assets/images/notification.svg" aria-label="notification">
-                </md-icon>
-              </a>
-            </div>
-            <!-- SignOut -->
-            <div class="signout" aria-label="signout">
-              <div layout="row" layout-align="end end">
-                <a href="https://accounts.google.com/SignOutOptions?hl=en&continue=https://keep.google.com/u/0/">
-                  <md-icon md-svg-src="assets/images/exit_to_app-24px.svg" aria-label="notification">
-                  </md-icon>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </header>
-</div>

@@ -1,10 +1,6 @@
-/* #navbarId{
+#navbarId{
   background-color:#fb0 ;
-} */
-.header
-{
-  size: 1291*64;
-}
+} 
 .before::before {
   content: "Google";
 }
@@ -13,15 +9,17 @@ a:link {
   color: black;
 }a:hover {
   text-decoration: underline;
+  cursor: pointer;
 }
 .search{
+  margin-left: 20px;
   background:rgba(0,0,0,0.04);
   border:  solid rgba(0,0,0,0);
-  border-radius:4px; 
   width: 720px;
   height: 46px;
   text-decoration-color: black;
-  position: relative;
+  border-radius: 5px;
+  /* position: relative; */
 }
 .inputsearch{
   background: transparent;
@@ -36,18 +34,22 @@ a:link {
 .closesearch{
   background: transparent;
   border: none;
-  padding: 0px 4px;
-  box-sizing: border-box;
 }
-.refreshAndview{
-  background-size: 24px 24px;
+.icon-button{
+
+  min-height: 48px !important;
+  min-width: 48px !important;
+  width: 48px;
+}
+/* .refreshAndview{
+background-size: 24px 24px;
   box-sizing: border-box;
   flex: 0 0 auto;
   height:48px;
   width: 48px;
   border: 1px solid transparent;
-}
-.googleapp{
+} */
+/* .googleapp{
   padding-left: 70px;
   flex: 0 0 auto;
    display: inline-block;
@@ -61,4 +63,4 @@ a:link {
   padding-left: 20px;
   flex: 0 0 auto;
   display: inline-block;
-}
+} */

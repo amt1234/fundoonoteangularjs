@@ -1,3 +1,9 @@
 md-sidenav{
   margin-top: 5%;
 }
+.list{
+  margin:0px;
+}
+.end{
+  padding: 15px 24px 10px;
+}
