@@ -9,11 +9,13 @@ app.controller('loginController', function ($scope, $state, Userfactory,$locatio
     var url = "http://localhost:8080/SpringRestFoundoNote/user/" + 'login';
     Userfactory.postmethod(userlogin, url).then(function successCallback(response) {
       console.log("Token : " + response.data);
+      // Store
+      localStorage.setItem("Token", response.data);
+      //console.log("get"+localStorage.getItem("Token"));
       $state.go('home');
     }, function errorCallback(response) {
       console.log("error login");
     });
-
   }
 
   //register

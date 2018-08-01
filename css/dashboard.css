@@ -1,10 +1,9 @@
-.mdcard{
-    min-height: 46px ;
+/* .mdcard{
+    min-height: 46px;
     min-width: 600px;  
     margin:center center;
-}
+} */
 .inputtext{
-   
     background: transparent;
     border: none;
 }
@@ -16,4 +15,20 @@
   #main {
     transition: margin-left .5s;
     padding: 16px;
+}
+.icon-buttonend{
+    margin:0px;
+    padding: 4px 10px 10px 10px;
+    min-height: 24px !important;
+    min-width: 24px !important;
+}
+.pin{
+    margin-left: 340px;
+}
+.button{
+    margin: 0px !important;
+    padding: 4px 10px 10px 10px;
+}
+.buttondiv{
+    margin-left: 240px;
 }

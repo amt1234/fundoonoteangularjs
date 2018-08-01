@@ -5,16 +5,17 @@ app.factory('Userfactory', function ($http) {
         return $http({
             method: 'POST',
             url: url,
-            header: {},
+            headers: {},
             data: userdata
         })
     };
 
-    factory.getmethod=function(){
+    factory.getmethod=function(url){
         return $http({
             method:'GET',
-            header:{},
-            data:userlogin
+            url: url,
+            headers:{'userid':localStorage.getItem('Token')}
+            //data:userlogin
         })
     };
     return factory;

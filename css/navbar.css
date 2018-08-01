@@ -19,7 +19,6 @@ a:link {
   height: 46px;
   text-decoration-color: black;
   border-radius: 5px;
-  /* position: relative; */
 }
 .inputsearch{
   background: transparent;
@@ -41,26 +40,3 @@ a:link {
   min-width: 48px !important;
   width: 48px;
 }
-/* .refreshAndview{
-background-size: 24px 24px;
-  box-sizing: border-box;
-  flex: 0 0 auto;
-  height:48px;
-  width: 48px;
-  border: 1px solid transparent;
-} */
-/* .googleapp{
-  padding-left: 70px;
-  flex: 0 0 auto;
-   display: inline-block;
-}
-.notification{
-  padding-left: 20px;
-  flex: 0 0 auto;
-  display: inline-block;
-} 
-.signout{
-  padding-left: 20px;
-  flex: 0 0 auto;
-  display: inline-block;
-} */
