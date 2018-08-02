@@ -5,7 +5,7 @@ app.factory('Userfactory', function ($http) {
         return $http({
             method: 'POST',
             url: url,
-            headers: {},
+            headers: {'userid':localStorage.getItem('Token')},
             data: userdata
         })
     };

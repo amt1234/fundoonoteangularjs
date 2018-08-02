@@ -30,7 +30,7 @@ app.config(function($stateProvider,$urlRouterProvider){
     controller:"loginController"
   })
   .state('home.dashboard',{
-    url:"/home.dashboard",
+    url:"/dashboard",
     templateUrl:"templetes/dashboard.html",
     controller:"dashboardController"
   });

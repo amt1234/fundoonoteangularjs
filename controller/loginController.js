@@ -1,4 +1,4 @@
-app.controller('loginController', function ($scope, $state, Userfactory,$location) {
+app.controller('loginController', function ($scope, $state, Userfactory, $location) {
 
   // login 
   $scope.login = function () {
@@ -11,8 +11,7 @@ app.controller('loginController', function ($scope, $state, Userfactory,$locatio
       console.log("Token : " + response.data);
       // Store
       localStorage.setItem("Token", response.data);
-      //console.log("get"+localStorage.getItem("Token"));
-      $state.go('home');
+      $state.go('home.dashboard');
     }, function errorCallback(response) {
       console.log("error login");
     });
@@ -36,7 +35,7 @@ app.controller('loginController', function ($scope, $state, Userfactory,$locatio
         console.log("error registration");
       });
   }
-  
+
   //forgot password
   $scope.forgotpassword = function () {
     var userforgotpassword = {

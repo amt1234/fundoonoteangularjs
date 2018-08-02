@@ -14,9 +14,6 @@ app.controller('homeController', function ($scope, $mdSidenav, $state) {
     };
   }
 
-  // Retrieve
-  //document.getElementById("result").innerHTML = localStorage.getItem("Token");
-
   //$state function call
   $state.go('home.dashboard');
 });

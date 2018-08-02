@@ -1,43 +1,90 @@
-<div layout="row" layout-align="center center" id="main">
-    <md-card>
-        <div ng-show="isVisible">
-            <md-card-title style="padding: 12px 15px 15px 15px; width:570px;height:16px;">
-                <md-card-title-text layout="row">
-                    <input class="inputtext" type="text" placeholder="Title" />
-                    <md-icon class="icon-buttonend pin" md-svg-src="assets/images/pinned.svg"></md-icon>
-                </md-card-title-text>
-            </md-card-title>
-        </div>
-        <div>
-            <md-card-title style="padding: 12px 15px 15px 15px; width:570px;height:19px;">
-                </md-card-title-text>
-                <span>
-                    <input class="inputtext" type="text" placeholder="Take a note..." ng-click="showHide()"/>
-                </span>
-                <div style="margin-left:260px;">
-                    <md-icon ng-show="!isVisible" class="icon-button" md-svg-src="assets/images/notelist.svg"></md-icon>
+<div id="main" layout="column" layout-align="center center">
+    <div layout="row" layout-align="center center">
+        <div class="startdiv">
+            <div>
+                <md-card>
+                    <div ng-show="isVisible">
+                        <md-card-title style="padding: 12px 15px 15px 15px; width:570px;height:16px;">
+                            <md-card-title-text layout="row">
+                                <input class="inputtext" type="text" ng-model="title" placeholder="Title" />
+                                <md-icon class="icon-buttonend pin" md-svg-src="assets/images/pinned.svg"></md-icon>
+                            </md-card-title-text>
+                        </md-card-title>
+                    </div>
+                    <div>
+                        <md-card-title style="padding: 12px 15px 15px 15px; width:570px;height:19px;">
+                            </md-card-title-text>
+                            <span>
+                                <input class="inputtext" type="text" ng-model="description" placeholder="Take a note..." ng-click="showHide()" />
+                            </span>
+                            <div style="margin-left:260px;">
+                                <md-icon ng-show="!isVisible" class="icon-button" md-svg-src="assets/images/notelist.svg"></md-icon>
 
-                    <md-icon ng-show="!isVisible" class="icon-button" md-svg-src="assets/images/noteimage.svg"></md-icon>
-                </div>
-                </md-card-title-text>
-            </md-card-title>
-        </div>
-        <div ng-show="isVisible">
-            <md-card-title style="padding:0%;width:600px;height:36px;">
-                <md-card-title-text layout="row">
-                    <md-icon class="icon-buttonend" md-svg-src="assets/images/reminder.svg"></md-icon> 
-                    <md-icon class="icon-buttonend" md-svg-src="assets/images/collabotative.svg"></md-icon> 
-                    <md-icon class="icon-buttonend" md-svg-src="assets/images/color.svg"></md-icon> 
-                    <md-icon class="icon-buttonend" md-svg-src="assets/images/noteimage.svg"></md-icon> 
-                    <md-icon class="icon-buttonend" md-svg-src="assets/images/archive.svg"></md-icon>
-                    <md-icon class="icon-buttonend" md-svg-src="assets/images/more.svg"></md-icon>
-                    <div class="buttondiv"><md-button class="button" ng-click="showHide1()">close</md-button></div>
-                </md-card-title-text>
+                                <md-icon ng-show="!isVisible" class="icon-button" md-svg-src="assets/images/noteimage.svg"></md-icon>
+                            </div>
+                            </md-card-title-text>
+                        </md-card-title>
+                    </div>
+                    <div ng-show="isVisible">
+                        <md-card-title style="padding:0%;width:600px;height:36px;">
+                            <md-card-title-text layout="row">
+                                <md-icon class="icon-buttonend" md-svg-src="assets/images/reminder.svg"></md-icon>
+                                <md-icon class="icon-buttonend" md-svg-src="assets/images/collabotative.svg"></md-icon>
+                                <md-icon class="icon-buttonend" md-svg-src="assets/images/color.svg"></md-icon>
+                                <md-icon class="icon-buttonend" md-svg-src="assets/images/noteimage.svg"></md-icon>
+                                <md-icon class="icon-buttonend" md-svg-src="assets/images/archive.svg"></md-icon>
+                                <md-icon class="icon-buttonend" md-svg-src="assets/images/more.svg"></md-icon>
+                                <div class="buttondiv">
+                                    <md-button class="button" ng-click="showHide1()">close</md-button>
+                                </div>
+                            </md-card-title-text>
 
-            </md-card-title>
+                        </md-card-title>
+                    </div>
+                </md-card>
+            </div>
         </div>
-    </md-card>
-    <div ng-repeat="note in notes">
-        {{note.noteTitle}}
+    </div>
+
+    <div layout="row" class="second-div-style" flex-sm="60" flex-gt-sm="80" layout-align="start start" layout-wrap>
+
+        <md-card ng-repeat="note in notes" style="padding-bottom:42px;" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
+                <md-icon class="note-pin" ng-show="onMouse" md-svg-src="assets/images/pinned.svg"></md-icon>
+            <!-- div for image -->
+            <div style="padding:2%; width:240px;height:130px;" ng-hide="true">
+            </div>
+            <!-- div for title -->
+            <div class="title">
+                <md-card-title style="padding:2%; width:240px;height:38px;">
+                    <md-card-title-text>
+                        {{note.noteTitle}}
+                    </md-card-title-text>
+                </md-card-title>
+            </div>
+            <!-- div for description -->
+            <div>
+                <md-card-title style="padding:3%; width:240px;">
+                    <md-card-title-text>
+                        {{note.noteDescribtion}}
+                    </md-card-title-text>
+                </md-card-title>
+            </div>
+            <!-- div for label operations -->
+            <div style="padding:2%; width:240px;height:130px;" ng-hide="true">
+            </div>
+            <!-- div for label images -->
+            <div ng-show="onMouse">
+                <md-card-title style="padding:0%; width:240px;height:42px;" class="seconddiv">
+                    <md-card-title-text layout="row">
+                        <md-icon class="icon-buttonend-seconddiv" md-svg-src="assets/images/reminder.svg"></md-icon>
+                        <md-icon class="icon-buttonend-seconddiv" md-svg-src="assets/images/collabotative.svg"></md-icon>
+                        <md-icon class="icon-buttonend-seconddiv" md-svg-src="assets/images/color.svg"></md-icon>
+                        <md-icon class="icon-buttonend-seconddiv" md-svg-src="assets/images/noteimage.svg"></md-icon>
+                        <md-icon class="icon-buttonend-seconddiv" md-svg-src="assets/images/archive.svg"></md-icon>
+                        <md-icon class="icon-buttonend-seconddiv" md-svg-src="assets/images/more.svg"></md-icon>
+                    </md-card-title-text>
+                </md-card-title>
+            </div>
+        </md-card>
     </div>
 </div>
