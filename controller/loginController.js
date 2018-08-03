@@ -6,7 +6,7 @@ app.controller('loginController', function ($scope, $state, Userfactory, $locati
       userEmail: $scope.userEmail,
       password: $scope.password
     };
-    var url = "http://localhost:8080/SpringRestFoundoNote/user/" + 'login';
+    var url = "user/login";
     Userfactory.postmethod(userlogin, url).then(function successCallback(response) {
       console.log("Token : " + response.data);
       // Store
@@ -26,7 +26,7 @@ app.controller('loginController', function ($scope, $state, Userfactory, $locati
       phoneNumber: $scope.phoneNumber,
       dateOfBirth: $scope.dateOfBirth
     };
-    var url = "http://localhost:8080/SpringRestFoundoNote/user/" + 'save';
+    var url = "user/save";
     Userfactory.postmethod(userregister, url).then(function successCallback(response) {
       $scope.factory = response.data;
       $state.go('login');
@@ -41,7 +41,7 @@ app.controller('loginController', function ($scope, $state, Userfactory, $locati
     var userforgotpassword = {
       email: $scope.userEmail
     };
-    var url = "http://localhost:8080/SpringRestFoundoNote/user/" + 'forgotpassword';
+    var url = "user/forgotpassword";
     Userfactory.postmethod(userforgotpassword, url).then(function successCallback(response) {
       console.log("forgot password : " + response.data);
       $state.go('reset');
@@ -60,7 +60,7 @@ app.controller('loginController', function ($scope, $state, Userfactory, $locati
     var userresetpassword = {
       password: $scope.password
     };
-    var url = "http://localhost:8080/SpringRestFoundoNote/user/resetpassword/" + object.token;
+    var url = "user/resetpassword/" + object.token;
     Userfactory.postmethod(userresetpassword, url).then(function successCallback(response) {
       console.log("reset password : " + response.data);
       $state.go('login');

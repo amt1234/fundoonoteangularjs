@@ -1,6 +1,6 @@
 app.controller('dashboardController', function ($scope, Userfactory) {
     $scope.isVisible = false;
-    //$scope.onMouse=false;
+    $scope.isPinned=false;
     $scope.notes = [];
 
     //function for centercard to display on-click inputtext
@@ -16,18 +16,37 @@ app.controller('dashboardController', function ($scope, Userfactory) {
 
     //function for cards to display images onMouseOver
     $scope.hoverIn = function () {
-        //$scope.onMouse=$scope.onMouse=true;
         this.onMouse = true;
     };
-
     $scope.hoverOut = function () {
-        // $scope.onMouse=$scope.onMouse=false;
         this.onMouse = false;
     };
 
+    //pinned operation
+    $scope.myClass = [];
+    $scope.addClass = function (item) {
+        $scope.isPinned=this.onMouse = true;
+        console.log("add class");
+        if($scope.isPinned){
+            $scope.myClass.push(item);
+            $scope.notes.slice(item);
+            item.notePinned = false;
+            $scope.update(item);
+        }
+        else{
+            $scope.removeClass(item);
+        } 
+    }
+    $scope.removeClass = function (item) {
+        console.log("remove class");
+        item.notePinned = true;
+        $scope.myClass.slice(item);
+        $scope.update(item);
+    }
+
     //get all note
     $scope.getAllNote = function () {
-        var url = "http://localhost:8080/SpringRestFoundoNote/note/" + 'list';
+        var url = "note/list";
         Userfactory.getmethod(url).then(function successCallback(response) {
             $scope.notes = response.data;
             console.log("Notes " + $scope.notes);
@@ -44,12 +63,24 @@ app.controller('dashboardController', function ($scope, Userfactory) {
             noteTitle: $scope.title,
             noteDescribtion: $scope.description
         };
-        var url = "http://localhost:8080/SpringRestFoundoNote/note/" + 'create';
+        var url = "note/create";
         Userfactory.postmethod(createNote, url).then(function successCallback(response) {
             console.log("note created : " + response);
 
         }, function errorCallback(response) {
             console.log("error create note");
+        });
+    }
+
+    //update note
+    $scope.update=function(note){
+        // note.notePinned = true;
+        var url="note/update";
+        Userfactory.postmethod(note, url).then(function successCallback(response) {
+            console.log("pin note update : " + response);
+            $scope.getAllNote();
+        }, function errorCallback(response) {
+            console.log("error pin note");
         });
     }
 
