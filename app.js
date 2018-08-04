@@ -1,4 +1,4 @@
-var app=angular.module('fundoonote',['ui.router', 'ngMaterial', 'ngMessages', 'ngAnimate','ngAria']);
+var app=angular.module('fundoonote',['ui.router', 'ngMaterial', 'ngMessages', 'ngAnimate','ngAria','content-editable']);
 app.config(function($stateProvider,$urlRouterProvider){
 
   $stateProvider
@@ -33,6 +33,17 @@ app.config(function($stateProvider,$urlRouterProvider){
     url:"/dashboard",
     templateUrl:"templetes/dashboard.html",
     controller:"dashboardController"
+  })
+  .state('home.archive',{
+    url:"/archive",
+    templateUrl:"templetes/archive.html",
+    controller:"dashboardController"
+  })
+  .state('home.trash',{
+    url:"/trash",
+    templateUrl:"templetes/trash.html",
+    controller:"dashboardController"
   });
+  
   $urlRouterProvider.otherwise('/login');
 });

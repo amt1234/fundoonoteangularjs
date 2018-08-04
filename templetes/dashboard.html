@@ -4,20 +4,27 @@
             <div>
                 <md-card>
                     <div ng-show="isVisible">
-                        <md-card-title style="padding: 12px 15px 15px 15px; width:570px;height:16px;">
+                        <md-card-title style="padding: 12px 10px 15px 15px; width:570px;height:16px;">
                             <md-card-title-text layout="row">
-                                <input class="inputtext" type="text" ng-model="title" placeholder="Title" />
+                                <div contenteditable="true" class="inputtext" ng-maxlength=255 ng-minlength=3 only-text="true" convert-new-lines="true" ng-model="title"
+                                    placeholder="Title" layout-wrap>
+                                    <!-- <input class="inputtext" type="text" ng-model="title" placeholder="Title" /> -->
+                                </div>
                                 <md-icon class="icon-buttonend pin" md-svg-src="assets/images/pinned.svg"></md-icon>
                             </md-card-title-text>
                         </md-card-title>
                     </div>
                     <div>
-                        <md-card-title style="padding: 12px 15px 15px 15px; width:570px;height:19px;">
+                        <md-card-title style="padding: 12px 10px 15px 15px; width:570px;height:19px;">
                             </md-card-title-text>
                             <span>
-                                <input class="inputtext" type="text" ng-model="description" placeholder="Take a note..." ng-click="showHide()" />
+                                    <div contenteditable="true" style="width: 480;" ng-maxlength=255 ng-minlength=3 only-text="true" convert-new-lines="true" ng-model="title"
+                                    placeholder="Take a note..." layout-wrap ng-click="showHide()">
+                                   
+                                </div>
+                                <!-- <input class="inputtext" type="text" ng-model="description" placeholder="Take a note..." ng-click="showHide()" /> -->
                             </span>
-                            <div style="margin-left:260px;">
+                            <div layout="row">
                                 <md-icon ng-show="!isVisible" class="icon-button" md-svg-src="assets/images/notelist.svg"></md-icon>
 
                                 <md-icon ng-show="!isVisible" class="icon-button" md-svg-src="assets/images/noteimage.svg"></md-icon>
@@ -47,92 +54,24 @@
     </div>
 
     <!-- aftered pinned div -->
-    <div layout="row" class="second-div-style" layout-align="start start" layout-wrap
-        ng-hide="false">
-        <!-- <p>Pinned</p> -->
+    <div layout="row" class="second-div-style" layout-align="start start" layout-wrap ng-hide="false">
+        <div layout="column" class="isPinneddiv" ng-show="isPinned" style="padding:10px 16px 10px 16px;margin-right: 500px;" layout-align="start start">
+            <p>
+                <b>Pinned</b>
+            </p>
+        </div>
         <br/>
-        <md-card ng-repeat="note in notes|filter:{notePinned:false}" style="padding-bottom:42px;"  ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
-            <md-icon ng-model="pin" class="note-pin" ng-show="onMouse" ng-click="removeClass(note)" md-svg-src="assets/images/pinned.svg"></md-icon>
-            <!-- div for image -->
-            <div style="padding:2%; width:240px;height:130px;" ng-hide="true">
-            </div>
-            <!-- div for title -->
-            <div class="title">
-                <md-card-title style="padding:2%; width:240px;height:38px;">
-                    <md-card-title-text>
-                        {{note.noteTitle}}
-                    </md-card-title-text>
-                </md-card-title>
-            </div>
-            <!-- div for description -->
-            <div>
-                <md-card-title style="padding:3%; width:240px;">
-                    <md-card-title-text>
-                        {{note.noteDescribtion}}
-                    </md-card-title-text>
-                </md-card-title>
-            </div>
-            <!-- div for label operations -->
-            <div style="padding:2%; width:240px;height:130px;" ng-hide="true">
-            </div>
-            <!-- div for label images -->
-            <div ng-show="onMouse">
-                <md-card-title style="padding:0%; width:240px;height:42px;" class="seconddiv">
-                    <md-card-title-text layout="row">
-                        <md-icon class="icon-buttonend-seconddiv" md-svg-src="assets/images/reminder.svg"></md-icon>
-                        <md-icon class="icon-buttonend-seconddiv" md-svg-src="assets/images/collabotative.svg"></md-icon>
-                        <md-icon class="icon-buttonend-seconddiv" md-svg-src="assets/images/color.svg"></md-icon>
-                        <md-icon class="icon-buttonend-seconddiv" md-svg-src="assets/images/noteimage.svg"></md-icon>
-                        <md-icon class="icon-buttonend-seconddiv" md-svg-src="assets/images/archive.svg"></md-icon>
-                        <md-icon class="icon-buttonend-seconddiv" md-svg-src="assets/images/more.svg"></md-icon>
-                    </md-card-title-text>
-                </md-card-title>
-            </div>
-        </md-card>
+        <note ng-repeat="note in notes | filter:{notePinned:true} |filter:{noteArchiev:false} |filter:{noteTrash:false}"></note>
     </div>
 
     <!-- default div -->
     <div layout="row" class="second-div-style" flex-sm="60" flex-gt-sm="80" layout-align="start start" layout-wrap>
-       <!-- <div layout="column" style="padding:43px 16px 43px 16px"><p>Others</p></div> -->
-      
-        <md-card ng-repeat="note in notes | filter:{notePinned:true}" style="padding-bottom:42px;" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
-            <md-icon ng-model="pin" class="note-pin" ng-show="onMouse" ng-click="addClass(note)" md-svg-src="assets/images/pinned.svg"></md-icon>
-            <!-- {{note.noteId}} -->
-            <!-- div for image -->
-            <div style="padding:2%; width:240px;height:130px;" ng-hide="true">
-            </div>
-            <!-- div for title -->
-            <div class="title">
-                <md-card-title style="padding:2%; width:240px;height:38px;">
-                    <md-card-title-text>
-                        {{note.noteTitle}}
-                    </md-card-title-text>
-                </md-card-title>
-            </div>
-            <!-- div for description -->
-            <div>
-                <md-card-title style="padding:3%; width:240px;">
-                    <md-card-title-text>
-                        {{note.noteDescribtion}}
-                    </md-card-title-text>
-                </md-card-title>
-            </div>
-            <!-- div for label operations -->
-            <div style="padding:2%; width:240px;height:130px;" ng-hide="true">
-            </div>
-            <!-- div for label images -->
-            <div ng-show="onMouse">
-                <md-card-title style="padding:0%; width:240px;height:42px;" class="seconddiv">
-                    <md-card-title-text layout="row">
-                        <md-icon class="icon-buttonend-seconddiv" md-svg-src="assets/images/reminder.svg"></md-icon>
-                        <md-icon class="icon-buttonend-seconddiv" md-svg-src="assets/images/collabotative.svg"></md-icon>
-                        <md-icon class="icon-buttonend-seconddiv" md-svg-src="assets/images/color.svg"></md-icon>
-                        <md-icon class="icon-buttonend-seconddiv" md-svg-src="assets/images/noteimage.svg"></md-icon>
-                        <md-icon class="icon-buttonend-seconddiv" md-svg-src="assets/images/archive.svg"></md-icon>
-                        <md-icon class="icon-buttonend-seconddiv" md-svg-src="assets/images/more.svg"></md-icon>
-                    </md-card-title-text>
-                </md-card-title>
-            </div>
-        </md-card>
+        <div layout="column" class="isPinneddiv" ng-show="isPinned" style="padding:10px 16px 10px 16px;margin-right: 500px;" layout-align="start start">
+            <p>
+                <b>Others</b>
+            </p>
+        </div>
+
+        <note ng-repeat="note in notes | filter:{notePinned:false} |filter:{noteArchiev:false}|filter:{noteTrash:false}"></note>
     </div>
 </div>

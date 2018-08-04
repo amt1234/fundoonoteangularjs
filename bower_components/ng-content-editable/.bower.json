@@ -1,0 +1,36 @@
+{
+  "name": "ng-content-editable",
+  "version": "0.0.5",
+  "authors": [
+    "Fabrício Ferrari de Campos <fabricio@vizir.com.br>"
+  ],
+  "description": "Use ngModel and validations with contenteditable HTML5 attribute",
+  "main": "./dist/ng-content-editable.js",
+  "keywords": [
+    "angular",
+    "AngularJS",
+    "contenteditable",
+    "content-editable"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "angular": "> 1.2.0 < 2.0",
+    "ng-content-editable": "*"
+  },
+  "devDependencies": {},
+  "homepage": "https://github.com/Vizir/ng-contenteditable",
+  "_release": "0.0.5",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.0.5",
+    "commit": "964153136a9a6fe5f0cfde3ada2f4a6cd24db6e0"
+  },
+  "_source": "https://github.com/Vizir/ng-contenteditable.git",
+  "_target": "^0.0.5",
+  "_originalSource": "ng-content-editable",
+  "_direct": true
+}

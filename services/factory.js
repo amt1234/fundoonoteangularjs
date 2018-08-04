@@ -18,5 +18,13 @@ app.factory('Userfactory', function ($http) {
             headers:{'userid':localStorage.getItem('Token')}
         })
     };
+
+    factory.deletemethod=function(url){
+        return $http({
+            method:'DELETE',
+            url:api_url+url,
+            headers:{'userid':localStorage.getItem('Token')}
+        })
+    };
     return factory;
 });

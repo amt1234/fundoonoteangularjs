@@ -1,6 +1,7 @@
 .inputtext{
     background: transparent;
     border: none;
+    width: 530px;
 }
 .icon-button{
     margin: 0%;
@@ -17,9 +18,9 @@
     min-height: 24px !important;
     min-width: 24px !important;
 }
-.pin{
+/* .pin{
     margin-left: 340px;
-}
+} */
 .button{
     margin: 0px !important;
     padding: 4px 10px 10px 10px;
@@ -52,3 +53,13 @@
     min-width: 24px !important;
     position: absolute;
 }
+[contenteditable] {
+    /* border: 2px dotted #ccc;
+    background-color: #eee; */
+    padding: 2px;
+    min-height: 10px;
+  }
+  .isPinneddiv{
+    visibility: visible;
+   
+  }

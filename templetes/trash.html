@@ -1,0 +1,62 @@
+<!-- <div id="main" layout="column" layout-align="center center">
+        <div layout="row" layout-align="center center">
+    <note ng-repeat="note in notes | filter:{noteTrash:true}"></note>
+</div>
+</div> -->
+
+    <div id="main" layout="row" class="second-div-style" layout-align="center center" class="isPinneddiv" ng-show="isPinned" style="padding:10px 16px 10px 16px;margin-left:150px;" layout-align="start start">
+        <div ng-repeat="note in notes | filter:{noteTrash:true}">
+            <md-card style="padding-bottom:42px;" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
+                <md-icon ng-model="pin" class="note-pin" ng-show="onMouse" ng-click="addClass(note)" md-svg-src="assets/images/pinned.svg"></md-icon>
+                <!-- div for image -->
+                <div style="padding:2%; width:240px;height:130px;" ng-hide="true">
+                </div>
+
+                <!-- div for title -->
+                <div class="title">
+                    <md-card-title style="padding:2%; width:240px;height:38px;">
+                        <md-card-title-text>
+                            {{note.noteTitle}}
+                        </md-card-title-text>
+                    </md-card-title>
+                </div>
+
+                <!-- div for description -->
+                <div>
+                    <md-card-title style="padding:3%; width:240px;">
+                        <md-card-title-text>
+                            {{note.noteDescribtion}}
+                        </md-card-title-text>
+                    </md-card-title>
+                </div>
+
+                <!-- div for label operations -->
+                <div style="padding:2%; width:240px;height:130px;" ng-hide="true">
+                </div>
+
+                <!-- div for label images -->
+                <div ng-show="onMouse">
+                    <md-card-title style="padding:0%; width:240px;height:42px;" class="seconddiv">
+                        <md-card-title-text layout="row">
+                            <md-menu>
+                                <md-icon class="icon-buttonend-seconddiv" ng-model="trash" ng-click="$mdOpenMenu()" md-svg-src="assets/images/more.svg"></md-icon>
+                                <md-menu-content width="2">
+                                    <md-menu-item>
+                                        <md-button ng-click="delete(note)">
+                                            Delete forever
+                                        </md-button>
+                                    </md-menu-item>
+
+                                    <md-menu-item>
+                                        <md-button ng-click="trash(note)">
+                                            Restore
+                                        </md-button>
+                                    </md-menu-item>
+                            </md-menu>
+                        </md-card-title-text>
+                    </md-card-title>
+                </div>
+            </md-card>
+        </div>
+    </div>
+</div>

@@ -1,7 +1,10 @@
 app.controller('dashboardController', function ($scope, Userfactory) {
     $scope.isVisible = false;
-    $scope.isPinned=false;
+    $scope.isPinned = false;
+    $scope.isArchive = false;
+    //  $scope.isTrash = false;
     $scope.notes = [];
+    $scope.myClass = [];
 
     //function for centercard to display on-click inputtext
     $scope.showHide = function () {
@@ -23,26 +26,71 @@ app.controller('dashboardController', function ($scope, Userfactory) {
     };
 
     //pinned operation
-    $scope.myClass = [];
     $scope.addClass = function (item) {
-        $scope.isPinned=this.onMouse = true;
-        console.log("add class");
-        if($scope.isPinned){
+
+        //$scope.isPinned=$scope.isPinned ===true ? false: true;
+        if (item.notePinned) {
             $scope.myClass.push(item);
             $scope.notes.slice(item);
             item.notePinned = false;
             $scope.update(item);
         }
-        else{
-            $scope.removeClass(item);
-        } 
+        else {
+            item.notePinned = true;
+            $scope.myClass.slice(item);
+            $scope.update(item);
+        }
     }
-    $scope.removeClass = function (item) {
-        console.log("remove class");
-        item.notePinned = true;
-        $scope.myClass.slice(item);
-        $scope.update(item);
+    //pinned visibility
+    $scope.isPinned = function () {
+        if ((this.myClass) != null) {
+            $scope.isPinned = $scope.isPinned = true;
+        }
+        else {
+            $scope.isPinned = $scope.isPinned = false;
+        }
     }
+
+    //pinned
+    // $scope.custom = true;
+    // $scope.addClass() = function(note) {
+    //     $scope.custom = $scope.custom === false ? true: false;
+    // };
+
+    //archive operation
+    $scope.archive = function (item) {
+
+        if (item.noteArchiev) {
+            $scope.myClass.push(item);
+            $scope.notes.slice(item);
+            item.noteArchiev = false;
+            $scope.update(item);
+        }
+        else {
+            item.noteArchiev = true;
+            $scope.myClass.slice(item);
+            $scope.update(item);
+        }
+    }
+
+    //trash operation
+    $scope.trash = function (item) {
+
+        if (item.noteTrash) {
+            console.log("add noteTrash ");
+            $scope.myClass.push(item);
+            $scope.notes.slice(item);
+            item.noteTrash = false;
+            $scope.update(item);
+        }
+        else {
+            console.log("remove noteTrash");
+            item.noteTrash = true;
+            $scope.myClass.slice(item);
+            $scope.update(item);
+        }
+    }
+
 
     //get all note
     $scope.getAllNote = function () {
@@ -73,9 +121,9 @@ app.controller('dashboardController', function ($scope, Userfactory) {
     }
 
     //update note
-    $scope.update=function(note){
+    $scope.update = function (note) {
         // note.notePinned = true;
-        var url="note/update";
+        var url = "note/update";
         Userfactory.postmethod(note, url).then(function successCallback(response) {
             console.log("pin note update : " + response);
             $scope.getAllNote();
@@ -84,4 +132,16 @@ app.controller('dashboardController', function ($scope, Userfactory) {
         });
     }
 
+    //delete note
+    $scope.delete = function (note) {
+        var id = note.noteId;
+        var url = "note/delete/" + id;
+        Userfactory.deletemethod(url).then(function successCallback(response) {
+            console.log("note delete");
+
+        }, function errorCallback(response) {
+            console.log("error delete");
+
+        });
+    }
 });
