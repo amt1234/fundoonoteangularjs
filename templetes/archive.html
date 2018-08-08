@@ -1,5 +1,7 @@
-<div id="main" layout="column" layout-align="center center">
-        <div layout="row" layout-align="center center">
-    <note ng-repeat="note in notes | filter:{noteArchiev:true}"></note>
-</div>
+<div layout="row" layout-align="center center" style="width: 100%">
+    <div class="main" id="main" layout="column" layout-align="start start">
+        <div layout="row" layout-align="start start" layout-wrap>
+            <note ng-repeat="note in notes | filter:{noteArchiev:true}"></note>
+        </div>
+    </div>
 </div>

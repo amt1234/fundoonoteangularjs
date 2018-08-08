@@ -1,28 +1,25 @@
-<div id="main" layout="column" layout-align="center center">
-    <div layout="row" layout-align="center center">
+<div id="main" class="main" style="position:relative;z-index: 1;" layout="column" layout-align="center center"
+    ng-cloak>
+    <div layout="row">
         <div class="startdiv">
             <div>
-                <md-card>
+                <md-card ng-style="{'background-color':note.color}">
                     <div ng-show="isVisible">
-                        <md-card-title style="padding: 12px 10px 15px 15px; width:570px;height:16px;">
+                        <md-card-title style="padding: 12px 10px 15px 15px; width:570px;">
                             <md-card-title-text layout="row">
-                                <div contenteditable="true" class="inputtext" ng-maxlength=255 ng-minlength=3 only-text="true" convert-new-lines="true" ng-model="title"
-                                    placeholder="Title" layout-wrap>
-                                    <!-- <input class="inputtext" type="text" ng-model="title" placeholder="Title" /> -->
+                                <div contenteditable="true" class="inputtext" ng-model="note.noteTitle" placeholder="Title" layout-wrap>
                                 </div>
                                 <md-icon class="icon-buttonend pin" md-svg-src="assets/images/pinned.svg"></md-icon>
                             </md-card-title-text>
                         </md-card-title>
                     </div>
                     <div>
-                        <md-card-title style="padding: 12px 10px 15px 15px; width:570px;height:19px;">
+                        <md-card-title style="padding: 12px 10px 15px 15px; width:570px;">
                             </md-card-title-text>
                             <span>
-                                    <div contenteditable="true" style="width: 480;" ng-maxlength=255 ng-minlength=3 only-text="true" convert-new-lines="true" ng-model="title"
-                                    placeholder="Take a note..." layout-wrap ng-click="showHide()">
-                                   
+                                <div contenteditable="true" style="width: 480;" ng-model="note.noteDescribtion" placeholder="Take a note..." layout-wrap
+                                    ng-click="showHide()">
                                 </div>
-                                <!-- <input class="inputtext" type="text" ng-model="description" placeholder="Take a note..." ng-click="showHide()" /> -->
                             </span>
                             <div layout="row">
                                 <md-icon ng-show="!isVisible" class="icon-button" md-svg-src="assets/images/notelist.svg"></md-icon>
@@ -32,21 +29,12 @@
                             </md-card-title-text>
                         </md-card-title>
                     </div>
-                    <div ng-show="isVisible">
-                        <md-card-title style="padding:0%;width:600px;height:36px;">
-                            <md-card-title-text layout="row">
-                                <md-icon class="icon-buttonend" md-svg-src="assets/images/reminder.svg"></md-icon>
-                                <md-icon class="icon-buttonend" md-svg-src="assets/images/collabotative.svg"></md-icon>
-                                <md-icon class="icon-buttonend" md-svg-src="assets/images/color.svg"></md-icon>
-                                <md-icon class="icon-buttonend" md-svg-src="assets/images/noteimage.svg"></md-icon>
-                                <md-icon class="icon-buttonend" md-svg-src="assets/images/archive.svg"></md-icon>
-                                <md-icon class="icon-buttonend" md-svg-src="assets/images/more.svg"></md-icon>
-                                <div class="buttondiv">
-                                    <md-button class="button" ng-click="showHide1()">close</md-button>
-                                </div>
-                            </md-card-title-text>
 
-                        </md-card-title>
+                    <div layout="row">
+                        <labelimage ng-show="isVisible" style="padding:8px;width:600px;height:36px;">
+                        </labelimage>
+                        <md-button class="button" ng-show="isVisible" ng-click="showHide1(note)">close
+                        </md-button>
                     </div>
                 </md-card>
             </div>
@@ -61,17 +49,17 @@
             </p>
         </div>
         <br/>
-        <note ng-repeat="note in notes | filter:{notePinned:true} |filter:{noteArchiev:false} |filter:{noteTrash:false}"></note>
+        <note class="listgrid" ng-repeat="note in notes | filter:{notePinned:true} |filter:{noteArchiev:false} |filter:{noteTrash:false}"></note>
     </div>
 
     <!-- default div -->
-    <div layout="row" class="second-div-style" flex-sm="60" flex-gt-sm="80" layout-align="start start" layout-wrap>
+    <div layout="row" class="second-div-style" style="position: relative;z-index: 2;" layout-align="start start" layout-wrap>
         <div layout="column" class="isPinneddiv" ng-show="isPinned" style="padding:10px 16px 10px 16px;margin-right: 500px;" layout-align="start start">
             <p>
                 <b>Others</b>
             </p>
         </div>
 
-        <note ng-repeat="note in notes | filter:{notePinned:false} |filter:{noteArchiev:false}|filter:{noteTrash:false}"></note>
+        <note class="listgrid" ng-repeat="note in notes | filter:{notePinned:false} |filter:{noteArchiev:false}|filter:{noteTrash:false}"></note>
     </div>
 </div>

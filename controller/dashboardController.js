@@ -1,10 +1,21 @@
-app.controller('dashboardController', function ($scope, Userfactory) {
+app.controller('dashboardController', function ($scope, Userfactory, $mdDialog) {
     $scope.isVisible = false;
     $scope.isPinned = false;
-    $scope.isArchive = false;
+    $scope.onColor = false;
+    // $scope.isArchive = false;
     //  $scope.isTrash = false;
-    $scope.notes = [];
+
     $scope.myClass = [];
+    $scope.note = {
+        noteTitle: "",
+        noteDescribtion: "",
+        noteTrash: false,
+        noteArchiev: false,
+        notePinned: false,
+        createdDate: "",
+        updatedDate: "",
+        color: 'white'
+    }
 
     //function for centercard to display on-click inputtext
     $scope.showHide = function () {
@@ -12,9 +23,14 @@ app.controller('dashboardController', function ($scope, Userfactory) {
     };
 
     //function for centercard to set isvisible false on-click close button
-    $scope.showHide1 = function () {
+    $scope.showHide1 = function (note) {
         $scope.isVisible = $scope.isVisible = false;
-        $scope.create();
+        if (note.noteTitle == "" && note.noteDescribtion == "") {
+            console.log("note is empty not created");
+        } else {
+            $scope.create();
+        }
+
     };
 
     //function for cards to display images onMouseOver
@@ -91,6 +107,52 @@ app.controller('dashboardController', function ($scope, Userfactory) {
         }
     }
 
+    //color picker
+    $scope.colorbox = [
+        [
+            "#fff",
+
+            "rgb(255, 138, 128)",
+
+            "rgb(255, 209, 128)",
+
+            "rgb(255, 255, 141)"
+        ],
+        [
+            'rgb(204, 255, 144)',
+
+            'rgb(167, 255, 235)',
+
+            'rgb(128, 216, 255)',
+
+            'rgb(130, 177, 255)'
+        ],
+        [
+            'rgb(179, 136, 255)',
+
+            'rgb(248, 187, 208)',
+
+            'rgb(215, 204, 200)',
+
+            'rgb(207, 216, 220)'
+
+        ]
+    ];
+
+    //colorplate menu display
+    $scope.openColorPalette = function ($mdMenu, ev) {
+        $mdMenu.open(ev);
+    }
+
+    //applycolor on note
+    $scope.colorApply = function (secondarray, note) {
+        console.log("color apply" + secondarray);
+
+        note.color = secondarray;
+        $scope.update(note);
+    }
+
+    
 
     //get all note
     $scope.getAllNote = function () {
@@ -107,14 +169,20 @@ app.controller('dashboardController', function ($scope, Userfactory) {
 
     //create note
     $scope.create = function () {
-        var createNote = {
-            noteTitle: $scope.title,
-            noteDescribtion: $scope.description
-        };
         var url = "note/create";
-        Userfactory.postmethod(createNote, url).then(function successCallback(response) {
+        Userfactory.postmethod($scope.note, url).then(function successCallback(response) {
             console.log("note created : " + response);
-
+            $scope.getAllNote();
+            $scope.note = {
+                noteTitle: "",
+                noteDescribtion: "",
+                noteTrash: false,
+                noteArchiev: false,
+                notePinned: false,
+                createdDate: "",
+                updatedDate: "",
+                color: 'white'
+            };
         }, function errorCallback(response) {
             console.log("error create note");
         });
@@ -138,10 +206,35 @@ app.controller('dashboardController', function ($scope, Userfactory) {
         var url = "note/delete/" + id;
         Userfactory.deletemethod(url).then(function successCallback(response) {
             console.log("note delete");
-
+            $scope.getAllNote();
         }, function errorCallback(response) {
             console.log("error delete");
-
         });
     }
+    //update note dialog
+    $scope.noteDialog = function (event, note) {
+        $mdDialog.show({
+            locals: {
+                passNote: note,
+                abc: $scope//to give access the scope of main controller (ie dashboardController scope) 
+            },
+            controller: noteDialogController,
+            templateUrl: 'templetes/dialog.html',
+            targetEvent: event,
+            parent: angular.element(document.body),
+            clickOutsideToClose: true,
+        })
+    };
+
+    function noteDialogController($scope, passNote, $mdDialog, abc) {
+        $scope.note = passNote;
+        $scope.outerScope = abc;
+        $scope.close = function () {
+            console.log("close update");
+            abc.update(passNote);
+            $mdDialog.hide();
+        }
+    }
+
+
 });

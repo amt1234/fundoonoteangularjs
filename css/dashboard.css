@@ -1,16 +1,22 @@
+/* class
+id
+!important
+inline */
+
 .inputtext{
     background: transparent;
     border: none;
     width: 530px;
+    word-break: break-word;
 }
 .icon-button{
     margin: 0%;
     min-height: 32px !important;
     min-width: 48px !important;
   }
-  #main {
+.main {
     transition: margin-left .5s;
-    padding: 16px;
+    padding-top:64px;
 }
 .icon-buttonend{
     margin:0px;
@@ -18,9 +24,7 @@
     min-height: 24px !important;
     min-width: 24px !important;
 }
-/* .pin{
-    margin-left: 340px;
-} */
+
 .button{
     margin: 0px !important;
     padding: 4px 10px 10px 10px;
@@ -35,11 +39,18 @@
 .seconddiv{
     position: absolute;
 }
-.icon-buttonend-seconddiv{
+.icon-buttonend-seconddiv2{
     margin:0px;
     padding: 4px 5px 2px 10px;
     min-height: 24px !important;
     min-width: 24px !important;
+}
+.icon-buttonend-seconddiv
+{ margin:0px !important;
+    padding: 0px;
+    min-height: 24px !important;
+    min-width: 24px !important;
+
 }
 .title{
     font-weight: bold;
@@ -47,19 +58,33 @@
 .second-div-style{
     width: 800px;
 }
+.dialog-style{
+    width: 600px;
+}
 .note-pin{
     margin-left: 220;
     min-height: 24px !important;
     min-width: 24px !important;
     position: absolute;
 }
+.pin{
+    margin-left: 80px;
+}
 [contenteditable] {
-    /* border: 2px dotted #ccc;
-    background-color: #eee; */
+    border: none;
     padding: 2px;
     min-height: 10px;
   }
   .isPinneddiv{
     visibility: visible;
-   
   }
+
+.button-style
+{
+    padding: 0px;
+    margin: 0px;
+    white-space: 0px;
+}
+/* .list{
+    width: 800px;
+} */

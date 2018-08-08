@@ -1,7 +1,7 @@
-<div position="fixed">
-  <md-toolbar md-scroll-shrink="true" position="fixed" id="navbarId">
+<div   style='position:fixed;width: 100%;z-index:3;'>
+  <md-toolbar id="navbarId">
     <div class="md-toolbar-tools">
-      <md-button class="md-icon-button" aria-label="Settings" ng-disabled="false" ng-click="toggleLeft()" >
+      <md-button class="md-icon-button" aria-label="Settings" ng-disabled="false" ng-click="toggleLeft()">
         <md-icon md-svg-src="assets/images/mainmenu.svg" aria-label="mainmenu">
         </md-icon>
       </md-button>
@@ -13,18 +13,18 @@
       </div>
       <!-- serch -->
       <div class="search" layout="row" layout-align="space-between center">
-        
-            <md-button class="searchbutton icon-button" aria-label="search" role="button">
-              <md-icon md-svg-src="assets/images/search.svg" aria-label="searchbutton">
-              </md-icon>
-            </md-button>
 
-            <input class="inputsearch" aria-label="search" placeholder="search" role="combobox" aria-hidden="false" type="text">
-            <md-button class="closesearch" aria-label="Clear search" type="button" style="visibility: visible;">
-              <md-icon md-svg-src="assets/images/closebutton.svg" aria-label="closesearch">
-              </md-icon>
-            </md-button>
-            
+        <md-button class="searchbutton icon-button" aria-label="search" role="button">
+          <md-icon md-svg-src="assets/images/search.svg" aria-label="searchbutton">
+          </md-icon>
+        </md-button>
+
+        <input class="inputsearch" aria-label="search" placeholder="search" role="combobox" aria-hidden="false" type="text">
+        <md-button class="closesearch" aria-label="Clear search" type="button" style="visibility: visible;">
+          <md-icon md-svg-src="assets/images/closebutton.svg" aria-label="closesearch">
+          </md-icon>
+        </md-button>
+
       </div>
       <!-- refresh And view -->
       <div class="refreshAndview" layout="row">
@@ -34,10 +34,15 @@
           </md-icon>
         </md-button>
         <!-- list view -->
-        <md-button class="view icon-button" role="button" aria-lable="list view">
+        <md-button class="view icon-button" role="button" aria-lable="list view" ng-show="!islist" ng-click="view()">
           <md-icon md-svg-src="assets/images/view_stream-24px.svg" aria-label="view">
           </md-icon>
+        </md-button >
+        <md-button class="view icon-button" role="button" aria-lable="list view" ng-show="islist" ng-click="view()">
+            <md-icon md-svg-src="assets/images/view_quilt-24px.svg" aria-label="view">
+            </md-icon>
         </md-button>
+
       </div>
 
       <!-- google app ,Notification And SignOut -->
@@ -57,74 +62,12 @@
           </a>
         </md-button>
         <!-- signout -->
-          <md-button class="signout icon-button" layout="row" layout-align="start end" aria-label="signout">
-            <a href="https://accounts.google.com/SignOutOptions?hl=en&continue=https://keep.google.com/u/0/">
-              <md-icon md-svg-src="assets/images/exit_to_app-24px.svg" aria-label="notification">
-              </md-icon>
-            </a>
-          </md-button>
+        <md-button class="signout icon-button" layout="row" layout-align="start end" aria-label="signout">
+          <a href="https://accounts.google.com/SignOutOptions?hl=en&continue=https://keep.google.com/u/0/">
+            <md-icon md-svg-src="assets/images/exit_to_app-24px.svg" aria-label="notification">
+            </md-icon>
+          </a>
+        </md-button>
       </div>
   </md-toolbar>
   </div>
-
-
-  <!-- <md-toolbar layout-padding>
-  <div class="md-toolbar-tools">
-    <h2>Welcome to Angular Material</h2>
-  </div>
-</md-toolbar>
- <div layout="row" >
-  <textarea rows="5" cols="50" placeholder="text field 1"></textarea>
-  <textarea rows="5" cols="50" placeholder="text field 2"></textarea>
-  </div> -->
-  <!-- <div layout="column" layout-align="center center">
-  <h2>Welcome </h2>
-  <div>
-    <strong flex="30">Enter the name</strong>
-    <input flex="50" type="text" />
-    <button flex="20">Login</button>
-  </div>
-</div>
-
-<div layout-margin="60">
-  <button>go</button>
-</div>
-
-<div layout="row" layout-padding>
-  <input flex type="text" placeholder="text 1"></input>
-  <input flex type="text" placeholder="text 2"></input>
-  <input flex type="text" placeholder="text 3"></input>
-  <input flex type="text" placeholder="text 4"></input>
-</div>-->
-  <!-- <div layout="column" layout-gt-sm="row" layout-padding>
-  <div>
-    <input flex type="text" placeholder="text 1"></input>
-    <input flex type="text" placeholder="text 2"></input>
-  </div>
-  <div>
-    <input flex type="text" placeholder="text 3"></input>
-    <input flex type="text" placeholder="text 4"></input>
-  </div>
-</div> -->
-  <!-- <div layout="column" layout-gt-sm="row" layout-align="center center" layout-padding>
-  <div>
-    <strong>AngularJS</strong>
-    <div>Superheroic JavaScript framework</div>
-    <div>Website: angularjs.org</div>
-    <div>Twitter: @angularjs</div>
-  </div>
-  <div>
-    <strong>Angular Material</strong>
-    <div>AngularJS and Material Design</div>
-    <div>material.angularjs.org</div>
-    <div>Twitter: @angularjs</div>
-  </div>
-</div> -->
-  <!-- <div layout="row" flex layout-padding>
-  <div show-gt-sm hide><p>fhfhfgh small screen</p></div>
-  <div flex-gt-md="80" flex>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem
-    ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum
-    dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-  <div flex-gt-md="10"></div>
-
-</div> -->

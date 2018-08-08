@@ -1,16 +1,20 @@
-<md-sidenav class="md-sidenav-left" md-component-id="open" md-disable-backdrop style='max-width:280px;' ng-cloak>
+<md-sidenav class="md-sidenav-left" md-component-id="open" md-disable-backdrop style='max-width:280px;position: fixed;' ng-cloak>
   <div>
     <md-content class="contentlist">
       <md-list>
+
         <md-list-item ng-click="noteState()">
           <md-icon class="list" md-svg-src="assets/images/note.svg"></md-icon>
           <span>Notes</span>
         </md-list-item>
+
         <md-list-item ng-click="null">
           <md-icon class="list" md-svg-src="assets/images/reminder.svg"></md-icon>
           <span>Reminders</span>
         </md-list-item>
+
         <md-divider></md-divider>
+
         <md-subheader>
           <div layout="row">
             <div style="margin-top: 10px;">Lables</div>
@@ -19,37 +23,46 @@
             </div>
           </div>
         </md-subheader>
+
         <md-list-item ng-click="null">
           <md-icon class="list" md-svg-src="assets/images/createnewnote.svg"></md-icon>
           <span>Create new note</span>
         </md-list-item>
+
         <md-divider></md-divider>
+
         <md-list-item ng-click="archiveState()">
           <md-icon class="list" md-svg-src="assets/images/archive.svg"></md-icon>
           <span>Archive</span>
-
         </md-list-item>
+
         <md-list-item ng-click="trashState()">
           <md-icon class="list" md-svg-src="assets/images/trash.svg"></md-icon>
           <span>Trash</span>
         </md-list-item>
+
         <md-divider></md-divider>
+
         <md-list-item ng-click="null">
           <md-icon class="list" md-svg-src="assets/images/setting.svg"></md-icon>
           <span>Settings</span>
         </md-list-item>
+
         <md-list-item ng-click="null">
           <md-icon class="list" md-svg-src="assets/images/sendfeedback.svg"></md-icon>
           <span>Send Feedback</span>
         </md-list-item>
+
         <md-list-item ng-click="null">
           <md-icon class="list" md-svg-src="assets/images/help.svg"></md-icon>
           <span>Help</span>
         </md-list-item>
+
         <md-list-item ng-click="null">
           <md-icon class="list" md-svg-src="assets/images/appdownloads.svg"></md-icon>
           <span>App downloads</span>
         </md-list-item>
+
         <md-list-item ng-click="null">
           <md-icon class="list" md-svg-src="assets/images/keyboardshoutcut.svg"></md-icon>
           <span>Keyboard shortcuts</span>
@@ -65,11 +78,13 @@
               <a href="http://www.google.com/policies/terms/">Terms</a>
             </div>
           </md-list-item>
+
           <md-list-item>
             <div>
               Open-source licence
             </div>
           </md-list-item>
+          
         </div>
       </md-list>
     </md-content>

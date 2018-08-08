@@ -1,33 +1,22 @@
-<!-- <div id="main" layout="column" layout-align="center center">
-        <div layout="row" layout-align="center center">
-    <note ng-repeat="note in notes | filter:{noteTrash:true}"></note>
-</div>
-</div> -->
-
-    <div id="main" layout="row" class="second-div-style" layout-align="center center" class="isPinneddiv" ng-show="isPinned" style="padding:10px 16px 10px 16px;margin-left:150px;" layout-align="start start">
+<div layout="row" layout-align="center center" style="width: 100%;">
+    <div id="main" layout="row" class="second-div-style isPinneddiv main" layout-align="start start" ng-show="isPinned" layout-wrap>
         <div ng-repeat="note in notes | filter:{noteTrash:true}">
-            <md-card style="padding-bottom:42px;" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
+            <md-card style="padding-bottom:42px;" ng-style="{'background-color':note.color}" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
                 <md-icon ng-model="pin" class="note-pin" ng-show="onMouse" ng-click="addClass(note)" md-svg-src="assets/images/pinned.svg"></md-icon>
                 <!-- div for image -->
                 <div style="padding:2%; width:240px;height:130px;" ng-hide="true">
                 </div>
 
                 <!-- div for title -->
-                <div class="title">
-                    <md-card-title style="padding:2%; width:240px;height:38px;">
-                        <md-card-title-text>
-                            {{note.noteTitle}}
-                        </md-card-title-text>
-                    </md-card-title>
+                <div class="title" style="word-break: break-word;">
+                    <md-card-content ng-bind-html="note.noteTitle" style="padding: 3px 0px 5px 3px; width:240px;">
+                    </md-card-content>
                 </div>
 
                 <!-- div for description -->
-                <div>
-                    <md-card-title style="padding:3%; width:240px;">
-                        <md-card-title-text>
-                            {{note.noteDescribtion}}
-                        </md-card-title-text>
-                    </md-card-title>
+                <div style="word-break: break-word;">
+                    <md-card-content ng-bind-html="note.noteDescribtion" style="padding: 4px 0px 5px 4px; width:240px;">
+                    </md-card-content>
                 </div>
 
                 <!-- div for label operations -->
@@ -59,4 +48,5 @@
             </md-card>
         </div>
     </div>
+</div>
 </div>
