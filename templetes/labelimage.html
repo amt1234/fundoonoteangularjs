@@ -1,25 +1,28 @@
 <div>
 <md-card-title style="padding:0 0; width:240px;height:42px;" class="seconddiv">
         <md-card-title-text layout="row">
-            <md-button class="md-icon-button icon-buttonend-seconddiv">
+            <md-button id="{{note.noteId}}" class="md-icon-button icon-buttonend-seconddiv" ng-click="showReminderMenu($event,note)">
+                    <md-tooltip>Remind me</md-tooltip>
                 <md-icon md-svg-src="assets/images/reminder.svg">
-                </md-icon>
+                </md-icon> 
             </md-button>
 
             <md-button class="md-icon-button icon-buttonend-seconddiv">
+                    <md-tooltip>Collabotator</md-tooltip>
                 <md-icon md-svg-src="assets/images/collabotative.svg">
                 </md-icon>
             </md-button>
 
             <md-menu>
                 <md-button class="md-icon-button icon-buttonend-seconddiv" ng-click="openColorPalette($mdMenu,$event)">
+                        <md-tooltip>Change color</md-tooltip>
                     <md-icon md-menu-origin md-svg-src="assets/images/color.svg">
                     </md-icon>
                 </md-button>
                 <md-menu-content>
                     <md-menu-item md-menu-align-target ng-repeat="firstarray in colorbox" layout="row">
                         <md-menu-item ng-repeat="secondarray in firstarray" class="button-style">
-                            <md-button class="md-fab md-mini" ng-style="{'background-color':secondarray}" ng-click="colorApply(secondarray,note)">
+                            <md-button class="md-fab md-mini" ng-style="{'background-color':secondarray}" ng-click="colorApply(secondarray,note,note.noteId)">
                             </md-button>
                         </md-menu-item>
                     </md-menu-item>
@@ -27,23 +30,26 @@
             </md-menu>
 
             <md-button class="md-icon-button icon-buttonend-seconddiv">
+                    <md-tooltip>Add image</md-tooltip>
                 <md-icon md-svg-src="assets/images/noteimage.svg">
                 </md-icon>
             </md-button>
 
             <md-button class="md-icon-button icon-buttonend-seconddiv">
-                <md-icon ng-click="archive(note)" md-svg-src="assets/images/archive.svg">
+                    <md-tooltip>Archive</md-tooltip>
+                <md-icon ng-click="archive(note,note.noteId)" md-svg-src="assets/images/archive.svg">
                 </md-icon>
             </md-button>
 
             <md-menu>
                 <md-button class="md-icon-button icon-buttonend-seconddiv" ng-click="$mdOpenMenu()">
+                        <md-tooltip>More</md-tooltip>
                     <md-icon md-svg-src="assets/images/more.svg">
                     </md-icon>
                 </md-button>
                 <md-menu-content width="2">
                     <md-menu-item>
-                        <md-button ng-click="trash(note)">
+                        <md-button ng-click="trash(note,note.noteId)">
                             Delete note
                         </md-button>
                     </md-menu-item>

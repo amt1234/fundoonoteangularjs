@@ -2,6 +2,7 @@
   <md-toolbar id="navbarId">
     <div class="md-toolbar-tools">
       <md-button class="md-icon-button" aria-label="Settings" ng-disabled="false" ng-click="toggleLeft()">
+          <md-tooltip>Main menu</md-tooltip>
         <md-icon md-svg-src="assets/images/mainmenu.svg" aria-label="mainmenu">
         </md-icon>
       </md-button>
@@ -15,12 +16,14 @@
       <div class="search" layout="row" layout-align="space-between center">
 
         <md-button class="searchbutton icon-button" aria-label="search" role="button">
+            <md-tooltip>Search</md-tooltip>
           <md-icon md-svg-src="assets/images/search.svg" aria-label="searchbutton">
           </md-icon>
         </md-button>
 
         <input class="inputsearch" aria-label="search" placeholder="search" role="combobox" aria-hidden="false" type="text">
         <md-button class="closesearch" aria-label="Clear search" type="button" style="visibility: visible;">
+            <md-tooltip>Close</md-tooltip>
           <md-icon md-svg-src="assets/images/closebutton.svg" aria-label="closesearch">
           </md-icon>
         </md-button>
@@ -30,16 +33,19 @@
       <div class="refreshAndview" layout="row">
         <!-- refresh -->
         <md-button class="refresh icon-button" role="button" aria-label="Refrash">
+            <md-tooltip>Refresh</md-tooltip>
           <md-icon md-svg-src="assets/images/baseline-refresh-24px.svg" aria-label="refresh">
           </md-icon>
         </md-button>
         <!-- list view -->
         <md-button class="view icon-button" role="button" aria-lable="list view" ng-show="!islist" ng-click="view()">
+            <md-tooltip>List View</md-tooltip>
           <md-icon md-svg-src="assets/images/view_stream-24px.svg" aria-label="view">
           </md-icon>
         </md-button >
         <md-button class="view icon-button" role="button" aria-lable="list view" ng-show="islist" ng-click="view()">
-            <md-icon md-svg-src="assets/images/view_quilt-24px.svg" aria-label="view">
+            <md-tooltip>Grid view</md-tooltip>  
+          <md-icon md-svg-src="assets/images/view_quilt-24px.svg" aria-label="view">
             </md-icon>
         </md-button>
 
@@ -49,6 +55,7 @@
       <div class="googleapp_NotifyAndSignOut" layout="row">
         <!-- Google app -->
         <md-button class="googleapp icon-button" role="button" aria-lable="Google app">
+            <md-tooltip>Google app</md-tooltip>
           <a href="https://www.google.co.in/intl/en/options/" role="button">
             <md-icon md-svg-src="assets/images/googleapp.svg" title="googleapp" aria-label="googleapp">
             </md-icon>
@@ -56,6 +63,7 @@
         </md-button>
         <!-- Notification -->
         <md-button class="notification icon-button" role="button" aria-lable="notification">
+            <md-tooltip>Notification</md-tooltip>
           <a href="https://www.google.co.in/intl/en/options/" role="button">
             <md-icon md-svg-src="assets/images/notification.svg" aria-label="notification">
             </md-icon>
@@ -63,6 +71,7 @@
         </md-button>
         <!-- signout -->
         <md-button class="signout icon-button" layout="row" layout-align="start end" aria-label="signout">
+            <md-tooltip>Sign out</md-tooltip>
           <a href="https://accounts.google.com/SignOutOptions?hl=en&continue=https://keep.google.com/u/0/">
             <md-icon md-svg-src="assets/images/exit_to_app-24px.svg" aria-label="notification">
             </md-icon>

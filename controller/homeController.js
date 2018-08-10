@@ -32,9 +32,7 @@ app.controller('homeController', function ($scope, $mdSidenav, $state) {
       for (i = 0; i < elements.length; i++) {
         elements[i].style.width = "800px";
       }
-     // document.getElementsByClassName("main").style.width = "800px";
       $scope.islist = true;
-      // $scope.getAllNote();
     }
   }
 

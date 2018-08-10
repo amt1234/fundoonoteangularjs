@@ -25,10 +25,10 @@ inline */
     min-width: 24px !important;
 }
 
-.button{
+/* .button{
     margin: 0px !important;
     padding: 4px 10px 10px 10px;
-}
+} */
 .buttondiv{
     margin-left: 240px;
 }
@@ -46,7 +46,8 @@ inline */
     min-width: 24px !important;
 }
 .icon-buttonend-seconddiv
-{ margin:0px !important;
+{ 
+    margin:0px !important;
     padding: 0px;
     min-height: 24px !important;
     min-width: 24px !important;
@@ -62,7 +63,6 @@ inline */
     width: 600px;
 }
 .note-pin{
-    margin-left: 220;
     min-height: 24px !important;
     min-width: 24px !important;
     position: absolute;
@@ -88,3 +88,8 @@ inline */
 /* .list{
     width: 800px;
 } */
+
+  .menu-content {
+      width: 300px;
+  }
+  

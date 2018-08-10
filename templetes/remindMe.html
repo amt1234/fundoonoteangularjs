@@ -1,0 +1,75 @@
+<div class="menu-panel" md-whiteframe="4">
+    <div ng-show="!reminderpanel">
+        <md-content class="menu-content">
+            <md-list class="menu-item">
+                <md-list-item>
+                    <span>
+                        <b>Reminder :</b>
+                    </span>
+                </md-list-item>
+
+                <md-list-item ng-click="null">
+                    <div layout="row" style="margin-top: 10px;">
+                        <div>Later today</div>
+                        <div style="margin-left: 120px;">8:00 PM</div>
+                    </div>
+                </md-list-item>
+
+                <md-list-item ng-click="null">
+                    <div layout="row" style="margin-top: 10px;">
+                        <div>Tomorrow</div>
+                        <div style="margin-left: 129px;">8:00 AM</div>
+                    </div>
+                </md-list-item>
+
+                <md-list-item ng-click="null">
+                    <div layout="row" style="margin-top: 10px;">
+                        <div>Next Week</div>
+                        <div style="margin-left: 90px;">Mon,8:00 AM</div>
+                    </div>
+                </md-list-item>
+
+                <md-list-item ng-click="openpickdate();">
+                    <md-icon class="list" md-svg-src="assets/images/time.svg"></md-icon>
+                    <span>Pick date & time</span>
+                </md-list-item>
+
+                <md-list-item ng-click="null">
+                    <md-icon class="list" md-svg-src="assets/images/place.svg"></md-icon>
+                    <span>Pick place</span>
+                </md-list-item>
+
+            </md-list>
+        </md-content>
+    </div>
+    <div ng-show="reminderpanel">
+        <md-content class="menu-content">
+            <md-list class="menu-item">
+                <md-list-item>
+                    <md-icon class="list" md-svg-src="assets/images/go_back.svg"></md-icon>
+                    <span>
+                        <b>Pick date & time :</b>
+                    </span>
+                </md-list-item>
+                <md-divider></md-divider>
+
+                <md-list-item ng-click="null">
+                    <md-input-container>
+                        <input type="date" id="theDate">
+                    </md-input-container>
+                </md-list-item>
+
+                <md-list-item ng-click="null">
+                    <md-icon class="list" md-svg-src="assets/images/time.svg"></md-icon>
+                    <span>Pick date & time</span>
+                </md-list-item>
+
+                <md-list-item ng-click="null">
+                    <md-icon class="list" md-svg-src="assets/images/place.svg"></md-icon>
+                    <span>Pick place</span>
+                </md-list-item>
+
+            </md-list>
+        </md-content>
+    </div>
+</div>

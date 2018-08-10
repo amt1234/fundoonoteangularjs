@@ -1,7 +1,9 @@
-app.controller('dashboardController', function ($scope, Userfactory, $mdDialog) {
+app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, $mdPanel) {
     $scope.isVisible = false;
     $scope.isPinned = false;
     $scope.onColor = false;
+    this.onpanel = false;
+    $scope.reminderpanel = false;
     // $scope.isArchive = false;
     //  $scope.isTrash = false;
 
@@ -16,6 +18,8 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog) 
         updatedDate: "",
         color: 'white'
     }
+
+
 
     //function for centercard to display on-click inputtext
     $scope.showHide = function () {
@@ -38,23 +42,28 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog) 
         this.onMouse = true;
     };
     $scope.hoverOut = function () {
-        this.onMouse = false;
+        if (!this.onpanel) {
+            this.onMouse = false;
+        }
     };
 
     //pinned operation
-    $scope.addClass = function (item) {
-
+    $scope.addClass = function (item, id) {
         //$scope.isPinned=$scope.isPinned ===true ? false: true;
         if (item.notePinned) {
             $scope.myClass.push(item);
             $scope.notes.slice(item);
             item.notePinned = false;
-            $scope.update(item);
+            if (id != undefined) {
+                $scope.update(item);
+            }
         }
         else {
             item.notePinned = true;
             $scope.myClass.slice(item);
-            $scope.update(item);
+            if (id != undefined) {
+                $scope.update(item);
+            }
         }
     }
     //pinned visibility
@@ -74,36 +83,44 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog) 
     // };
 
     //archive operation
-    $scope.archive = function (item) {
+    $scope.archive = function (item, id) {
 
         if (item.noteArchiev) {
             $scope.myClass.push(item);
             $scope.notes.slice(item);
             item.noteArchiev = false;
-            $scope.update(item);
+            if (id != undefined) {
+                $scope.update(item);
+            }
         }
         else {
             item.noteArchiev = true;
             $scope.myClass.slice(item);
-            $scope.update(item);
+            if (id != undefined) {
+                $scope.update(item);
+            }
         }
     }
 
     //trash operation
-    $scope.trash = function (item) {
+    $scope.trash = function (item, id) {
 
         if (item.noteTrash) {
             console.log("add noteTrash ");
             $scope.myClass.push(item);
             $scope.notes.slice(item);
             item.noteTrash = false;
-            $scope.update(item);
+            if (id != undefined) {
+                $scope.update(item);
+            }
         }
         else {
             console.log("remove noteTrash");
             item.noteTrash = true;
             $scope.myClass.slice(item);
-            $scope.update(item);
+            if (id != undefined) {
+                $scope.update(item);
+            }
         }
     }
 
@@ -145,14 +162,73 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog) 
     }
 
     //applycolor on note
-    $scope.colorApply = function (secondarray, note) {
+    $scope.colorApply = function (secondarray, note, id) {
         console.log("color apply" + secondarray);
-
         note.color = secondarray;
-        $scope.update(note);
+        if (id != undefined) {
+            $scope.update(note);
+        }
     }
 
-    
+    //reminder menu diaplay
+    $scope.showReminderMenu = function (ev) {
+        var position = $mdPanel.newPanelPosition()
+            .relativeTo(ev.target)
+            .addPanelPosition(
+                $mdPanel.xPosition.ALIGN_START,
+                $mdPanel.yPosition.BELOW
+            );
+
+        var config = {
+            attachTo: angular.element(document.body),
+            controller: PanelMenuCtrl,
+            templateUrl: "templetes/remindMe.html",
+            position: position,
+            panelClass: 'menu-panel-container',
+            propagateContainerEvents: true,
+            openFrom: ev,
+            // clickOutsideToClose: true,
+            zIndex: 100,
+        };
+        this.onpanel = true;
+        $mdPanel.open(config);
+    }
+
+    function PanelMenuCtrl(mdPanelRef, $scope) {
+        this.closeMenu = function () {
+            console.log("close panel");
+            this.onpanel = false;
+            mdPanelRef && mdPanelRef.close();
+        };
+
+        $scope.openpickdate = function () {
+            console.log("open menu ");
+            $scope.reminderpanel = !$scope.reminderpanel;
+            
+        }
+    }
+
+    //today's date set 
+    $scope.myFunction=function() {
+        
+    var date = new Date();
+
+    var day = date.getDate();
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear();
+
+    if (month < 10) month = "0" + month;
+    if (day < 10) day = "0" + day;
+
+    var today = year + "-" + month + "-" + day;
+
+
+    document.getElementById('theDate').value = date;
+
+   // document.getElementById('theDate').value = moment().format('YYYY-MM-DD');
+  
+   // document.getElementById("myDate").defaultValue = "2014-02-09";
+}
 
     //get all note
     $scope.getAllNote = function () {
@@ -190,7 +266,6 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog) 
 
     //update note
     $scope.update = function (note) {
-        // note.notePinned = true;
         var url = "note/update";
         Userfactory.postmethod(note, url).then(function successCallback(response) {
             console.log("pin note update : " + response);
@@ -211,12 +286,13 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog) 
             console.log("error delete");
         });
     }
+
     //update note dialog
     $scope.noteDialog = function (event, note) {
         $mdDialog.show({
             locals: {
                 passNote: note,
-                abc: $scope//to give access the scope of main controller (ie dashboardController scope) 
+                abc: $scope//to give $scope access  of main controller (ie dashboardController scope) 
             },
             controller: noteDialogController,
             templateUrl: 'templetes/dialog.html',
@@ -225,7 +301,6 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog) 
             clickOutsideToClose: true,
         })
     };
-
     function noteDialogController($scope, passNote, $mdDialog, abc) {
         $scope.note = passNote;
         $scope.outerScope = abc;
@@ -235,6 +310,5 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog) 
             $mdDialog.hide();
         }
     }
-
 
 });

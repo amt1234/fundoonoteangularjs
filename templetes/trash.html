@@ -1,8 +1,10 @@
 <div layout="row" layout-align="center center" style="width: 100%;">
     <div id="main" layout="row" class="second-div-style isPinneddiv main" layout-align="start start" ng-show="isPinned" layout-wrap>
-        <div ng-repeat="note in notes | filter:{noteTrash:true}">
+        <div ng-repeat="note in notes | filter:{noteTrash:true}" class="listgrid">
             <md-card style="padding-bottom:42px;" ng-style="{'background-color':note.color}" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
-                <md-icon ng-model="pin" class="note-pin" ng-show="onMouse" ng-click="addClass(note)" md-svg-src="assets/images/pinned.svg"></md-icon>
+                <div layout="row" layout-align="end start">
+                    <md-icon ng-model="pin" class="note-pin" ng-show="onMouse" ng-click="addClass(note)" md-svg-src="assets/images/pinned.svg"></md-icon>
+                </div>
                 <!-- div for image -->
                 <div style="padding:2%; width:240px;height:130px;" ng-hide="true">
                 </div>

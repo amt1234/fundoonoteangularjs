@@ -9,7 +9,7 @@
                             <md-card-title-text layout="row">
                                 <div contenteditable="true" class="inputtext" ng-model="note.noteTitle" placeholder="Title" layout-wrap>
                                 </div>
-                                <md-icon class="icon-buttonend pin" md-svg-src="assets/images/pinned.svg"></md-icon>
+                                <md-icon class="icon-buttonend pin" md-svg-src="assets/images/pinned.svg" ng-click="addClass(note,note.noteId)"></md-icon>
                             </md-card-title-text>
                         </md-card-title>
                     </div>
@@ -49,7 +49,7 @@
             </p>
         </div>
         <br/>
-        <note class="listgrid" ng-repeat="note in notes | filter:{notePinned:true} |filter:{noteArchiev:false} |filter:{noteTrash:false}"></note>
+        <note  ng-repeat="note in notes | filter:{notePinned:true} |filter:{noteArchiev:false} |filter:{noteTrash:false}"></note>
     </div>
 
     <!-- default div -->
@@ -60,6 +60,6 @@
             </p>
         </div>
 
-        <note class="listgrid" ng-repeat="note in notes | filter:{notePinned:false} |filter:{noteArchiev:false}|filter:{noteTrash:false}"></note>
+        <note ng-repeat="note in notes | filter:{notePinned:false} |filter:{noteArchiev:false}|filter:{noteTrash:false}"></note>
     </div>
 </div>
