@@ -92,4 +92,7 @@ inline */
   .menu-content {
       width: 300px;
   }
+  div[contenteditable=true]:empty::before {
+    content: attr(placeholder);
+  }
   

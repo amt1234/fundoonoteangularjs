@@ -1,7 +1,7 @@
 <md-card class="listgrid" style="padding-bottom:42px;" ng-style="{'background-color':note.color}" ng-mouseover="hoverIn()"
     ng-mouseleave="hoverOut()">
     <div layout="row" layout-align="end start">
-        <md-icon  class="note-pin" ng-show="onMouse" ng-click="addClass(note,note.noteId)" md-svg-src="assets/images/pinned.svg">
+        <md-icon class="note-pin" ng-show="onMouse" ng-click="addClass(note,note.noteId)" md-svg-src="assets/images/pinned.svg">
         </md-icon>
     </div>
     <!-- div for image -->
@@ -22,6 +22,11 @@
 
     <!-- div for label operations -->
     <div style="padding:2px; width:240px;height:130px;" ng-hide="true">
+        <md-chips  name="fruitName" readonly="readonly" md-removable="removable">
+            <md-chip-template>
+                <strong>{{note.reminderDate}}</strong>
+            </md-chip-template>
+        </md-chips>
     </div>
 
     <!-- for label image -->

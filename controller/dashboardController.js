@@ -16,6 +16,7 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         notePinned: false,
         createdDate: "",
         updatedDate: "",
+        reminderDate: "",
         color: 'white'
     }
 
@@ -171,7 +172,7 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
     }
 
     //reminder menu diaplay
-    $scope.showReminderMenu = function (ev) {
+    $scope.showReminderMenu = function (ev, note) {
         var position = $mdPanel.newPanelPosition()
             .relativeTo(ev.target)
             .addPanelPosition(
@@ -182,53 +183,40 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         var config = {
             attachTo: angular.element(document.body),
             controller: PanelMenuCtrl,
+            locals: {
+                reminderscope: $scope,
+                note: note
+            },
             templateUrl: "templetes/remindMe.html",
             position: position,
             panelClass: 'menu-panel-container',
             propagateContainerEvents: true,
             openFrom: ev,
             // clickOutsideToClose: true,
-            zIndex: 100,
+            zIndex: 80,
         };
         this.onpanel = true;
         $mdPanel.open(config);
     }
 
-    function PanelMenuCtrl(mdPanelRef, $scope) {
-        this.closeMenu = function () {
-            console.log("close panel");
+    function PanelMenuCtrl(mdPanelRef, $scope, reminderscope, note) {
+
+        $scope.reminderDate = null;
+        $scope.note = note;
+        $scope.date = new Date();
+        $scope.closeMenu = function (item) {
+            console.log("close panel" + item);
             this.onpanel = false;
+            item.reminderDate = $scope.reminderDate,
+            reminderscope.update(item);
             mdPanelRef && mdPanelRef.close();
         };
 
         $scope.openpickdate = function () {
             console.log("open menu ");
             $scope.reminderpanel = !$scope.reminderpanel;
-            
         }
     }
-
-    //today's date set 
-    $scope.myFunction=function() {
-        
-    var date = new Date();
-
-    var day = date.getDate();
-    var month = date.getMonth() + 1;
-    var year = date.getFullYear();
-
-    if (month < 10) month = "0" + month;
-    if (day < 10) day = "0" + day;
-
-    var today = year + "-" + month + "-" + day;
-
-
-    document.getElementById('theDate').value = date;
-
-   // document.getElementById('theDate').value = moment().format('YYYY-MM-DD');
-  
-   // document.getElementById("myDate").defaultValue = "2014-02-09";
-}
 
     //get all note
     $scope.getAllNote = function () {
@@ -257,6 +245,7 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
                 notePinned: false,
                 createdDate: "",
                 updatedDate: "",
+                reminderDate: "",
                 color: 'white'
             };
         }, function errorCallback(response) {

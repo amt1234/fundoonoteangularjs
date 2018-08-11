@@ -44,30 +44,74 @@
     </div>
     <div ng-show="reminderpanel">
         <md-content class="menu-content">
-            <md-list class="menu-item">
-                <md-list-item>
+            <md-list>
+
+                <md-button ng-click="openpickdate()">
                     <md-icon class="list" md-svg-src="assets/images/go_back.svg"></md-icon>
-                    <span>
-                        <b>Pick date & time :</b>
-                    </span>
-                </md-list-item>
+                </md-button>
+                <span>
+                    <b>Pick date & time :</b>
+                </span>
+
                 <md-divider></md-divider>
 
                 <md-list-item ng-click="null">
-                    <md-input-container>
-                        <input type="date" id="theDate">
-                    </md-input-container>
+                    <!-- <input type="date" id="theDate" placeholder="09/10/2018" ng-model="reminderDate"> -->
+                    <md-datepicker ng-model="reminderDate" md-placeholder="Enter date" md-min-date="date"></md-datepicker>
                 </md-list-item>
 
-                <md-list-item ng-click="null">
-                    <md-icon class="list" md-svg-src="assets/images/time.svg"></md-icon>
-                    <span>Pick date & time</span>
+                <md-list-item>
+                    <md-select ng-model="daytime" class="md-no-underline" style="width: 252px;" placeholder="1:00 PM">
+                        <md-option value="8:00 AM">
+                            <div layout="row" layout-align="space-between center">
+                                <div>Morning</div>
+                                <div>8:00 AM</div>
+                            </div>
+                        </md-option>
+                        <md-option value="1:00 PM">
+                            <div layout="row" layout-align="space-between center">
+                                <div>Afternoon</div>
+                                <div>1:00 PM</div>
+                            </div>
+                        </md-option>
+                        <md-option value="6:00 PM">
+                            <div layout="row" layout-align="space-between center">
+                                <div>Evening</div>
+                                <div>6:00 PM</div>
+                            </div>
+                        </md-option>
+                        <md-option value="8:00 PM">
+                            <div layout="row" layout-align="space-between center">
+                                <div>Night</div>
+                                <div>8:00 PM</div>
+                            </div>
+                        </md-option>
+                        <md-option value="Custom">Custom</md-option>
+                    </md-select>
                 </md-list-item>
 
-                <md-list-item ng-click="null">
-                    <md-icon class="list" md-svg-src="assets/images/place.svg"></md-icon>
-                    <span>Pick place</span>
+                <md-list-item >
+                    <md-select ng-model="daytime" class="md-no-underline" style="width: 252px;" placeholder="Does Not Reapeat">
+                        <md-option value=" Does Not Reapeat">
+                            Does Not Reapeat
+                        </md-option>
+                        <md-option value="Daily">
+                            Daily
+                        </md-option>
+                        <md-option value="Weekly">
+                            Weekly
+                        </md-option>
+                        <md-option value="Monthly">
+                            Monthly
+                        </md-option>
+                        <md-option value="Yearly">Yearly</md-option>
+                        <md-option value="Custom">Custom</md-option>
+                    </md-select>
                 </md-list-item>
+
+                <div layout="row" layout="end end">
+                    <md-button ng-click="closeMenu(note)">Save</md-button>
+                </div>
 
             </md-list>
         </md-content>
