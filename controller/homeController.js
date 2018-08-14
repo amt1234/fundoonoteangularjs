@@ -1,4 +1,4 @@
-app.controller('homeController', function ($scope, $mdSidenav, $state) {
+app.controller('homeController', function ($scope, $mdSidenav, $state,$mdDialog) {
   $scope.toggleLeft = buildToggle('open');
 
   //toggle for sidebar
@@ -49,5 +49,29 @@ app.controller('homeController', function ($scope, $mdSidenav, $state) {
 
   $scope.noteState = function () {
     $state.go('home.dashboard');
+  }
+
+  //create new label dialog
+    $scope.labelDialog = function (event) {
+      $mdDialog.show({
+          // locals: {
+          //     passNote: note,
+          //     abc: $scope//to give $scope access  of main controller (ie dashboardController scope) 
+          // },
+          controller: labelDialogController,
+          templateUrl: 'templetes/labeldialog.html',
+          targetEvent: event,
+          parent: angular.element(document.body),
+          clickOutsideToClose: true,
+      })
+  };
+  function labelDialogController($scope,$mdDialog) {
+      // $scope.note = passNote;
+      // $scope.outerScope = abc;
+      $scope.close = function () {
+          console.log("close update");
+         // abc.update(passNote);
+          $mdDialog.hide();
+      }
   }
 });

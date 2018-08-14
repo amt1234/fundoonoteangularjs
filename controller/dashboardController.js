@@ -4,6 +4,9 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
     $scope.onColor = false;
     this.onpanel = false;
     $scope.reminderpanel = false;
+    $scope.readonly = false;
+    $scope.isRemider = false;
+
     // $scope.isArchive = false;
     //  $scope.isTrash = false;
 
@@ -17,6 +20,7 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         createdDate: "",
         updatedDate: "",
         reminderDate: "",
+        reminderTime: "",
         color: 'white'
     }
 
@@ -192,7 +196,7 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
             panelClass: 'menu-panel-container',
             propagateContainerEvents: true,
             openFrom: ev,
-            // clickOutsideToClose: true,
+            //clickOutsideToClose: true,
             zIndex: 80,
         };
         this.onpanel = true;
@@ -200,15 +204,25 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
     }
 
     function PanelMenuCtrl(mdPanelRef, $scope, reminderscope, note) {
-
+        // $scope.today = "Today 8:00 PM'";
+        // $scope.tomorrow = "Tomorrow 8:00 AM";
+        // $scope.currentdate = "Mon,8:00 AM";
         $scope.reminderDate = null;
+        $scope.reminderTime = null;
+
         $scope.note = note;
         $scope.date = new Date();
         $scope.closeMenu = function (item) {
             console.log("close panel" + item);
             this.onpanel = false;
+            console.log("reminder time : " + $scope.reminderTime);
+
             item.reminderDate = $scope.reminderDate,
-            reminderscope.update(item);
+                item.reminderTime = $scope.reminderTime,
+                console.log("reminderTime" + $scope.reminderTime);
+            if (!($scope.reminderDate == null) || !($scope.reminderTime == null)) {
+                reminderscope.update(item);
+            }
             mdPanelRef && mdPanelRef.close();
         };
 
@@ -216,6 +230,24 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
             console.log("open menu ");
             $scope.reminderpanel = !$scope.reminderpanel;
         }
+    }
+
+    //chip close function
+    $scope.remindercancel = function (item) {
+        item.reminderDate = null;
+        item.reminderTime = null;
+        $scope.update(item);
+    }
+
+    //reminder div show
+    $scope.isRemider = function () {
+        if (!note.reminderDate == null) {
+            $scope.isRemider = true;
+        }
+    }
+
+    $scope.init = function () {
+        $scope.reminderTime = 'Today 8:00 PM';
     }
 
     //get all note
@@ -246,6 +278,7 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
                 createdDate: "",
                 updatedDate: "",
                 reminderDate: "",
+                reminderTime: "",
                 color: 'white'
             };
         }, function errorCallback(response) {

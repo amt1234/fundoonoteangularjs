@@ -25,6 +25,7 @@ a:link {
   border: none;
   height: 46px;
   width: 616px;
+  outline: transparent;
 }
 .searchbutton{
   background: transparent;

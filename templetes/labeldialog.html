@@ -1,0 +1,34 @@
+<md-dialog>
+    <div class="label-dialogdiv">
+        <div class="label-title">
+            <b>Edit Labels</b>
+        </div>
+        <div class="label-title" layout="row">
+            <md-icon class="label-list" md-svg-src="assets/images/createnewnote.svg"></md-icon>
+            <span>
+
+                <input class="inputtext-label" type="text"  placeholder="Create new label" />
+
+            </span>
+        </div>
+        <!-- div for label -->
+        <div ng-hide="true">
+            <md-button class="md-icon-button icon-buttonend-seconddiv">
+                <md-tooltip>label</md-tooltip>
+                <md-icon md-svg-src="assets/images/label.svg">
+                </md-icon>
+            </md-button>
+            <span>
+                <!-- <div contenteditable="true" style="margin:0px 15px 0px 15px;width: 182px;height:26px;outline: transparent;" 
+                 layout-wrap>
+                </div> -->
+            </span>
+        </div>
+
+    </div>
+    <md-divider></md-divider>
+    <div layout="row" layout-align="end end">
+        <md-button>Done</md-button>
+    </div>
+
+</md-dialog>

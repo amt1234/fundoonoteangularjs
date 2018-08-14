@@ -8,6 +8,7 @@ inline */
     border: none;
     width: 530px;
     word-break: break-word;
+    outline: transparent;
 }
 .icon-button{
     margin: 0%;
@@ -17,6 +18,7 @@ inline */
 .main {
     transition: margin-left .5s;
     padding-top:64px;
+    
 }
 .icon-buttonend{
     margin:0px;
@@ -60,7 +62,12 @@ inline */
     width: 800px;
 }
 .dialog-style{
-    width: 600px;
+    width: 616px;
+    margin: 0px;
+    
+}
+.md-dialog{
+    overflow: hidden !important;
 }
 .note-pin{
     min-height: 24px !important;
@@ -95,4 +102,24 @@ inline */
   div[contenteditable=true]:empty::before {
     content: attr(placeholder);
   }
-  
+  .closebtn {
+    padding-left: 5px;
+    color: #888;
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.closebtn:hover {
+    color: #000;
+}
+
+md-chip{
+    font-size: 11px;
+    margin: 0 6px;
+    padding: 1px;
+    box-shadow:0px !important;
+}
+.md-chips{
+    box-shadow: 0 0px !important;
+  }

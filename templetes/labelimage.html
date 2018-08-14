@@ -37,7 +37,9 @@
 
             <md-button class="md-icon-button icon-buttonend-seconddiv">
                     <md-tooltip>Archive</md-tooltip>
-                <md-icon ng-click="archive(note,note.noteId)" md-svg-src="assets/images/archive.svg">
+                <md-icon ng-if="!(note.noteArchiev)" ng-click="archive(note,note.noteId)" md-svg-src="assets/images/archive.svg">
+                </md-icon>
+                <md-icon ng-if="note.noteArchiev" ng-click="archive(note,note.noteId)" md-svg-src="assets/images/unarchive.svg">
                 </md-icon>
             </md-button>
 

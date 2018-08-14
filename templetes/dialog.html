@@ -1,5 +1,7 @@
-<md-card class="dialog-style" style="padding-bottom:42px;" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
-    <md-icon ng-model="pin" style="margin-top:10px;margin-left:90%;" ng-click="outerScope.addClass(note)" md-svg-src="assets/images/pinned.svg"></md-icon>
+<md-card class="dialog-style" style="padding-bottom:42px; overflow: hidden;" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
+    <md-icon  ng-if="!(note.notePinned)" ng-model="pin" style="margin-top:10px;margin-left:90%;" ng-click="outerScope.addClass(note)" md-svg-src="assets/images/pinned.svg"></md-icon>
+    <md-icon ng-if="note.notePinned" ng-model="pin" style="margin-top:10px;margin-left:90%;" ng-click="outerScope.addClass(note)" md-svg-src="assets/images/pinned_color.svg">
+    </md-icon>
     <!-- div for image -->
     <div style="padding:2%; width:240px;height:130px;" ng-hide="true">
     </div>
@@ -8,7 +10,7 @@
     <div>
         <md-card-title style="padding:2%; width:240px;">
             <md-card-title-text>
-                <div contenteditable="true" style="width: 480;" ng-model="note.noteTitle" placeholder="Take a note..." layout-wrap ng-click="showHide()">
+                <div contenteditable="true" style="width: 480;outline: transparent;" ng-model="note.noteTitle" placeholder="Title" layout-wrap ng-click="showHide()">
                 </div>
             </md-card-title-text>
         </md-card-title>
@@ -18,7 +20,7 @@
     <div>
         <md-card-title style="padding:3%; width:240px;">
             <md-card-title-text>
-                <div contenteditable="true" style="width: 480;" ng-model="note.noteDescribtion" placeholder="Take a note..." layout-wrap
+                <div contenteditable="true" style="width: 480;outline: transparent;" ng-model="note.noteDescribtion" placeholder="Take a note..." layout-wrap
                     ng-click="showHide()">
                 </div>
             </md-card-title-text>

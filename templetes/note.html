@@ -3,6 +3,8 @@
     <div layout="row" layout-align="end start">
         <md-icon class="note-pin" ng-show="onMouse" ng-click="addClass(note,note.noteId)" md-svg-src="assets/images/pinned.svg">
         </md-icon>
+        <md-icon ng-if="note.notePinned" class="note-pin" ng-show="onMouse" ng-click="addClass(note,note.noteId)" md-svg-src="assets/images/pinned_color.svg">
+        </md-icon>
     </div>
     <!-- div for image -->
     <div style="padding:2px; width:240px;height:130px;" ng-hide="true">
@@ -21,14 +23,15 @@
     </div>
 
     <!-- div for label operations -->
-    <div style="padding:2px; width:240px;height:130px;" ng-hide="true">
-        <md-chips  name="fruitName" readonly="readonly" md-removable="removable">
-            <md-chip-template>
-                <strong>{{note.reminderDate}}</strong>
-            </md-chip-template>
+    <div ng-if="note.reminderDate || note.reminderTime" style="width:240px;" ng-show="!reminderpanel">
+        <md-chips >
+            <md-chip ng-click="openpickdate()">
+                {{note.reminderDate |date :"MMM d,"}}{{note.reminderTime}}
+                <span class="closebtn" ng-click="remindercancel(note)" ng-show="onMouse">&times;</span>
+            </md-chip>
         </md-chips>
     </div>
-
+    
     <!-- for label image -->
     <labelimage ng-show="onMouse"></labelimage>
 </md-card>

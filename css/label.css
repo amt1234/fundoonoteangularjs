@@ -1,0 +1,22 @@
+.label-dialogdiv{
+    width: 300px;
+    max-height: 392px;
+    overflow: hidden;
+    padding: 15px;
+}
+
+.label-title{
+    width: 270px;
+    height: 25px;
+    font-size: 18px; 
+    font-weight: 500;
+}
+.label-list{
+    width: 29px;
+    height: 26px;
+}
+.inputtext-label{ 
+    border: none;
+    border-color: transparent;
+    outline: transparent;
+}

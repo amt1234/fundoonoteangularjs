@@ -8,21 +8,21 @@
                     </span>
                 </md-list-item>
 
-                <md-list-item ng-click="null">
+                <md-list-item ng-model="reminderTime" ng-init="reminderTime=today" ng-click="closeMenu(note)">
                     <div layout="row" style="margin-top: 10px;">
                         <div>Later today</div>
                         <div style="margin-left: 120px;">8:00 PM</div>
                     </div>
                 </md-list-item>
 
-                <md-list-item ng-click="null">
+                <md-list-item ng-model="reminderTime" ng-init="reminderTime=tomorrow" ng-click="closeMenu(note)">
                     <div layout="row" style="margin-top: 10px;">
                         <div>Tomorrow</div>
                         <div style="margin-left: 129px;">8:00 AM</div>
                     </div>
                 </md-list-item>
 
-                <md-list-item ng-click="null">
+                <md-list-item ng-model="reminderTime" ng-init="reminderTime=currentdate" ng-click="closeMenu(note)">
                     <div layout="row" style="margin-top: 10px;">
                         <div>Next Week</div>
                         <div style="margin-left: 90px;">Mon,8:00 AM</div>
@@ -56,14 +56,13 @@
                 <md-divider></md-divider>
 
                 <md-list-item ng-click="null">
-                    <!-- <input type="date" id="theDate" placeholder="09/10/2018" ng-model="reminderDate"> -->
                     <md-datepicker ng-model="reminderDate" md-placeholder="Enter date" md-min-date="date"></md-datepicker>
                 </md-list-item>
 
                 <md-list-item>
-                    <md-select ng-model="daytime" class="md-no-underline" style="width: 252px;" placeholder="1:00 PM">
+                    <md-select ng-model="reminderTime" class="md-no-underline" style="width: 252px;" placeholder="1:00 PM" value="1:00 PM">
                         <md-option value="8:00 AM">
-                            <div layout="row" layout-align="space-between center">
+                            <div layout="row">
                                 <div>Morning</div>
                                 <div>8:00 AM</div>
                             </div>

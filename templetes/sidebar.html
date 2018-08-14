@@ -19,14 +19,14 @@
           <div layout="row">
             <div style="margin-top: 10px;">Lables</div>
             <div style="margin-left: 150px;">
-              <md-button style="min-width: 48px; margin-top:0px;">EDIT</md-button>
+              <md-button style="min-width: 48px; margin-top:0px;" ng-click="labelDialog($event)">EDIT</md-button>
             </div>
           </div>
         </md-subheader>
 
-        <md-list-item ng-click="null">
+        <md-list-item ng-click="labelDialog($event)">
           <md-icon class="list" md-svg-src="assets/images/createnewnote.svg"></md-icon>
-          <span>Create new note</span>
+          <span>Create new label</span>
         </md-list-item>
 
         <md-divider></md-divider>
