@@ -314,7 +314,7 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         $mdDialog.show({
             locals: {
                 passNote: note,
-                abc: $scope//to give $scope access  of main controller (ie dashboardController scope) 
+                abc: $scope//to pass $scope to dialog controller (ie dashboardController scope) 
             },
             controller: noteDialogController,
             templateUrl: 'templetes/dialog.html',

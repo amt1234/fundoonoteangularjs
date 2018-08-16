@@ -6,28 +6,37 @@
         <div class="label-title" layout="row">
             <md-icon class="label-list" md-svg-src="assets/images/createnewnote.svg"></md-icon>
             <span>
-
-                <input class="inputtext-label" type="text"  placeholder="Create new label" />
-
+                <input class="inputtext-label" type="text" ng-model="labelName" placeholder="Create new label" />
             </span>
         </div>
         <!-- div for label -->
-        <div ng-hide="true">
-            <md-button class="md-icon-button icon-buttonend-seconddiv">
-                <md-tooltip>label</md-tooltip>
-                <md-icon md-svg-src="assets/images/label.svg">
-                </md-icon>
-            </md-button>
-            <span>
-                <!-- <div contenteditable="true" style="margin:0px 15px 0px 15px;width: 182px;height:26px;outline: transparent;" 
-                 layout-wrap>
-                </div> -->
-            </span>
+        <div>
+            <md-list>
+                <md-list-item ng-repeat="label in labels">
+                    
+                    <md-button class="md-icon-button icon-buttonend-seconddiv">
+                        <md-tooltip>Delete Label</md-tooltip>
+                        <md-icon md-svg-src="assets/images/label.svg"></md-icon>
+                        <!-- <md-icon md-svg-src="assets/images/trash.svg"></md-icon> -->
+                    </md-button>
+                    <span>
+                            <div contenteditable="true" style="width:182px;outline: transparent;" ng-model="label.labelName" layout-wrap ng-click="showIsEdit(label)">
+                            </div>
+                    </span>
+                    <span>
+                        <md-button class="md-icon-button icon-buttonend-seconddiv">
+                            <md-tooltip>Edit Label</md-tooltip>
+                            <md-icon class="label-list" ng-show="!isEdit" md-svg-src="assets/images/edit.svg"></md-icon>
+                           <md-tooltip>Rename Label</md-tooltip>
+                            <md-icon class="label-list" ng-show="isEdit" md-svg-src="assets/images/done.svg" ng-click="outerScopeForLabel.updateLabel(label)"></md-icon>
+                        </md-button>
+                    </span>
+                </md-list-item>
+            </md-list>
         </div>
-
     </div>
     <md-divider></md-divider>
-    <div layout="row" layout-align="end end">
+    <div layout="row" layout-align="end end" ng-click="closedone()">
         <md-button>Done</md-button>
     </div>
 

@@ -24,6 +24,10 @@
           </div>
         </md-subheader>
 
+        <md-list-item ng-repeat="label in labels" ng-click="null">
+          <md-icon class="list" md-svg-src="assets/images/label.svg"></md-icon>
+          <span class="md-truncate">{{label.labelName}}</span>
+        </md-list-item>
         <md-list-item ng-click="labelDialog($event)">
           <md-icon class="list" md-svg-src="assets/images/createnewnote.svg"></md-icon>
           <span>Create new label</span>

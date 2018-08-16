@@ -1,4 +1,4 @@
-app.controller('homeController', function ($scope, $mdSidenav, $state,$mdDialog) {
+app.controller('homeController', function ($scope, $mdSidenav, $state, $mdDialog, Userfactory) {
   $scope.toggleLeft = buildToggle('open');
 
   //toggle for sidebar
@@ -51,27 +51,84 @@ app.controller('homeController', function ($scope, $mdSidenav, $state,$mdDialog)
     $state.go('home.dashboard');
   }
 
+  $scope.label = {
+    labelName: ""
+  }
+
+
+
   //create new label dialog
-    $scope.labelDialog = function (event) {
-      $mdDialog.show({
-          // locals: {
-          //     passNote: note,
-          //     abc: $scope//to give $scope access  of main controller (ie dashboardController scope) 
-          // },
-          controller: labelDialogController,
-          templateUrl: 'templetes/labeldialog.html',
-          targetEvent: event,
-          parent: angular.element(document.body),
-          clickOutsideToClose: true,
-      })
+  $scope.labelDialog = function (event) {
+    $mdDialog.show({
+      locals: {
+        // passLabel:label,
+        abc: $scope//to pass $scope of homecontroller to dialog controller (ie  labelDialogController) 
+      },
+      controller: labelDialogController,
+      templateUrl: 'templetes/labeldialog.html',
+      targetEvent: event,
+      parent: angular.element(document.body),
+      clickOutsideToClose: true,
+    })
   };
-  function labelDialogController($scope,$mdDialog) {
-      // $scope.note = passNote;
-      // $scope.outerScope = abc;
-      $scope.close = function () {
-          console.log("close update");
-         // abc.update(passNote);
-          $mdDialog.hide();
+  function labelDialogController($scope, $mdDialog, abc) {
+    $scope.labels = abc.labels;
+    $scope.outerScopeForLabel=abc;
+    $scope.closedone = function () {
+      console.log("close update :" + $scope.labelName);
+
+      if ($scope.labelName != null) {
+        abc.createLabel($scope.labelName);
+        // abc.updateLabel(passLabel);
       }
+      $mdDialog.hide();
+    }
+
+    $scope.isEdit = false;
+
+    $scope.showIsEdit = function (label) {
+      this.isEdit = true;
+     // abc.updateLabel(label);
+    }
+  }
+
+  //create Label
+  $scope.createLabel = function (labelabc) {
+    var labelcreate = {
+      labelName: labelabc
+    };
+    var url = "label/create";
+    Userfactory.postmethod(labelcreate, url).then(function successCallback(response) {
+      console.log("response label create");
+      $scope.getAllLabel();
+
+    }, function errorCallback(response) {
+      console.log("Label already existing");
+    });
+  }
+
+  //get all label
+  $scope.getAllLabel = function () {
+    var url = "label/list";
+    Userfactory.getmethod(url).then(function successCallback(response) {
+      $scope.labels = response.data;
+      console.log("Labels" + $scope.labels);
+    }, function errorCallback(response) {
+      console.log(response);
+      console.log("error  getAllLabels");
+    });
+  }
+
+  $scope.getAllLabel();
+
+  $scope.updateLabel = function (label) {
+    var url = "label/update";
+    console.log("update label");
+
+    Userfactory.postmethod(label, url).then(function successCallback(response) {
+      $scope.getAllLabel();
+    }, function errorCallback(response) {
+      console.log("error getUpdateLabels");
+    })
   }
 });
