@@ -24,14 +24,21 @@
 
     <!-- div for label operations -->
     <div ng-if="note.reminderDate || note.reminderTime" style="width:240px;" ng-show="!reminderpanel">
-        <md-chips >
+        <md-chips>
             <md-chip ng-click="openpickdate()">
                 {{note.reminderDate |date :"MMM d,"}}{{note.reminderTime}}
                 <span class="closebtn" ng-click="remindercancel(note)" ng-show="onMouse">&times;</span>
             </md-chip>
         </md-chips>
     </div>
-    
+    <!-- <span>
+        <md-chips ng-repeat="label in labels">
+            <md-chip>
+                {{label.labelName}}
+            </md-chip>
+        </md-chips>
+    </span> -->
+
     <!-- for label image -->
     <labelimage ng-show="onMouse"></labelimage>
 </md-card>

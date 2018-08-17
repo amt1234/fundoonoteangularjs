@@ -20,3 +20,9 @@
     border-color: transparent;
     outline: transparent;
 }
+.label-panel-title{
+    width: 201px;
+    height: 20px;
+    font-size: 14px; 
+    padding: 10px 12px 0px 12px;
+}

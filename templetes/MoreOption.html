@@ -1,0 +1,34 @@
+<div class="menu-panel" md-whiteframe="2" style="background-color:white;">
+    <div ng-show="!isLabelPanel">
+        <md-content>
+            <md-list class="menu-item">
+                <md-list-item ng-click="closeOption(note)">
+                    Delete note
+                </md-list-item>
+                <md-list-item ng-click="addLabel()">
+                    Add label
+                </md-list-item>
+            </md-list>
+        </md-content>
+    </div>
+
+    <div ng-show="isLabelPanel">
+        <div style="width: 225px;padding: 0 12px;">
+            <div class="label-panel-title">
+                <b>Label note</b>
+            </div>
+            <div>
+                <input class="inputtext-label" type="text" ng-model="searchText" placeholder="Enter label name" />
+                <span>
+                    <md-icon md-svg-src="assets/images/search.svg"></md-icon>
+                </span>
+            </div>
+            <div ng-repeat="label in labels|filter:searchText">
+                <md-checkbox  ng-click="toggle(label, selected,note.noteId)">
+                    {{label.labelName}}
+                </md-checkbox>
+            </div>
+        </div>
+    </div>
+{{selected}}
+</div>

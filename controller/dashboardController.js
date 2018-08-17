@@ -1,9 +1,11 @@
-app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, $mdPanel) {
+app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, $mdPanel,
+    $mdSidenav, $state) {
     $scope.isVisible = false;
     $scope.isPinned = false;
     $scope.onColor = false;
     this.onpanel = false;
     $scope.reminderpanel = false;
+    $scope.isLabelPanel = false;
     $scope.readonly = false;
     $scope.isRemider = false;
 
@@ -175,7 +177,7 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         }
     }
 
-    //reminder menu diaplay
+    //reminder menu display
     $scope.showReminderMenu = function (ev, note) {
         var position = $mdPanel.newPanelPosition()
             .relativeTo(ev.target)
@@ -248,6 +250,73 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
 
     $scope.init = function () {
         $scope.reminderTime = 'Today 8:00 PM';
+    }
+
+
+    //panel for more option
+    $scope.showMoreOptionMenu = function (ev, note) {
+        var position = $mdPanel.newPanelPosition()
+            .relativeTo(ev.target)
+            .addPanelPosition(
+                $mdPanel.xPosition.ALIGN_START,
+                $mdPanel.yPosition.BELOW
+            );
+
+        var config = {
+            attachTo: angular.element(document.body),
+            controller: PanelMenuCtrlOption,
+            locals: {
+                optionscope: $scope,
+                note: note
+            },
+            templateUrl: "templetes/MoreOption.html",
+            position: position,
+            panelClass: 'menu-panel-container',
+            propagateContainerEvents: true,
+            openFrom: ev,
+            clickOutsideToClose: true,
+            zIndex: 80,
+        };
+        this.onpanel = true;
+        $mdPanel.open(config);
+    }
+
+    function PanelMenuCtrlOption(mdPanelRef, optionscope, note,$scope) {
+        $scope.note = note;
+        $scope.label=optionscope.labels;
+        $scope.outSideScope = optionscope;
+        $scope.labels = optionscope.labels;
+        $scope.closeOption = function (note) {
+            this.onpanel = false;
+            optionscope.trash(note, note.noteId);
+            mdPanelRef && mdPanelRef.close();
+        }
+        $scope.addLabel = function () {
+            console.log("open menu ");
+            $scope.isLabelPanel = true;
+        }
+
+        //checkbox
+        $scope.selected = [];
+
+        $scope.toggle = function (item, list,noteId) {
+            var index = list.indexOf(item);
+            if (index > -1) {
+                list.splice(index, 1);
+                console.log("check box splice");    
+            }
+            else {
+                list.push(item);
+                console.log("check box push");
+            }
+            console.log("select :"+$scope.selected);
+            optionscope.addLabelToNote(item,noteId);
+        };
+
+        // $scope.exists = function (item, list) {
+        //     console.log("check box exists");
+        //     return list.indexOf(item) > -1;
+        // };
     }
 
     //get all note
@@ -333,4 +402,163 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         }
     }
 
+
+    //----------------------home (label operations)-----------------------------------------//
+
+
+    $scope.toggleLeft = buildToggle('open');
+
+    //toggle for sidebar
+    function buildToggle(ComponentId) {
+        return function () {
+            if (!$mdSidenav(ComponentId).isOpen()) {
+                $mdSidenav(ComponentId).toggle();
+                document.getElementById("main").style.marginLeft = "280px";
+            }
+            else {
+                $mdSidenav(ComponentId).toggle();
+                document.getElementById("main").style.marginLeft = "0px";
+            }
+        };
+    }
+
+    //listview and gridview
+    $scope.islist = false;
+    $scope.view = function () {
+        var elements = document.getElementsByClassName("listgrid");
+        var i;
+        if (($scope.islist)) {
+            console.log("islist true");
+            for (i = 0; i < elements.length; i++) {
+                elements[i].style.width = "240px";
+            }
+            $scope.islist = false;
+        }
+        else {
+            console.log("islist false");
+            for (i = 0; i < elements.length; i++) {
+                elements[i].style.width = "800px";
+            }
+            $scope.islist = true;
+        }
+    }
+
+    //$state function call
+    $scope.archiveState = function () {
+        $state.go('home.archive');
+    }
+
+    $scope.trashState = function () {
+        $state.go('home.trash');
+    }
+
+    $scope.noteState = function () {
+        $state.go('home.dashboard');
+    }
+
+    $scope.label = {
+        labelName: ""
+    }
+
+    //create new label dialog
+    $scope.labelDialog = function (event) {
+        $mdDialog.show({
+            locals: {
+                // passLabel:label,
+                abc: $scope//to pass $scope of dashboardcontroller to dialog controller (ie  labelDialogController) 
+            },
+            controller: labelDialogController,
+            templateUrl: 'templetes/labeldialog.html',
+            targetEvent: event,
+            parent: angular.element(document.body),
+            clickOutsideToClose: true,
+        })
+    };
+    function labelDialogController($scope, $mdDialog, abc) {
+        $scope.labels = abc.labels;
+        $scope.outerScopeForLabel = abc;
+        $scope.closedone = function () {
+            console.log("close update :" + $scope.labelName);
+
+            if ($scope.labelName != null) {
+                abc.createLabel($scope.labelName);
+            }
+            $mdDialog.hide();
+        }
+
+        //label rename to edit onClick
+        $scope.isEdit = false;
+        $scope.showIsEdit = function () {
+            this.isEdit = true;
+        }
+
+        //function for labeldialog to display images onMouseOver
+        $scope.hoverIn = function () {
+            this.onMouseLabel = true;
+        };
+        $scope.hoverOut = function () {
+            this.onMouseLabel = false;
+        };
+    }
+
+    //create Label
+    $scope.createLabel = function (labelabc) {
+        var labelcreate = {
+            labelName: labelabc
+        };
+        var url = "label/create";
+        Userfactory.postmethod(labelcreate, url).then(function successCallback(response) {
+            console.log("response label create");
+            $scope.getAllLabel();
+
+        }, function errorCallback(response) {
+            console.log("Label already existing");
+        });
+    }
+
+    //get all label
+    $scope.getAllLabel = function () {
+        var url = "label/list";
+        Userfactory.getmethod(url).then(function successCallback(response) {
+            $scope.labels = response.data;
+            console.log("Labels" + $scope.labels);
+        }, function errorCallback(response) {
+            console.log(response);
+            console.log("error  getAllLabels");
+        });
+    }
+
+    $scope.getAllLabel();
+
+    $scope.updateLabel = function (label) {
+        var url = "label/update";
+        console.log("update label");
+
+        Userfactory.postmethod(label, url).then(function successCallback(response) {
+            $scope.getAllLabel();
+        }, function errorCallback(response) {
+            console.log("error getUpdateLabels");
+        })
+    }
+
+    $scope.deleteLabel = function (labels) {
+        var id = labels.labelId;
+        var url = "label/delete/" + id;
+        Userfactory.deletemethod(url).then(function successCallback(response) {
+            console.log("label delete");
+            $scope.getAllLabel();
+        }, function errorCallback(response) {
+            console.log("error label not delete");
+        });
+    }
+
+    $scope.addLabelToNote=function(labels,noteId){
+       // var noteId=note.noteId;
+        var url="label/addLabel"+noteId;
+        Userfactory.postmethod(labels,url).then(function successCallback(response){
+            console.log("add label on note");
+        },function errorCallback(response){
+            console.log("error add label");
+        });
+    }
 });

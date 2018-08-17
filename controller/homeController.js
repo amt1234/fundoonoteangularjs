@@ -55,8 +55,6 @@ app.controller('homeController', function ($scope, $mdSidenav, $state, $mdDialog
     labelName: ""
   }
 
-
-
   //create new label dialog
   $scope.labelDialog = function (event) {
     $mdDialog.show({
@@ -73,24 +71,31 @@ app.controller('homeController', function ($scope, $mdSidenav, $state, $mdDialog
   };
   function labelDialogController($scope, $mdDialog, abc) {
     $scope.labels = abc.labels;
-    $scope.outerScopeForLabel=abc;
+    $scope.outerScopeForLabel = abc;
     $scope.closedone = function () {
       console.log("close update :" + $scope.labelName);
 
       if ($scope.labelName != null) {
         abc.createLabel($scope.labelName);
-        // abc.updateLabel(passLabel);
       }
       $mdDialog.hide();
     }
 
+    //label rename to edit onClick
     $scope.isEdit = false;
-
-    $scope.showIsEdit = function (label) {
+    $scope.showIsEdit = function () {
       this.isEdit = true;
-     // abc.updateLabel(label);
     }
+
+    //function for labeldialog to display images onMouseOver
+    $scope.hoverIn = function () {
+      this.onMouseLabel = true;
+    };
+    $scope.hoverOut = function () {
+      this.onMouseLabel = false;
+    };
   }
+
 
   //create Label
   $scope.createLabel = function (labelabc) {
@@ -130,5 +135,17 @@ app.controller('homeController', function ($scope, $mdSidenav, $state, $mdDialog
     }, function errorCallback(response) {
       console.log("error getUpdateLabels");
     })
+  }
+
+  $scope.deleteLabel = function (labels) {
+    var id = labels.labelId;
+    console.log("label id " + id);
+    var url = "label/delete/" + id;
+    Userfactory.deletemethod(url).then(function successCallback(response) {
+      console.log("label delete");
+      $scope.getAllLabel();
+    }, function errorCallback(response) {
+      console.log("error label not delete");
+    });
   }
 });

@@ -43,7 +43,7 @@
                 </md-icon>
             </md-button>
 
-            <md-menu>
+            <!-- <md-menu>
                 <md-button class="md-icon-button icon-buttonend-seconddiv" ng-click="$mdOpenMenu()">
                         <md-tooltip>More</md-tooltip>
                     <md-icon md-svg-src="assets/images/more.svg">
@@ -61,7 +61,12 @@
                             Add label
                         </md-button>
                     </md-menu-item>
-            </md-menu>
+            </md-menu> -->
+            <md-button class="md-icon-button icon-buttonend-seconddiv" ng-click="showMoreOptionMenu($event,note)">
+                <md-tooltip>More</md-tooltip>
+            <md-icon md-svg-src="assets/images/more.svg">
+            </md-icon>
+        </md-button>
         </md-card-title-text>
     </md-card-title>
 </div>

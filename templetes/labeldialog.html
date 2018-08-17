@@ -1,5 +1,5 @@
 <md-dialog>
-    <div class="label-dialogdiv">
+    <div class="label-dialogdiv" >
         <div class="label-title">
             <b>Edit Labels</b>
         </div>
@@ -12,19 +12,19 @@
         <!-- div for label -->
         <div>
             <md-list>
-                <md-list-item ng-repeat="label in labels">
+                <md-list-item ng-repeat="label in labels" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
                     
                     <md-button class="md-icon-button icon-buttonend-seconddiv">
                         <md-tooltip>Delete Label</md-tooltip>
-                        <md-icon md-svg-src="assets/images/label.svg"></md-icon>
-                        <!-- <md-icon md-svg-src="assets/images/trash.svg"></md-icon> -->
+                        <md-icon ng-show="!onMouseLabel" md-svg-src="assets/images/label.svg"></md-icon>
+                        <md-icon ng-show="onMouseLabel" md-svg-src="assets/images/trash.svg" ng-click="outerScopeForLabel.deleteLabel(label)"></md-icon>
                     </md-button>
                     <span>
                             <div contenteditable="true" style="width:182px;outline: transparent;" ng-model="label.labelName" layout-wrap ng-click="showIsEdit(label)">
                             </div>
                     </span>
                     <span>
-                        <md-button class="md-icon-button icon-buttonend-seconddiv">
+                        <md-button class="md-icon-button icon-buttonend-seconddiv" >
                             <md-tooltip>Edit Label</md-tooltip>
                             <md-icon class="label-list" ng-show="!isEdit" md-svg-src="assets/images/edit.svg"></md-icon>
                            <md-tooltip>Rename Label</md-tooltip>
