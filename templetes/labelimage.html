@@ -1,18 +1,21 @@
 <div>
 <md-card-title style="padding:0 0; width:240px;height:42px;" class="seconddiv">
         <md-card-title-text layout="row">
+            <!-- reminder -->
             <md-button id="{{note.noteId}}" class="md-icon-button icon-buttonend-seconddiv" ng-click="showReminderMenu($event,note)">
                     <md-tooltip>Remind me</md-tooltip>
                 <md-icon md-svg-src="assets/images/reminder.svg">
                 </md-icon> 
             </md-button>
 
+            <!-- Collabotator -->
             <md-button class="md-icon-button icon-buttonend-seconddiv">
                     <md-tooltip>Collabotator</md-tooltip>
                 <md-icon md-svg-src="assets/images/collabotative.svg">
                 </md-icon>
             </md-button>
 
+            <!-- color palette -->
             <md-menu>
                 <md-button class="md-icon-button icon-buttonend-seconddiv" ng-click="openColorPalette($mdMenu,$event)">
                         <md-tooltip>Change color</md-tooltip>
@@ -29,12 +32,14 @@
                 </md-menu-content>
             </md-menu>
 
+            <!-- add image -->
             <md-button class="md-icon-button icon-buttonend-seconddiv">
                     <md-tooltip>Add image</md-tooltip>
                 <md-icon md-svg-src="assets/images/noteimage.svg">
                 </md-icon>
             </md-button>
 
+            <!-- archive -->
             <md-button class="md-icon-button icon-buttonend-seconddiv">
                     <md-tooltip>Archive</md-tooltip>
                 <md-icon ng-if="!(note.noteArchiev)" ng-click="archive(note,note.noteId)" md-svg-src="assets/images/archive.svg">
@@ -43,25 +48,7 @@
                 </md-icon>
             </md-button>
 
-            <!-- <md-menu>
-                <md-button class="md-icon-button icon-buttonend-seconddiv" ng-click="$mdOpenMenu()">
-                        <md-tooltip>More</md-tooltip>
-                    <md-icon md-svg-src="assets/images/more.svg">
-                    </md-icon>
-                </md-button>
-                <md-menu-content width="2">
-                    <md-menu-item>
-                        <md-button ng-click="trash(note,note.noteId)">
-                            Delete note
-                        </md-button>
-                    </md-menu-item>
-
-                    <md-menu-item>
-                        <md-button>
-                            Add label
-                        </md-button>
-                    </md-menu-item>
-            </md-menu> -->
+            <!-- more options -->
             <md-button class="md-icon-button icon-buttonend-seconddiv" ng-click="showMoreOptionMenu($event,note)">
                 <md-tooltip>More</md-tooltip>
             <md-icon md-svg-src="assets/images/more.svg">

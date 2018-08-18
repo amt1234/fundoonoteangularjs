@@ -103,17 +103,22 @@ inline */
     content: attr(placeholder);
   }
   .closebtn {
+     
     padding-left: 5px;
     color: #888;
     float: right;
     font-size: 20px;
     cursor: pointer;
+    position: relative;
 }
 
 .closebtn:hover {
     color: #000;
 }
 
+/* .md-chips:not(.md-readonly){
+    cursor: pointer !important;
+} */
 md-chip{
     font-size: 11px;
     margin: 0 6px;
@@ -122,4 +127,8 @@ md-chip{
 }
 .md-chips{
     box-shadow: 0 0px !important;
-  }
+}
+/* .chip md-icon{
+    width: 16px !important;
+    height: 16px !important;
+} */

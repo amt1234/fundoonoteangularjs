@@ -241,6 +241,20 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         $scope.update(item);
     }
 
+    $scope.labelcancel = function (noteid, labelid) {
+        console.log("item : " + noteid);
+        console.log("id : " + labelid);
+        //console.log("label id in note :"+item.labels.length);
+
+
+
+        // if (item.labels.labelId == id) {
+        //     item.labels.l
+        // }
+        console.log("hello");
+
+    }
+
     //reminder div show
     $scope.isRemider = function () {
         if (!note.reminderDate == null) {
@@ -281,9 +295,9 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         $mdPanel.open(config);
     }
 
-    function PanelMenuCtrlOption(mdPanelRef, optionscope, note,$scope) {
+    function PanelMenuCtrlOption(mdPanelRef, optionscope, note, $scope) {
         $scope.note = note;
-        $scope.label=optionscope.labels;
+        $scope.label = optionscope.labels;
         $scope.outSideScope = optionscope;
         $scope.labels = optionscope.labels;
         $scope.closeOption = function (note) {
@@ -299,18 +313,24 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         //checkbox
         $scope.selected = [];
 
-        $scope.toggle = function (item, list,noteId) {
+        $scope.toggle = function (item, list, noteId) {
+            console.log("list : ", list);
+
             var index = list.indexOf(item);
             if (index > -1) {
                 list.splice(index, 1);
-                console.log("check box splice");    
+                console.log("check box splice");
             }
             else {
                 list.push(item);
                 console.log("check box push");
             }
-            console.log("select :"+$scope.selected);
-            optionscope.addLabelToNote(item,noteId);
+            console.log("select :" + $scope.selected);
+            console.log("item : " + item);
+            console.log("note id : ", noteId);
+
+
+            optionscope.addLabelToNote(item, noteId);
         };
 
         // $scope.exists = function (item, list) {
@@ -552,13 +572,35 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         });
     }
 
-    $scope.addLabelToNote=function(labels,noteId){
-       // var noteId=note.noteId;
-        var url="label/addLabel"+noteId;
-        Userfactory.postmethod(labels,url).then(function successCallback(response){
+    $scope.addLabelToNote = function (labels, noteId) {
+        var url = "label/addLabel/" + noteId;
+        Userfactory.postmethod(labels, url).then(function successCallback(response) {
+            $scope.getAllNote();
             console.log("add label on note");
-        },function errorCallback(response){
+        }, function errorCallback(response) {
             console.log("error add label");
         });
+    }
+
+    $scope.removeLabelToNote = function (labels, noteId) {
+        var url = "label/removeLabel/" + noteId;
+        Userfactory.postmethod(labels, url).then(function successCallback(response) {
+            $scope.getAllNote();
+            console.log("remove label from note");
+        }, function errorCallback(response) {
+            console.log("error remove label");
+        });
+    }
+
+    //checkbox
+    $scope.cancelChip = [];
+
+    $scope.toggleForCancelChip = function (itemlabel, list, note) {
+        var noteId = note.noteId;
+        var index = list.indexOf(itemlabel);
+        if (index > -1) {
+            list.splice(index, 1);
+        }
+        $scope.removeLabelToNote(itemlabel, noteId);
     }
 });

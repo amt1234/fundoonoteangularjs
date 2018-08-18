@@ -1,4 +1,4 @@
-<md-card class="listgrid" style="padding-bottom:42px;" ng-style="{'background-color':note.color}" ng-mouseover="hoverIn()"
+<md-card class="listgrid" style="padding-bottom:42px;width:243px;" ng-style="{'background-color':note.color}" ng-mouseover="hoverIn()"
     ng-mouseleave="hoverOut()">
     <div layout="row" layout-align="end start">
         <md-icon class="note-pin" ng-show="onMouse" ng-click="addClass(note,note.noteId)" md-svg-src="assets/images/pinned.svg">
@@ -23,22 +23,22 @@
     </div>
 
     <!-- div for label operations -->
-    <div ng-if="note.reminderDate || note.reminderTime" style="width:240px;" ng-show="!reminderpanel">
-        <md-chips>
+    <div layout="row" style="width:240px;" ng-show="!reminderpanel" layout-wrap>
+        <md-chips ng-if="note.reminderDate || note.reminderTime ">
             <md-chip ng-click="openpickdate()">
                 {{note.reminderDate |date :"MMM d,"}}{{note.reminderTime}}
                 <span class="closebtn" ng-click="remindercancel(note)" ng-show="onMouse">&times;</span>
             </md-chip>
         </md-chips>
-    </div>
-    <!-- <span>
-        <md-chips ng-repeat="label in labels">
-            <md-chip>
-                {{label.labelName}}
+    
+        <md-chips layout="row" ng-if="note.labels.length>0" ng-repeat="label in note.labels">
+            <md-chip ng-click="openpickdate()">
+                <strong>{{label.labelName}}</strong>
+                <span class="closebtn" ng-click="toggleForCancelChip(label, note.labels,note)" ng-show="onMouse">&times;</span>
             </md-chip>
         </md-chips>
-    </span> -->
-
+    </div>
+   
     <!-- for label image -->
     <labelimage ng-show="onMouse"></labelimage>
 </md-card>
