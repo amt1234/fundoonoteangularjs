@@ -1,5 +1,5 @@
 #navbarId{
-  background-color:#fb0 ;
+  /* background-color:#fb0 ; */
 } 
 .before::before {
   content: "Google";

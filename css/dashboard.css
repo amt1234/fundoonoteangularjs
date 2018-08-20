@@ -17,8 +17,7 @@ inline */
   }
 .main {
     transition: margin-left .5s;
-    padding-top:64px;
-    
+    padding-top:64px; 
 }
 .icon-buttonend{
     margin:0px;

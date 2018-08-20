@@ -1,0 +1,50 @@
+<div class="main" id="main" layout="row" layout-align="start start" layout-wrap>
+    <div class="startdiv">
+        <div>
+            <md-card ng-style="{'background-color':note.color}">
+                <!-- div for title -->
+                <div ng-show="isVisible">
+                    <md-card-title style="padding: 12px 10px 15px 15px; width:570px;">
+                        <md-card-title-text layout="row">
+                            <div contenteditable="true" class="inputtext" ng-model="note.noteTitle" placeholder="Title" layout-wrap>
+                            </div>
+                            <md-icon layout-align="end end" class="icon-buttonend pin" md-svg-src="assets/images/pinned.svg" ng-click="addClass(note,note.noteId)"></md-icon>
+                        </md-card-title-text>
+                    </md-card-title>
+                </div>
+                <!-- div for description -->
+                <div>
+                    <md-card-title style="padding: 12px 10px 15px 15px; width:570px;">
+                        </md-card-title-text>
+                        <span>
+                            <div contenteditable="true" style="width: 480;outline: transparent;" ng-model="note.noteDescribtion" placeholder="Take a note..."
+                                layout-wrap ng-click="showHide()">
+                            </div>
+                        </span>
+                        <div layout="row">
+                            <md-icon ng-show="!isVisible" class="icon-button" md-svg-src="assets/images/notelist.svg"></md-icon>
+
+                            <md-icon ng-show="!isVisible" class="icon-button" md-svg-src="assets/images/noteimage.svg"></md-icon>
+                        </div>
+                        </md-card-title-text>
+                    </md-card-title>
+                </div>
+                <!-- div for close button -->
+                <div layout="row">
+                    <labelimage ng-show="isVisible" style="padding:8px;width:600px;height:36px;">
+                    </labelimage>
+                    <md-button ng-show="isVisible" ng-click="showHide1(note)">close
+                    </md-button>
+                </div>
+            </md-card>
+        </div>
+    </div>
+
+    <div layout="row" layout-align="center center" >
+        <div ng-repeat="note in notes" layout="row" class="second-div-style" layout-align="start start" layout-wrap>
+            <div layout="row" layout-align="center center">
+                <note ng-repeat="label in note.labels" ng-if="label.labelName==secondParameter"></note>
+            </div>
+        </div>
+    </div>
+</div>

@@ -8,7 +8,7 @@
           <span>Notes</span>
         </md-list-item>
 
-        <md-list-item ng-click="null">
+        <md-list-item ng-click="reminderState()">
           <md-icon class="list" md-svg-src="assets/images/reminder.svg"></md-icon>
           <span>Reminders</span>
         </md-list-item>
@@ -24,7 +24,7 @@
           </div>
         </md-subheader>
 
-        <md-list-item ng-repeat="label in labels" ng-click="null">
+        <md-list-item ng-repeat="label in labels" ng-click="labelState(label.labelName)">
           <md-icon class="list" md-svg-src="assets/images/label.svg"></md-icon>
           <span class="md-truncate">{{label.labelName}}</span>
         </md-list-item>

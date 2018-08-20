@@ -1,5 +1,5 @@
 app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, $mdPanel,
-    $mdSidenav, $state) {
+    $mdSidenav, $state, $location,$rootScope) {
     $scope.isVisible = false;
     $scope.isPinned = false;
     $scope.onColor = false;
@@ -8,6 +8,26 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
     $scope.isLabelPanel = false;
     $scope.readonly = false;
     $scope.isRemider = false;
+    $scope.toolbarColor = $rootScope.color;
+
+
+    $scope.labelPath = function () {
+        var path = $location.path().split('/');
+        console.log("location path : " + path);
+        var firstParameter = path[2];
+        $scope.secondParameter = path[3];
+        console.log("first parameter :" + firstParameter);
+        console.log("sec parameter: " + $scope.secondParameter);
+        if (firstParameter == 'dashboard') {
+            $scope.toolbarColor = "#fb0";
+            // document.getElementById("navbarId").style.background = "#fb0";
+        }
+        else {
+            $scope.toolbarColor = "rgb(96, 125, 139)";
+            // document.getElementById("navbarId").style.background = "rgb(96, 125, 139)";
+        }
+    }
+    // $scope.labelPath();
 
     // $scope.isArchive = false;
     //  $scope.isTrash = false;
@@ -241,19 +261,12 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         $scope.update(item);
     }
 
-    $scope.labelcancel = function (noteid, labelid) {
-        console.log("item : " + noteid);
-        console.log("id : " + labelid);
-        //console.log("label id in note :"+item.labels.length);
+    // $scope.labelcancel = function (noteid, labelid) {
+    //     console.log("item : " + noteid);
+    //     console.log("id : " + labelid);
+    //     console.log("hello");
 
-
-
-        // if (item.labels.labelId == id) {
-        //     item.labels.l
-        // }
-        console.log("hello");
-
-    }
+    // }
 
     //reminder div show
     $scope.isRemider = function () {
@@ -311,7 +324,7 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         }
 
         //checkbox
-        $scope.selected = [];
+        $scope.selected = note.labels;
 
         $scope.toggle = function (item, list, noteId) {
             console.log("list : ", list);
@@ -320,23 +333,23 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
             if (index > -1) {
                 list.splice(index, 1);
                 console.log("check box splice");
+                optionscope.removeLabelToNote(item, noteId);
             }
             else {
                 list.push(item);
                 console.log("check box push");
+                optionscope.addLabelToNote(item, noteId);
             }
-            console.log("select :" + $scope.selected);
-            console.log("item : " + item);
-            console.log("note id : ", noteId);
-
-
-            optionscope.addLabelToNote(item, noteId);
         };
 
-        // $scope.exists = function (item, list) {
-        //     console.log("check box exists");
-        //     return list.indexOf(item) > -1;
-        // };
+        $scope.exists = function (item, list) {
+            for (var i = 0; i < list.length; i++) {
+                var selectedItem = list[i];
+                if (selectedItem.labelName == item.labelName)
+                    return true;
+            }
+            return false;
+        };
     }
 
     //get all note
@@ -476,15 +489,45 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         $state.go('home.dashboard');
     }
 
+    $scope.reminderState = function () {
+        $state.go('home.reminders');
+    }
+
+    $scope.labelState = function (labelName) {
+        $state.go('home.label', {
+            labelName: labelName
+        });
+    }
+
+    $scope.labelPath = function () {
+        var path = $location.path().split('/');
+        console.log("location path : " + path);
+        var firstParameter = path[2];
+        $scope.secondParameter = path[3];
+        console.log("first parameter :" + firstParameter);
+        console.log("sec parameter: " + $scope.secondParameter);
+        if (firstParameter == 'dashboard') {
+            $scope.toolbarColor = "#fb0";
+            // document.getElementById("navbarId").style.background = "#fb0";
+        }
+        else {
+            $scope.toolbarColor = "rgb(96, 125, 139)";
+            // document.getElementById("navbarId").style.background = "rgb(96, 125, 139)";
+        }
+    }
+    $scope.labelPath();
+
     $scope.label = {
         labelName: ""
     }
 
+    $scope.stateColorChange = function () {
+
+    }
     //create new label dialog
     $scope.labelDialog = function (event) {
         $mdDialog.show({
             locals: {
-                // passLabel:label,
                 abc: $scope//to pass $scope of dashboardcontroller to dialog controller (ie  labelDialogController) 
             },
             controller: labelDialogController,
@@ -592,7 +635,7 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         });
     }
 
-    //checkbox
+    //cancel chip on note 
     $scope.cancelChip = [];
 
     $scope.toggleForCancelChip = function (itemlabel, list, note) {
