@@ -1,9 +1,9 @@
 #navbarId{
   /* background-color:#fb0 ; */
 } 
-.before::before {
+/* .before::before {
   content: "Google";
-}
+} */
 a:link {
   text-decoration: none;
   color: black;

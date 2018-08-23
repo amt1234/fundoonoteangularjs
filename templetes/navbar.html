@@ -7,9 +7,9 @@
         </md-icon>
       </md-button>
 
-      <div class="before">
+      <div>
         <span>
-          <a href="#">Keep</a>
+          <a href="#">{{title}}</a>
         </span>
       </div>
       <!-- serch -->
@@ -21,7 +21,7 @@
           </md-icon>
         </md-button>
 
-        <input class="inputsearch" aria-label="search" placeholder="search" role="combobox" aria-hidden="false" type="text">
+        <input class="inputsearch" ng-model="search" aria-label="search" placeholder="search" role="combobox" aria-hidden="false" type="text">
         <md-button class="closesearch" aria-label="Clear search" type="button" style="visibility: visible;">
             <md-tooltip>Close</md-tooltip>
           <md-icon md-svg-src="assets/images/closebutton.svg" aria-label="closesearch">

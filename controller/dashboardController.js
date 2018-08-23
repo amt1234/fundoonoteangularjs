@@ -1,5 +1,5 @@
 app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, $mdPanel,
-    $mdSidenav, $state, $location,$rootScope) {
+    $mdSidenav, $state, $location, $rootScope) {
     $scope.isVisible = false;
     $scope.isPinned = false;
     $scope.onColor = false;
@@ -8,29 +8,26 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
     $scope.isLabelPanel = false;
     $scope.readonly = false;
     $scope.isRemider = false;
-    $scope.toolbarColor = $rootScope.color;
+    // $scope.toolbarColor = $rootScope.color;
 
 
-    $scope.labelPath = function () {
-        var path = $location.path().split('/');
-        console.log("location path : " + path);
-        var firstParameter = path[2];
-        $scope.secondParameter = path[3];
-        console.log("first parameter :" + firstParameter);
-        console.log("sec parameter: " + $scope.secondParameter);
-        if (firstParameter == 'dashboard') {
-            $scope.toolbarColor = "#fb0";
-            // document.getElementById("navbarId").style.background = "#fb0";
-        }
-        else {
-            $scope.toolbarColor = "rgb(96, 125, 139)";
-            // document.getElementById("navbarId").style.background = "rgb(96, 125, 139)";
-        }
-    }
+    // $scope.labelPath = function () {
+    //     var path = $location.path().split('/');
+    //     console.log("location path : " + path);
+    //     var firstParameter = path[2];
+    //     $scope.secondParameter = path[3];
+    //     console.log("first parameter :" + firstParameter);
+    //     console.log("sec parameter: " + $scope.secondParameter);
+    //     if (firstParameter == 'dashboard') {
+    //         $scope.toolbarColor = "#fb0";
+    //         // document.getElementById("navbarId").style.background = "#fb0";
+    //     }
+    //     else {
+    //         $scope.toolbarColor = "rgb(96, 125, 139)";
+    //         // document.getElementById("navbarId").style.background = "rgb(96, 125, 139)";
+    //     }
+    // }
     // $scope.labelPath();
-
-    // $scope.isArchive = false;
-    //  $scope.isTrash = false;
 
     $scope.myClass = [];
     $scope.note = {
@@ -46,8 +43,6 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         color: 'white'
     }
 
-
-
     //function for centercard to display on-click inputtext
     $scope.showHide = function () {
         $scope.isVisible = $scope.isVisible = true;
@@ -61,7 +56,6 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         } else {
             $scope.create();
         }
-
     };
 
     //function for cards to display images onMouseOver
@@ -93,6 +87,7 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
             }
         }
     }
+
     //pinned visibility
     $scope.isPinned = function () {
         if ((this.myClass) != null) {
@@ -111,7 +106,6 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
 
     //archive operation
     $scope.archive = function (item, id) {
-
         if (item.noteArchiev) {
             $scope.myClass.push(item);
             $scope.notes.slice(item);
@@ -131,7 +125,6 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
 
     //trash operation
     $scope.trash = function (item, id) {
-
         if (item.noteTrash) {
             console.log("add noteTrash ");
             $scope.myClass.push(item);
@@ -265,7 +258,6 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
     //     console.log("item : " + noteid);
     //     console.log("id : " + labelid);
     //     console.log("hello");
-
     // }
 
     //reminder div show
