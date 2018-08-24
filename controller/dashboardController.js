@@ -10,25 +10,6 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
     $scope.isRemider = false;
     // $scope.toolbarColor = $rootScope.color;
 
-
-    // $scope.labelPath = function () {
-    //     var path = $location.path().split('/');
-    //     console.log("location path : " + path);
-    //     var firstParameter = path[2];
-    //     $scope.secondParameter = path[3];
-    //     console.log("first parameter :" + firstParameter);
-    //     console.log("sec parameter: " + $scope.secondParameter);
-    //     if (firstParameter == 'dashboard') {
-    //         $scope.toolbarColor = "#fb0";
-    //         // document.getElementById("navbarId").style.background = "#fb0";
-    //     }
-    //     else {
-    //         $scope.toolbarColor = "rgb(96, 125, 139)";
-    //         // document.getElementById("navbarId").style.background = "rgb(96, 125, 139)";
-    //     }
-    // }
-    // $scope.labelPath();
-
     $scope.myClass = [];
     $scope.note = {
         noteTitle: "",
@@ -254,12 +235,6 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         $scope.update(item);
     }
 
-    // $scope.labelcancel = function (noteid, labelid) {
-    //     console.log("item : " + noteid);
-    //     console.log("id : " + labelid);
-    //     console.log("hello");
-    // }
-
     //reminder div show
     $scope.isRemider = function () {
         if (!note.reminderDate == null) {
@@ -344,15 +319,20 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         };
     }
 
+    $scope.removeImage=function(item){
+        console.log("hello"+item);
+        item.image=null;
+        console.log("item image: "+item.image);
+        $scope.update(item);
+    }
     //get all note
     $scope.getAllNote = function () {
         var url = "note/list";
         Userfactory.getmethod(url).then(function successCallback(response) {
-            $scope.notes = response.data;
+            $scope.notes = response.data.payload;
             console.log("Notes " + $scope.notes);
         }, function errorCallback(response) {
-            console.log(response);
-            console.log("error  getAllNotes");
+            console.log("error  getAllNotes" + response);
         });
     }
     $scope.getAllNote();
@@ -396,10 +376,10 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         var id = note.noteId;
         var url = "note/delete/" + id;
         Userfactory.deletemethod(url).then(function successCallback(response) {
-            console.log("note delete");
+            console.log("note delete" + response);
             $scope.getAllNote();
         }, function errorCallback(response) {
-            console.log("error delete");
+            console.log("error delete" + response);
         });
     }
 
@@ -427,9 +407,32 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         }
     }
 
+    $scope.uploadFile = function (ev,note) {
+        console.log(ev);
+        document.addEventListener('change', function (event) {
+            console.log(event.target.files[0]);
+
+            var files=event.target.files;
+            var File=files[0];
+            var formdata=new FormData();
+            formdata.append("file",File);
+            var url="note/uploadFile";
+            Userfactory.imageUpload(url,formdata).then(function successCallback(response){
+                console.log("image upload :"+response.data.payload);
+                $scope.image=response.data.payload;
+                if($scope.image!=undefined){
+                    console.log("update image");
+                    
+                    note.image= $scope.image;
+                    $scope.update(note);
+                }
+            },function errorCallback(response){
+                console.log("image not upload : "+response.data);
+            })
+        });
+    }
 
     //----------------------home (label operations)-----------------------------------------//
-
 
     $scope.toggleLeft = buildToggle('open');
 
@@ -497,15 +500,6 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         var firstParameter = path[2];
         $scope.secondParameter = path[3];
         console.log("first parameter :" + firstParameter);
-        console.log("sec parameter: " + $scope.secondParameter);
-        if (firstParameter == 'dashboard') {
-            $scope.toolbarColor = "#fb0";
-            // document.getElementById("navbarId").style.background = "#fb0";
-        }
-        else {
-            $scope.toolbarColor = "rgb(96, 125, 139)";
-            // document.getElementById("navbarId").style.background = "rgb(96, 125, 139)";
-        }
     }
     $scope.labelPath();
 
@@ -563,11 +557,11 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         };
         var url = "label/create";
         Userfactory.postmethod(labelcreate, url).then(function successCallback(response) {
-            console.log("response label create");
+            console.log("response label create" + response);
             $scope.getAllLabel();
 
         }, function errorCallback(response) {
-            console.log("Label already existing");
+            console.log("Label already existing" + response);
         });
     }
 
@@ -575,11 +569,10 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
     $scope.getAllLabel = function () {
         var url = "label/list";
         Userfactory.getmethod(url).then(function successCallback(response) {
-            $scope.labels = response.data;
+            $scope.labels = response.data.payload;
             console.log("Labels" + $scope.labels);
         }, function errorCallback(response) {
-            console.log(response);
-            console.log("error  getAllLabels");
+            console.log("error  getAllLabels" + response);
         });
     }
 
@@ -592,7 +585,7 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         Userfactory.postmethod(label, url).then(function successCallback(response) {
             $scope.getAllLabel();
         }, function errorCallback(response) {
-            console.log("error getUpdateLabels");
+            console.log("error getUpdateLabels" + response);
         })
     }
 
@@ -600,10 +593,10 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         var id = labels.labelId;
         var url = "label/delete/" + id;
         Userfactory.deletemethod(url).then(function successCallback(response) {
-            console.log("label delete");
+            console.log("label delete" + response);
             $scope.getAllLabel();
         }, function errorCallback(response) {
-            console.log("error label not delete");
+            console.log("error label not delete" + response);
         });
     }
 
@@ -611,9 +604,9 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         var url = "label/addLabel/" + noteId;
         Userfactory.postmethod(labels, url).then(function successCallback(response) {
             $scope.getAllNote();
-            console.log("add label on note");
+            console.log("add label on note" + response);
         }, function errorCallback(response) {
-            console.log("error add label");
+            console.log("error add label" + response);
         });
     }
 
@@ -623,7 +616,7 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
             $scope.getAllNote();
             console.log("remove label from note");
         }, function errorCallback(response) {
-            console.log("error remove label");
+            console.log("error remove label" + response);
         });
     }
 

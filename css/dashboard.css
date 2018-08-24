@@ -127,7 +127,23 @@ md-chip{
 .md-chips{
     box-shadow: 0 0px !important;
 }
-/* .chip md-icon{
-    width: 16px !important;
-    height: 16px !important;
-} */
+
+.hide-file {
+    position: absolute;
+    z-index: 1000;
+    opacity: 0;
+    cursor: pointer;
+    right: 0;
+    top: 0;
+    height: 100%;
+    font-size: 24px;
+    width: 100%;
+}
+.image-div{
+    width:240px;
+}
+.trash-dialogImage{
+    position: fixed;
+    bottom:170px;
+    right:20;
+}

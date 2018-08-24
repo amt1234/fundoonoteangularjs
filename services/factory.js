@@ -26,5 +26,14 @@ app.factory('Userfactory', function ($http) {
             headers:{'userid':localStorage.getItem('Token')}
         })
     };
+
+    factory.imageUpload=function(url,file){
+        return $http({
+            method:'POST',
+            url:api_url+url,
+            headers:{'Content-Type': undefined},
+            data:file
+        })
+    };
     return factory;
 });

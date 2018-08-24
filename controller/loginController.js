@@ -10,10 +10,10 @@ app.controller('loginController', function ($scope, $state, Userfactory, $locati
     Userfactory.postmethod(userlogin, url).then(function successCallback(response) {
       console.log("Token : " + response.data);
       // Store
-      localStorage.setItem("Token", response.data);
+      localStorage.setItem("Token", response.data.payload);
       $state.go('home.dashboard');
     }, function errorCallback(response) {
-      console.log("error login");
+      console.log("error login"+response);
     });
   }
 
@@ -28,11 +28,11 @@ app.controller('loginController', function ($scope, $state, Userfactory, $locati
     };
     var url = "user/save";
     Userfactory.postmethod(userregister, url).then(function successCallback(response) {
-      $scope.factory = response.data;
+      $scope.factory = response.data.payload;
       $state.go('login');
     },
       function errorCallback(response) {
-        console.log("error registration");
+        console.log("error registration"+response);
       });
   }
 
@@ -43,11 +43,11 @@ app.controller('loginController', function ($scope, $state, Userfactory, $locati
     };
     var url = "user/forgotpassword";
     Userfactory.postmethod(userforgotpassword, url).then(function successCallback(response) {
-      console.log("forgot password : " + response.data);
+      console.log("forgot password : " + response.data.payload);
       $state.go('reset');
     },
-      function errorCallback() {
-        console.log("error forgot password");
+      function errorCallback(response) {
+        console.log("error forgot password"+response);
       });
   }
 
@@ -62,11 +62,11 @@ app.controller('loginController', function ($scope, $state, Userfactory, $locati
     };
     var url = "user/resetpassword/" + object.token;
     Userfactory.postmethod(userresetpassword, url).then(function successCallback(response) {
-      console.log("reset password : " + response.data);
+      console.log("reset password : " + response.data.payload);
       $state.go('login');
     },
       function errorCallback(response) {
-        console.log("error reset password");
+        console.log("error reset password"+response);
       });
   }
 });
