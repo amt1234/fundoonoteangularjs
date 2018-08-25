@@ -1,5 +1,6 @@
 app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, $mdPanel,
     $mdSidenav, $state, $location, $rootScope) {
+
     $scope.isVisible = false;
     $scope.isPinned = false;
     $scope.onColor = false;
@@ -153,7 +154,6 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
             'rgb(215, 204, 200)',
 
             'rgb(207, 216, 220)'
-
         ]
     ];
 
@@ -432,6 +432,47 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         });
     }
 
+     //panel for signOut
+     $scope.showSignOut = function (ev) {
+        var position = $mdPanel.newPanelPosition()
+            .relativeTo(ev.target)
+            .addPanelPosition(
+                $mdPanel.xPosition.ALIGN_START,
+                $mdPanel.yPosition.BELOW
+            );
+
+        var config = {
+            attachTo: angular.element(document.body),
+            controller: PanelSignOutOption,
+            locals: {
+                optionscope: $scope,
+            },
+            templateUrl: "templetes/SignOut.html",
+            position: position,
+            panelClass: 'menu-panel-container',
+            propagateContainerEvents: true,
+            openFrom: ev,
+            clickOutsideToClose: true,
+            zIndex: 80,
+        };
+        this.onpanel = true;
+        $mdPanel.open(config);
+    }
+
+    function PanelSignOutOption(mdPanelRef,$scope,optionscope) {
+        $scope.closeOption = function () {
+            this.onpanel = false;
+            mdPanelRef && mdPanelRef.close();
+        }
+        $scope.signOut=function(){
+            console.log("remove localStorage: ");
+            
+            localStorage.clear();
+            $state.go('login');
+        }
+    };
+
+    
     //----------------------home (label operations)-----------------------------------------//
 
     $scope.toggleLeft = buildToggle('open');

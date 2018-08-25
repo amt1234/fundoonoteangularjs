@@ -1,0 +1,39 @@
+.signOut-card{
+    width: 361px;
+    height:186px;
+}
+.signOut-button{
+    background-color: #3079ed!important;
+    padding-bottom: 0px !important;
+    margin: 0px !important;
+    width:119px;
+    font-weight: bold;
+    margin-left: 120px!important;
+}
+.signout-firstdiv{
+    margin:20px;
+    height:96px;
+    position: relative;
+}
+.signout-seconddiv{
+    width:359px;
+    height:30px;
+    padding: 10px 0px 10px 0px;  
+}
+.change-profile{
+    width: 96px;
+    height: 96px;;
+    border-radius:50%;
+   background-color: gray;
+   overflow: hidden;
+   
+}
+.change-div{
+    position:absolute;
+    padding:7px 0;
+    bottom: 0;
+    text-align: center;
+    color:#fff;
+    font-size: 12px;
+    width: 96px;
+}

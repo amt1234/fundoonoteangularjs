@@ -72,8 +72,7 @@
         <!-- signout -->
         <md-button class="signout icon-button" layout="row" layout-align="start end" aria-label="signout">
             <md-tooltip>Sign out</md-tooltip>
-          <a href="https://accounts.google.com/SignOutOptions?hl=en&continue=https://keep.google.com/u/0/">
-            <md-icon md-svg-src="assets/images/exit_to_app-24px.svg" aria-label="notification">
+            <md-icon md-svg-src="assets/images/exit_to_app-24px.svg" ng-click="showSignOut($event)" aria-label="notification">
             </md-icon>
           </a>
         </md-button>
