@@ -1,0 +1,41 @@
+<md-dialog>
+    <div style="width:600px;padding: 5px 5px 10px 5px;">
+        <div>
+            <h3> Collaborators</h3>
+        </div>
+
+        <md-divider></md-divider>
+
+        <div style="width: 570px;font-size: 15px;">
+            <md-list>
+                <md-list-item>
+                    <div class="collaborator">
+                            <img src="{{profile.userProfileImage}}" style="width: 100%;">
+                    </div>
+                    <div>
+                        <b>{{profile.userName}}</b>(Owner)
+                        <br/> {{profile.userEmail}}
+                    </div>
+                    <div>
+                        <md-button>
+
+                        </md-button>
+                    </div>
+                </md-list-item>
+                
+                <md-list-item>
+                    <md-select ng-model="user" placeholder="Person or Email to share with">
+                        <md-option><em>None</em></md-option>
+                        <md-option ng-repeat="user in users" ng-value="user.userEmail">{{user.userEmail}}</md-option>
+                    </md-select>
+                </md-list-item>
+            </md-list>
+        </div>
+        <md-divider></md-divider>
+
+        <div style="margin-left: 370px;">
+            <md-button ng-click="close()">cancel</md-button>
+            <md-button>save</md-button>
+        </div>
+    </div>
+</md-dialog>

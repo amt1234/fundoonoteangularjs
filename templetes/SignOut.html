@@ -1,14 +1,19 @@
 <div>
     <md-card class="signOut-card">
-        <div class="signout-firstdiv">
-            <div class="change-profile">
-               
+        <div class="signout-firstdiv" layout="row">
+            <div class="change-profile" ng-click="uploadProfile($event)">
+                <img src="{{profile.userProfileImage}}" style="width: 100%;">
                 <span class="change-div">
                     Change
                 </span>
             </div>
-           
+            <div style="font-size: 15px;">
+                <b>{{profile.userName}}</b>
+                <br/>
+                {{profile.userEmail}}
+            </div>
         </div>
+        <md-divider></md-divider>
         <div class="signout-seconddiv">
             <md-button class="signOut-button" ng-click="signOut()" >Sign Out</md-button>
         </div>

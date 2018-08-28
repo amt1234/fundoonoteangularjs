@@ -1,5 +1,5 @@
 app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, $mdPanel,
-    $mdSidenav, $state, $location, $rootScope) {
+    $mdSidenav, $state, $location, $timeout) {
 
     $scope.isVisible = false;
     $scope.isPinned = false;
@@ -25,6 +25,7 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         color: 'white'
     }
 
+    $scope.userProfile = localStorage.getItem("userInfo");
     //function for centercard to display on-click inputtext
     $scope.showHide = function () {
         $scope.isVisible = $scope.isVisible = true;
@@ -319,10 +320,10 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         };
     }
 
-    $scope.removeImage=function(item){
-        console.log("hello"+item);
-        item.image=null;
-        console.log("item image: "+item.image);
+    $scope.removeImage = function (item) {
+        console.log("hello" + item);
+        item.image = null;
+        console.log("item image: " + item.image);
         $scope.update(item);
     }
     //get all note
@@ -383,6 +384,17 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         });
     }
 
+    //update user
+    $scope.updateUser = function (userProfile) {
+        var url = "user/update";
+        Userfactory.postmethod(userProfile, url).then(function successCallback(response) {
+            console.log("userProfile upload" + response.data.payload);
+            $scope.userProfile = response.data.payload;
+            localStorage.setItem("userInfo", JSON.stringify(response.data.payload));
+        }, function errorCallback(response) {
+            console.log("erroe upload");
+        });
+    }
     //update note dialog
     $scope.noteDialog = function (event, note) {
         $mdDialog.show({
@@ -407,33 +419,39 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         }
     }
 
-    $scope.uploadFile = function (ev,note) {
+    $scope.uploadFile = function (ev, note) {
         console.log(ev);
         document.addEventListener('change', function (event) {
+            console.log("dfgsdgsdg./............");
+
             console.log(event.target.files[0]);
 
-            var files=event.target.files;
-            var File=files[0];
-            var formdata=new FormData();
-            formdata.append("file",File);
-            var url="note/uploadFile";
-            Userfactory.imageUpload(url,formdata).then(function successCallback(response){
-                console.log("image upload :"+response.data.payload);
-                $scope.image=response.data.payload;
-                if($scope.image!=undefined){
+            var files = event.target.files;
+            var File = files[0];
+            var formdata = new FormData();
+            formdata.append("file", File);
+            console.log("file :" + File);
+
+            var url = "note/uploadFile";
+            Userfactory.imageUpload(url, formdata).then(function successCallback(response) {
+                console.log("image upload :" + response.data.payload);
+                $scope.image = response.data.payload;
+                if (note != undefined) {
                     console.log("update image");
-                    
-                    note.image= $scope.image;
+                    note.image = $scope.image;
                     $scope.update(note);
                 }
-            },function errorCallback(response){
-                console.log("image not upload : "+response.data);
+                else {
+                    console.log("user profile update...");
+                }
+            }, function errorCallback(response) {
+                console.log("image not upload : " + response.data);
             })
         });
     }
 
-     //panel for signOut
-     $scope.showSignOut = function (ev) {
+    //panel for signOut
+    $scope.showSignOut = function (ev) {
         var position = $mdPanel.newPanelPosition()
             .relativeTo(ev.target)
             .addPanelPosition(
@@ -459,20 +477,99 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         $mdPanel.open(config);
     }
 
-    function PanelSignOutOption(mdPanelRef,$scope,optionscope) {
+    function PanelSignOutOption(mdPanelRef, $scope, optionscope) {
+        $scope.profile = JSON.parse(localStorage.getItem("userInfo"));
         $scope.closeOption = function () {
             this.onpanel = false;
             mdPanelRef && mdPanelRef.close();
         }
-        $scope.signOut=function(){
+        $scope.signOut = function () {
             console.log("remove localStorage: ");
-            
             localStorage.clear();
             $state.go('login');
         }
-    };
 
-    
+        //upload profile image dialog(signOut)
+        $scope.uploadProfile = function (event) {
+            console.log("profile upload dialog box");
+
+            $mdDialog.show({
+                locals: {
+                    abc: optionscope//to pass $scope of dashboardcontroller to dialog controller (ie  profileDialogController) 
+                },
+                controller: profileDialogController,
+                templateUrl: 'templetes/profiledialog.html',
+                targetEvent: event,
+                parent: angular.element(document.body),
+                clickOutsideToClose: true,
+            })
+        };
+        function profileDialogController($scope, $mdDialog, abc) {
+            console.log("profile upload dialog box");
+            $scope.outerScopeForProfile = abc;
+            $scope.closedone = function () {
+                console.log("close update :");
+                $mdDialog.hide();
+            }
+            $scope.myImage = '';
+            $scope.myCroppedImage = '';
+            $scope.filename = "";
+
+            var handleFileSelect = function (event) {
+                var file = event.currentTarget.files[0];
+                $scope.filename = file.name;
+
+                var reader = new FileReader();
+                reader.onload = function (event) {
+                    $scope.$apply(function ($scope) {
+
+                        $scope.myImage = event.target.result;
+                        console.log(" $scope.myImage " + $scope.myImage);
+                        console.log("myCroppedImage " + $scope.myCroppedImage);
+                    });
+                };
+                reader.readAsDataURL(file);
+            };
+            $timeout(function () {
+                angular.element(document.querySelector('#fileInput')).on('change', handleFileSelect);
+            }, 1000, false);
+        }
+    }
+
+    $scope.setProfile = function (myCroppedImage, filename, userProfile) {
+        console.log("hello set profile " + myCroppedImage);
+        console.log("filename : " + filename);
+
+
+        var arr = myCroppedImage.split(','),
+            mime = arr[0].match(/:(.*?);/)[1],
+            bstr = atob(arr[1]),
+            n = bstr.length,
+            u8arr = new Uint8Array(n);
+        while (n) {
+            u8arr[n - 1] = bstr.charCodeAt(n - 1)
+            n -= 1
+        }
+        var fileToImage = new File([u8arr], filename, {
+            type: mime
+        });
+
+        var formdata2 = new FormData();
+        formdata2.append("file", fileToImage);
+        var url = "note/uploadFile";
+        Userfactory.imageUpload(url, formdata2).then(function successCallback(response) {
+            console.log("image upload :" + response.data.payload);
+            $scope.imageUrl = response.data.payload;
+            var userInformatiom = JSON.parse(localStorage.getItem("userInfo"));
+            console.log(userInformatiom);
+            userInformatiom.userProfileImage = $scope.imageUrl;
+            $scope.updateUser(userInformatiom);
+        },
+            function errorCallback(response) {
+                console.log("error ");
+            });
+    }
+
     //----------------------home (label operations)-----------------------------------------//
 
     $scope.toggleLeft = buildToggle('open');
@@ -548,9 +645,6 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         labelName: ""
     }
 
-    $scope.stateColorChange = function () {
-
-    }
     //create new label dialog
     $scope.labelDialog = function (event) {
         $mdDialog.show({
@@ -661,6 +755,7 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         });
     }
 
+
     //cancel chip on note 
     $scope.cancelChip = [];
 
@@ -672,4 +767,41 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         }
         $scope.removeLabelToNote(itemlabel, noteId);
     }
+
+
+    //collaborator
+    $scope.collaboratorDialog = function (event) {
+        $mdDialog.show({
+            locals: {
+                abc: $scope//to pass $scope of dashboardcontroller to dialog controller (ie  collaboratorController) 
+            },
+            controller: collaboratorController,
+            templateUrl: 'templetes/collaboratordialog.html',
+            targetEvent: event,
+            parent: angular.element(document.body),
+            clickOutsideToClose: true,
+        })
+    };
+    function collaboratorController($scope, $mdDialog, abc) {
+        $scope.profile = JSON.parse(localStorage.getItem("userInfo"));
+        // $scope.labels = abc.labels;
+        $scope.outerScopeForCollaborator = abc;
+        $scope.close = function () {
+            console.log("close ");
+            $mdDialog.hide();
+        }
+
+        //user List
+        $scope.userList = function () {
+            var url = "user/list";
+            Userfactory.getmethod(url).then(function successCallback(response) {
+                console.log("user list : " + response.data.payload);
+                $scope.users = response.data.payload;
+            }, function errorCallback(response) {
+                console.log("error");
+            });
+        }
+        $scope.userList();
+    }
+
 });

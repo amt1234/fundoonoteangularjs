@@ -12,8 +12,9 @@ app.controller('loginController', function ($scope, $state, Userfactory, $locati
       // Store
       localStorage.setItem("Token", response.data.payload);
       $state.go('home.dashboard');
+      $scope.userInfo();
     }, function errorCallback(response) {
-      console.log("error login"+response);
+      console.log("error login" + response);
     });
   }
 
@@ -32,7 +33,7 @@ app.controller('loginController', function ($scope, $state, Userfactory, $locati
       $state.go('login');
     },
       function errorCallback(response) {
-        console.log("error registration"+response);
+        console.log("error registration" + response);
       });
   }
 
@@ -47,7 +48,7 @@ app.controller('loginController', function ($scope, $state, Userfactory, $locati
       $state.go('reset');
     },
       function errorCallback(response) {
-        console.log("error forgot password"+response);
+        console.log("error forgot password" + response);
       });
   }
 
@@ -66,7 +67,21 @@ app.controller('loginController', function ($scope, $state, Userfactory, $locati
       $state.go('login');
     },
       function errorCallback(response) {
-        console.log("error reset password"+response);
+        console.log("error reset password" + response);
       });
   }
+
+  $scope.userInfo = function () {
+    var url = "user/userInfo";
+    Userfactory.getmethod(url).then(function successCallback(response) {
+      console.log(response);
+      // Store
+      localStorage.setItem("userInfo", JSON.stringify(response.data.payload));
+
+    }, function errorCallback(response) {
+      console.log("error");
+    });
+  }
+
+  
 });

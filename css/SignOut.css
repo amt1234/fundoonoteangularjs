@@ -37,3 +37,23 @@
     font-size: 12px;
     width: 96px;
 }
+.Profile-upload{
+    width: 900px;
+    height: 600px;
+    padding: 20px;
+}
+.set-profile{
+    /* background-image: url("paper.gif");
+    background-color: #cccccc; */
+    /* background-color: #3079ed;
+    width: 50%;
+    align-items: center;
+    justify-content: center; */
+
+}
+.cropArea {
+    background: #E4E4E4;
+    overflow: hidden;
+    width:500px;
+    height:350px;
+  }

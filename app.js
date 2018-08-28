@@ -1,4 +1,4 @@
-var app = angular.module('fundoonote', ['ui.router', 'ngMaterial', 'ngMessages', 'ngAnimate', 'ngAria', 'content-editable', 'ngSanitize']);
+var app = angular.module('fundoonote', ['ui.router', 'ngMaterial', 'ngMessages', 'ngAnimate', 'ngAria', 'content-editable', 'ngSanitize','ngImgCrop']);
 app.config(function ($stateProvider, $urlRouterProvider) {
 
   $stateProvider

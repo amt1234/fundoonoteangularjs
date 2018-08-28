@@ -1,0 +1,27 @@
+<md-dialog class="Profile-upload">
+    <div>
+        <h2>upload Profile</h2>
+        <md-divider></md-divider>
+        <br />
+        <div layout="row">
+            <div class="set-profile">
+
+                <md-button>Set a Photo from your computer
+                    <input type="file" id="fileInput" class="hide-file" />
+                </md-button>
+                <div class="cropArea">
+                    <img-crop image="myImage" result-image="myCroppedImage"></img-crop>
+                </div>
+            </div>
+            <div layout="column" style="margin-left: 20px;">
+                <div>Cropped Image:</div>
+                <div style="margin-top: 31px;"><img ng-src="{{myCroppedImage}}" /></div>
+            </div>
+        </div>
+        <br />
+        <md-divider></md-divider>
+        <div>
+            <md-button style=" background-color: #3079ed!important;" ng-click="outerScopeForProfile.setProfile(myCroppedImage,filename)">Set Profile image</md-button>
+        </div>
+    </div>
+</md-dialog>
