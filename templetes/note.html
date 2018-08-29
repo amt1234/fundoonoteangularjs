@@ -1,5 +1,5 @@
-<md-card class="listgrid" style="padding-bottom:42px;width:240px;outline: transparent;" ng-style="{'background-color':note.color}" ng-mouseover="hoverIn()"
-    ng-mouseleave="hoverOut()">
+<md-card class="listgrid" style="padding-bottom:42px;width:240px;outline: transparent;" ng-style="{'background-color':note.color}"
+    ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
     <div layout="row" layout-align="end start">
         <md-icon class="note-pin" ng-show="onMouse" ng-click="addClass(note,note.noteId)" md-svg-src="assets/images/pinned.svg">
         </md-icon>
@@ -10,7 +10,7 @@
     <div ng-if="note.image" style="padding: 0px; width:243px;height:130px;" ng-click="noteDialog($event,note)">
         <img class="image-div" ng-src="{{note.image}}">
     </div>
-    
+
     <!-- div for title -->
     <div class="title" ng-click="noteDialog($event,note)" style="word-break: break-word;">
         <md-card-content ng-bind-html="note.noteTitle" style="padding: 3px 0px 5px 3px; width:240px;">
@@ -31,15 +31,18 @@
                 <span class="closebtn" ng-click="remindercancel(note)" ng-show="onMouse">&times;</span>
             </md-chip>
         </md-chips>
-    
+
         <md-chips layout="row" ng-if="note.labels.length>0" ng-repeat="label in note.labels">
             <md-chip ng-click="openpickdate()">
                 <strong>{{label.labelName}}</strong>
                 <span class="closebtn" ng-click="toggleForCancelChip(label, note.labels,note)" ng-show="onMouse">&times;</span>
             </md-chip>
         </md-chips>
+        <div class="collaborator" ng-if="note.userset.length>0" ng-repeat="collaboratedUser in note.userset">
+            <img ng-src="{{collaboratedUser.userProfileImage}}" style="width: 100%;">
+        </div>
     </div>
-   
+
     <!-- for label image -->
     <labelimage ng-show="onMouse"></labelimage>
 </md-card>

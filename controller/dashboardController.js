@@ -212,11 +212,10 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         $scope.closeMenu = function (item) {
             console.log("close panel" + item);
             this.onpanel = false;
-            console.log("reminder time : " + $scope.reminderTime);
 
             item.reminderDate = $scope.reminderDate,
                 item.reminderTime = $scope.reminderTime,
-                console.log("reminderTime" + $scope.reminderTime);
+                console.log("reminder Time" + $scope.reminderTime);
             if (!($scope.reminderDate == null) || !($scope.reminderTime == null)) {
                 reminderscope.update(item);
             }
@@ -321,7 +320,6 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
     }
 
     $scope.removeImage = function (item) {
-        console.log("hello" + item);
         item.image = null;
         console.log("item image: " + item.image);
         $scope.update(item);
@@ -770,10 +768,11 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
 
 
     //collaborator
-    $scope.collaboratorDialog = function (event) {
+    $scope.collaboratorDialog = function (event,note) {
         $mdDialog.show({
             locals: {
-                abc: $scope//to pass $scope of dashboardcontroller to dialog controller (ie  collaboratorController) 
+                abc: $scope,//to pass $scope of dashboardcontroller to dialog controller (ie  collaboratorController) 
+                note:note
             },
             controller: collaboratorController,
             templateUrl: 'templetes/collaboratordialog.html',
@@ -782,9 +781,12 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
             clickOutsideToClose: true,
         })
     };
-    function collaboratorController($scope, $mdDialog, abc) {
+    function collaboratorController($scope, $mdDialog, abc,note) {
+        $scope.userName=null;
+        $scope.note = note;
+        console.log("note "+note);
+        
         $scope.profile = JSON.parse(localStorage.getItem("userInfo"));
-        // $scope.labels = abc.labels;
         $scope.outerScopeForCollaborator = abc;
         $scope.close = function () {
             console.log("close ");
@@ -802,6 +804,27 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
             });
         }
         $scope.userList();
-    }
 
+        //ADD COLLABORATOR ON NOTE
+        $scope.addUserOnNote=function(user){
+            var id=note.noteId;
+            var url="user/addCollaborator/"+id;
+            Userfactory.postmethod(user,url).then(function successCallback(response){
+                console.log("Collaborator add on note :"+response);
+            },function errorCallback(response){
+                console.log("error");
+            });
+        }
+
+        //REMOVE COLLABORATOR ON NOTE
+        $scope.removeUserOnNote=function(user){
+            var id=note.noteId;
+            var url="user/removeCollaborator/"+id;
+            Userfactory.postmethod(user,url).then(function successCallback(response){
+                console.log("remove collaborator"+response);
+            },function errorCallback(response){
+                console.log("error");  
+            });
+        }
+    }
 });

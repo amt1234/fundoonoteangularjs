@@ -50,9 +50,9 @@
             </p>
         </div>
         <br/>
-        <note ng-repeat="note in notes | filter:search |filter:{notePinned:true} |filter:{noteArchiev:false} |filter:{noteTrash:false}"></note>
+        <note ng-repeat="note in notes | filter:search |filter:{notePinned:true} |filter:{noteArchiev:false} |filter:{noteTrash:false} "></note>
     </div>
-
+    <!-- |filter:{note.userset==userEmail} -->
     <!-- default div -->
     <div layout="row" class="second-div-style" style="position: relative;z-index: 2;" layout-align="start start" layout-wrap>
         <div layout="column" class="isPinneddiv" ng-show="isPinned" style="padding:10px 16px 10px 16px;margin-right: 500px;" layout-align="start start">

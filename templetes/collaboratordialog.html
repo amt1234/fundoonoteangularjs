@@ -10,24 +10,43 @@
             <md-list>
                 <md-list-item>
                     <div class="collaborator">
-                            <img src="{{profile.userProfileImage}}" style="width: 100%;">
+                        <img ng-src="{{profile.userProfileImage}}" style="width: 100%;">
                     </div>
                     <div>
                         <b>{{profile.userName}}</b>(Owner)
                         <br/> {{profile.userEmail}}
                     </div>
-                    <div>
-                        <md-button>
 
-                        </md-button>
+                </md-list-item>
+
+                <md-list-item ng-repeat="collaboratedUser in note.userset">
+
+                    <div layout="row" layout-align="start center" style="width:100%;">
+                            <div class="collaborator">
+                                    <img ng-src="{{collaboratedUser.userProfileImage}}" style="width: 100%;">
+                                </div>
+                                <div>
+                                    <b>{{collaboratedUser.userName}}</b>
+                                    <br/>{{collaboratedUser.userEmail}}
+                                </div>
+                                <div class="collaborated-button" layout="row" layout-align="end center" flex>
+                                    <md-button ng-click="removeUserOnNote(collaboratedUser)"
+                                    style="margin: 0px;padding: 0px;">
+                                        <md-icon md-svg-src="assets/images/closebutton.svg"></md-icon>
+                                    </md-button>
+                                </div>
                     </div>
                 </md-list-item>
-                
                 <md-list-item>
-                    <md-select ng-model="user" placeholder="Person or Email to share with">
+                    <md-select ng-model="userName" class="md-no-underline" placeholder="Person or Email to share with">
                         <md-option><em>None</em></md-option>
-                        <md-option ng-repeat="user in users" ng-value="user.userEmail">{{user.userEmail}}</md-option>
+                        <md-option ng-repeat="user in users" ng-value="user">{{user.userEmail}}</md-option>
                     </md-select>
+                    <div style="margin-left:220px;">
+                        <md-button ng-click="addUserOnNote(userName)">
+                            <md-icon md-svg-src="assets/images/done.svg"></md-icon>
+                        </md-button>
+                    </div>
                 </md-list-item>
             </md-list>
         </div>
@@ -35,7 +54,7 @@
 
         <div style="margin-left: 370px;">
             <md-button ng-click="close()">cancel</md-button>
-            <md-button>save</md-button>
+            <md-button ng-click="addUserOnNote(userName)">save</md-button>
         </div>
     </div>
 </md-dialog>
