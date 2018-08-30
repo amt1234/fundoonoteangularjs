@@ -9,6 +9,9 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
     $scope.isLabelPanel = false;
     $scope.readonly = false;
     $scope.isRemider = false;
+    $scope.allNotes=[];
+    $scope.collaboratedNotes = [];
+    $scope.notes=[];
     // $scope.toolbarColor = $rootScope.color;
 
     $scope.myClass = [];
@@ -26,6 +29,35 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
     }
 
     $scope.userProfile = localStorage.getItem("userInfo");
+
+    //get all note
+    $scope.getAllNote = function () {
+        var url = "note/list";
+        Userfactory.getmethod(url).then(function successCallback(response) {
+            $scope.notes = response.data.payload;
+            console.log("Notes " + $scope.notes);
+            $scope.getCollaboratedNoteList();
+        }, function errorCallback(response) {
+            console.log("error  getAllNotes" + response);
+        });
+    }
+    $scope.getAllNote();
+    $scope.getCollaboratedNoteList=function(){
+        var url="note/getCollaboratedNotes";
+        Userfactory.getmethod(url).then(function successCallback(response){
+            console.log("collaborated note : "+response.data);
+            $scope.collaboratedNotes = response.data.payload;
+            $scope.mergeNotes();
+        },function errorCallback(response){
+            console.log("error "+response);
+            
+        });
+    }
+    $scope.mergeNotes = function () {
+        $scope.allNotes = $scope.notes.concat($scope.collaboratedNotes);
+        console.log($scope.allNotes);
+        
+    }
     //function for centercard to display on-click inputtext
     $scope.showHide = function () {
         $scope.isVisible = $scope.isVisible = true;
@@ -310,7 +342,8 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         };
 
         $scope.exists = function (item, list) {
-            for (var i = 0; i < list.length; i++) {
+            var listLenght=list.length;
+            for (var i = 0; i < listLenght; i++) {
                 var selectedItem = list[i];
                 if (selectedItem.labelName == item.labelName)
                     return true;
@@ -324,17 +357,6 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         console.log("item image: " + item.image);
         $scope.update(item);
     }
-    //get all note
-    $scope.getAllNote = function () {
-        var url = "note/list";
-        Userfactory.getmethod(url).then(function successCallback(response) {
-            $scope.notes = response.data.payload;
-            console.log("Notes " + $scope.notes);
-        }, function errorCallback(response) {
-            console.log("error  getAllNotes" + response);
-        });
-    }
-    $scope.getAllNote();
 
     //create note
     $scope.create = function () {

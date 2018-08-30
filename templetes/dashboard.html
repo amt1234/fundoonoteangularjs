@@ -50,7 +50,7 @@
             </p>
         </div>
         <br/>
-        <note ng-repeat="note in notes | filter:search |filter:{notePinned:true} |filter:{noteArchiev:false} |filter:{noteTrash:false} "></note>
+        <note ng-repeat="note in allNotes | filter:search |filter:{notePinned:true} |filter:{noteArchiev:false} |filter:{noteTrash:false} "></note>
     </div>
     <!-- |filter:{note.userset==userEmail} -->
     <!-- default div -->
@@ -60,6 +60,6 @@
                 <b>Others</b>
             </p>
         </div>
-        <note ng-repeat="note in notes |filter:search| filter:{notePinned:false} |filter:{noteArchiev:false}|filter:{noteTrash:false}"></note>
+        <note ng-repeat="note in allNotes |filter:search| filter:{notePinned:false} |filter:{noteArchiev:false}|filter:{noteTrash:false}"></note>
     </div>
 </div>
