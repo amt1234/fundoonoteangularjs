@@ -1,11 +1,11 @@
-<div id="main" class="main" style="position:relative;z-index: 1;" layout="column" layout-align="center center" ng-cloak>
+<div id="main" class="main" style="position:relative;z-index: 1;background-color: #e8e8e8;" layout="column" layout-align="center center" ng-cloak>
     <div layout="row">
         <div class="startdiv">
             <div>
                 <md-card ng-style="{'background-color':note.color}">
                     <!-- div for title -->
                     <div ng-show="isVisible">
-                        <md-card-title style="padding: 12px 10px 15px 15px; width:570px;">
+                        <md-card-title style="padding: 12px 10px 15px 15px; width:570px;color:#76767e;">
                             <md-card-title-text layout="row">
                                 <div contenteditable="true" class="inputtext" ng-model="note.noteTitle" placeholder="Title" layout-wrap>
                                 </div>
@@ -15,10 +15,10 @@
                     </div>
                     <!-- div for description -->
                     <div>
-                        <md-card-title style="padding: 12px 10px 15px 15px; width:570px;">
+                        <md-card-title style="padding:10px 10px 5px 15px; width:570px; color:#76767e;">
                             </md-card-title-text>
                             <span>
-                                <div contenteditable="true" style="width: 480;outline: transparent;" ng-model="note.noteDescribtion" placeholder="Take a note..."
+                                <div contenteditable="true" style="width: 480;outline: transparent;  padding-top: 6px;" ng-model="note.noteDescribtion" placeholder="Take a note..."
                                     layout-wrap ng-click="showHide()">
                                 </div>
                             </span>
@@ -52,7 +52,6 @@
         <br/>
         <note ng-repeat="note in allNotes | filter:search |filter:{notePinned:true} |filter:{noteArchiev:false} |filter:{noteTrash:false} "></note>
     </div>
-    <!-- |filter:{note.userset==userEmail} -->
     <!-- default div -->
     <div layout="row" class="second-div-style" style="position: relative;z-index: 2;" layout-align="start start" layout-wrap>
         <div layout="column" class="isPinneddiv" ng-show="isPinned" style="padding:10px 16px 10px 16px;margin-right: 500px;" layout-align="start start">

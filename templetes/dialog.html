@@ -7,9 +7,9 @@
     <!-- div for image -->
     <div ng-if="note.image">
         <img ng-src="{{note.image}}" style="padding:2px; width:600px;height:300px;">
-      
-            <md-icon class="trash-dialogImage" md-svg-src="assets/images/trash.svg" ng-click="outerScope.removeImage(note)"></md-icon>
-        
+
+        <md-icon class="trash-dialogImage" md-svg-src="assets/images/trash.svg" ng-click="outerScope.removeImage(note)"></md-icon>
+
     </div>
 
     <!-- div for title -->
@@ -37,6 +37,31 @@
     <!-- div for label operations -->
     <div style="padding:2%; width:240px;height:130px;" ng-hide="true">
     </div>
+    <md-card class="listgrid" style="margin-top:0px;padding-top:0px;width:100%;">
+        <div ng-if="note.webScrapList.length>0" class="webScrap" style="padding-bottom: 0px;" ng-repeat="webScrap in note.webScrapList">
+            <div layout="row">
+                <div style="width: 20%;height:56px;">
+                    <img src="{{webScrap.linkImage}}" style="height: 100%;width: 100%;object-fit: cover;">
+
+                </div>
+                <div style="width:70%;padding-left: 2px;" class="md-truncate">
+                    <b>{{webScrap.linkTitle}}</b>
+                    <br /> {{webScrap.linkHost}}
+                </div>
+                <div style="width: 10%;">
+                    <a href="{{webScrap.fullLink}}">
+                        <md-icon md-svg-src="assets/images/link.svg"></md-icon></a>
+                </div>
+                <div>
+                        <md-button ng-click="removeWebScrap(webScrap,note)"
+                        style="margin: 0px;padding: 0px;">
+                            <md-icon md-svg-src="assets/images/closebutton.svg"></md-icon>
+                        </md-button>
+                </div>
+            </div>
+        </div>
+    </md-card>
+
 
     <!-- div for label images -->
     <div>

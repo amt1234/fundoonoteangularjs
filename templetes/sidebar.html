@@ -1,6 +1,6 @@
-<md-sidenav class="md-sidenav-left" md-component-id="open" md-disable-backdrop style='max-width:280px;position: fixed;' ng-cloak>
+<md-sidenav class="md-sidenav-left" md-component-id="open" md-disable-backdrop style='max-width:280px;position: fixed;background-color: #e8e8e8;' ng-cloak>
   <div>
-    <md-content class="contentlist">
+    <md-content class="contentlist" style="background-color: #e8e8e8;">
       <md-list>
 
         <md-list-item ng-click="noteState()">
@@ -15,7 +15,7 @@
 
         <md-divider></md-divider>
 
-        <md-subheader>
+        <md-subheader style="background-color: #e8e8e8;">
           <div layout="row">
             <div style="margin-top: 10px;">Lables</div>
             <div style="margin-left: 150px;">
@@ -52,45 +52,6 @@
           <span>Settings</span>
         </md-list-item>
 
-        <md-list-item ng-click="null">
-          <md-icon class="list" md-svg-src="assets/images/sendfeedback.svg"></md-icon>
-          <span>Send Feedback</span>
-        </md-list-item>
-
-        <md-list-item ng-click="null">
-          <md-icon class="list" md-svg-src="assets/images/help.svg"></md-icon>
-          <span>Help</span>
-        </md-list-item>
-
-        <md-list-item ng-click="null">
-          <md-icon class="list" md-svg-src="assets/images/appdownloads.svg"></md-icon>
-          <span>App downloads</span>
-        </md-list-item>
-
-        <md-list-item ng-click="null">
-          <md-icon class="list" md-svg-src="assets/images/keyboardshoutcut.svg"></md-icon>
-          <span>Keyboard shortcuts</span>
-        </md-list-item>
-      </md-list>
-
-      <md-list>
-        <div>
-          <md-list-item class="end">
-            <div layout="row">
-              <a href="https://www.google.com/policies/privacy/">Privacy</a>
-              &nbsp;&nbsp;
-              <a href="http://www.google.com/policies/terms/">Terms</a>
-            </div>
-          </md-list-item>
-
-          <md-list-item>
-            <div>
-              Open-source licence
-            </div>
-          </md-list-item>
-          
-        </div>
-      </md-list>
     </md-content>
   </div>
 </md-sidenav>

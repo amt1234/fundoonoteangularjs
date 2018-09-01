@@ -9,9 +9,9 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
     $scope.isLabelPanel = false;
     $scope.readonly = false;
     $scope.isRemider = false;
-    $scope.allNotes=[];
+    $scope.allNotes = [];
     $scope.collaboratedNotes = [];
-    $scope.notes=[];
+    $scope.notes = [];
     // $scope.toolbarColor = $rootScope.color;
 
     $scope.myClass = [];
@@ -28,7 +28,7 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         color: 'white'
     }
 
-    $scope.userProfile = localStorage.getItem("userInfo");
+    $scope.userProfile = JSON.parse(localStorage.getItem("userInfo"));
 
     //get all note
     $scope.getAllNote = function () {
@@ -42,21 +42,26 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         });
     }
     $scope.getAllNote();
-    $scope.getCollaboratedNoteList=function(){
-        var url="note/getCollaboratedNotes";
-        Userfactory.getmethod(url).then(function successCallback(response){
-            console.log("collaborated note : "+response.data);
+    $scope.getCollaboratedNoteList = function () {
+        var url = "note/getCollaboratedNotes";
+        Userfactory.getmethod(url).then(function successCallback(response) {
+            console.log("collaborated note : " + response.data);
             $scope.collaboratedNotes = response.data.payload;
             $scope.mergeNotes();
-        },function errorCallback(response){
-            console.log("error "+response);
-            
+        }, function errorCallback(response) {
+            console.log("error " + response);
+
         });
     }
     $scope.mergeNotes = function () {
         $scope.allNotes = $scope.notes.concat($scope.collaboratedNotes);
         console.log($scope.allNotes);
-        
+
+    }
+
+    $scope.refresh = function () {
+        console.log("refresh");
+        $state.reload();
     }
     //function for centercard to display on-click inputtext
     $scope.showHide = function () {
@@ -342,7 +347,7 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         };
 
         $scope.exists = function (item, list) {
-            var listLenght=list.length;
+            var listLenght = list.length;
             for (var i = 0; i < listLenght; i++) {
                 var selectedItem = list[i];
                 if (selectedItem.labelName == item.labelName)
@@ -437,13 +442,21 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
             abc.update(passNote);
             $mdDialog.hide();
         }
+        $scope.removeWebScrap=function(webScrap,note){
+            var noteId=note.noteId;
+            var url="note/removeWebScrap/"+noteId;
+            Userfactory.postmethod(webScrap,url).then(function successCallback(response){
+                console.log("remove webSrap"+response.data);
+                
+            },function errorCallback(response){
+                console.log("error "+response.data);
+                
+            });
+        }
     }
 
     $scope.uploadFile = function (ev, note) {
-        console.log(ev);
         document.addEventListener('change', function (event) {
-            console.log("dfgsdgsdg./............");
-
             console.log(event.target.files[0]);
 
             var files = event.target.files;
@@ -790,11 +803,11 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
 
 
     //collaborator
-    $scope.collaboratorDialog = function (event,note) {
+    $scope.collaboratorDialog = function (event, note) {
         $mdDialog.show({
             locals: {
                 abc: $scope,//to pass $scope of dashboardcontroller to dialog controller (ie  collaboratorController) 
-                note:note
+                note: note
             },
             controller: collaboratorController,
             templateUrl: 'templetes/collaboratordialog.html',
@@ -803,11 +816,11 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
             clickOutsideToClose: true,
         })
     };
-    function collaboratorController($scope, $mdDialog, abc,note) {
-        $scope.userName=null;
+    function collaboratorController($scope, $mdDialog, abc, note) {
+        $scope.userName = null;
         $scope.note = note;
-        console.log("note "+note);
-        
+        console.log("note " + note);
+
         $scope.profile = JSON.parse(localStorage.getItem("userInfo"));
         $scope.outerScopeForCollaborator = abc;
         $scope.close = function () {
@@ -828,25 +841,35 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
         $scope.userList();
 
         //ADD COLLABORATOR ON NOTE
-        $scope.addUserOnNote=function(user){
-            var id=note.noteId;
-            var url="user/addCollaborator/"+id;
-            Userfactory.postmethod(user,url).then(function successCallback(response){
-                console.log("Collaborator add on note :"+response);
-            },function errorCallback(response){
+        $scope.addUserOnNote = function (user) {
+            var id = note.noteId;
+            var url = "user/addCollaborator/" + id;
+            Userfactory.postmethod(user, url).then(function successCallback(response) {
+                console.log("Collaborator add on note :" + response);
+            }, function errorCallback(response) {
                 console.log("error");
             });
         }
 
         //REMOVE COLLABORATOR ON NOTE
-        $scope.removeUserOnNote=function(user){
-            var id=note.noteId;
-            var url="user/removeCollaborator/"+id;
-            Userfactory.postmethod(user,url).then(function successCallback(response){
-                console.log("remove collaborator"+response);
-            },function errorCallback(response){
-                console.log("error");  
+        $scope.removeUserOnNote = function (user) {
+            var id = note.noteId;
+            var url = "user/removeCollaborator/" + id;
+            Userfactory.postmethod(user, url).then(function successCallback(response) {
+                console.log("remove collaborator" + response);
+            }, function errorCallback(response) {
+                console.log("error");
             });
         }
+
+        $scope.existsCollaborator = function (item, list) {
+            var listLenght = list.length;
+            for (var i = 0; i < listLenght; i++) {
+                var selectedItem = list[i];
+                if (selectedItem.labelName == item.labelName)
+                    return true;
+            }
+            return false;
+        };
     }
 });

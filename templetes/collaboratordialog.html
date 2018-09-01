@@ -40,7 +40,7 @@
                 <md-list-item>
                     <md-select ng-model="userName" class="md-no-underline" placeholder="Person or Email to share with">
                         <md-option><em>None</em></md-option>
-                        <md-option ng-repeat="user in users" ng-value="user">{{user.userEmail}}</md-option>
+                        <md-option ng-repeat="user in users" ng-if="!(collaboratedUser.userEmail==user.userEmail)" ng-value="user">{{user.userEmail}}</md-option>
                     </md-select>
                     <div style="margin-left:220px;">
                         <md-button ng-click="addUserOnNote(userName)">

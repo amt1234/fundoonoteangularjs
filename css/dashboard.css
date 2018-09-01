@@ -9,6 +9,7 @@ inline */
     width: 530px;
     word-break: break-word;
     outline: transparent;
+    padding-top: 6px!important;
 }
 .icon-button{
     margin: 0%;
