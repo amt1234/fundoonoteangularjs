@@ -1,5 +1,5 @@
-app.directive('labelimage',function(){
-return{
-    templateUrl:'templetes/labelimage.html'
-};
+app.directive('labelimage', function () {
+    return {
+        templateUrl: 'templetes/labelimage.html'
+    };
 });

@@ -1,5 +1,5 @@
-app.directive('navbar',function () {
-  return{
-    templateUrl:'templetes/navbar.html'
+app.directive('navbar', function () {
+  return {
+    templateUrl: 'templetes/navbar.html'
   };
 });

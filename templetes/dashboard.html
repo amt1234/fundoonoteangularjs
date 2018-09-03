@@ -1,4 +1,5 @@
-<div id="main" class="main" style="position:relative;z-index: 1;background-color: #e8e8e8;" layout="column" layout-align="center center" ng-cloak>
+<div id="main" class="main" style="position:relative;z-index: 1;background-color: #e8e8e8;" layout="column" layout-align="center center"
+    ng-cloak>
     <div layout="row">
         <div class="startdiv">
             <div>
@@ -9,7 +10,7 @@
                             <md-card-title-text layout="row">
                                 <div contenteditable="true" class="inputtext" ng-model="note.noteTitle" placeholder="Title" layout-wrap>
                                 </div>
-                                <md-icon layout-align="end end"class="icon-buttonend pin" md-svg-src="assets/images/pinned.svg" ng-click="addClass(note,note.noteId)"></md-icon>
+                                <md-icon layout-align="end end" class="icon-buttonend pin" md-svg-src="assets/images/pinned.svg" ng-click="addClass(note,note.noteId)"></md-icon>
                             </md-card-title-text>
                         </md-card-title>
                     </div>
@@ -34,7 +35,7 @@
                     <div layout="row">
                         <labelimage ng-show="isVisible" style="padding:8px;width:600px;height:36px;">
                         </labelimage>
-                        <md-button  ng-show="isVisible" ng-click="showHide1(note)">close
+                        <md-button ng-show="isVisible" ng-click="showHide1(note)">close
                         </md-button>
                     </div>
                 </md-card>

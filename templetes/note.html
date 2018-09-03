@@ -1,5 +1,5 @@
-<md-card class="listgrid" style="padding-bottom:42px;width:240px;outline: transparent;margin-bottom: 0px;margin-top:15px;" ng-style="{'background-color':note.color}"
-    ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
+<md-card class="listgrid" style="padding-bottom:42px;width:240px;outline: transparent;margin-bottom: 0px;margin-top:15px;"
+    ng-style="{'background-color':note.color}" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
     <div layout="row" layout-align="end start">
         <md-icon class="note-pin" ng-show="onMouse" ng-click="addClass(note,note.noteId)" md-svg-src="assets/images/pinned.svg">
         </md-icon>
@@ -50,16 +50,16 @@
     <div ng-if="note.webScrapList.length>0" class="webScrap" style="padding-bottom: 0px;" ng-repeat="webScrap in note.webScrapList">
         <div layout="row">
             <div style="width: 20%;height:56px;">
-                    <img src="{{webScrap.linkImage}}" style="height: 100%;width: 100%;object-fit: cover;">
-                
+                <img src="{{webScrap.linkImage}}" style="height: 100%;width: 100%;object-fit: cover;">
+
             </div>
             <div style="width:70%;padding-left: 2px;" class="md-truncate">
                 <b>{{webScrap.linkTitle}}</b>
                 <br /> {{webScrap.linkHost}}
             </div>
             <div style="width: 10%;">
-                    <a href="{{webScrap.fullLink}}">
-                <md-icon md-svg-src="assets/images/link.svg"></md-icon></a>
+                <a href="{{webScrap.fullLink}}">
+                    <md-icon md-svg-src="assets/images/link.svg"></md-icon></a>
             </div>
         </div>
     </div>

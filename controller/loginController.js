@@ -82,6 +82,4 @@ app.controller('loginController', function ($scope, $state, Userfactory, $locati
       console.log("error");
     });
   }
-
-  
 });

@@ -12,7 +12,6 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
     $scope.allNotes = [];
     $scope.collaboratedNotes = [];
     $scope.notes = [];
-    // $scope.toolbarColor = $rootScope.color;
 
     $scope.myClass = [];
     $scope.note = {
@@ -238,9 +237,7 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
     }
 
     function PanelMenuCtrl(mdPanelRef, $scope, reminderscope, note) {
-        // $scope.today = "Today 8:00 PM'";
-        // $scope.tomorrow = "Tomorrow 8:00 AM";
-        // $scope.currentdate = "Mon,8:00 AM";
+        
         $scope.reminderDate = null;
         $scope.reminderTime = null;
 
@@ -282,7 +279,6 @@ app.controller('dashboardController', function ($scope, Userfactory, $mdDialog, 
     $scope.init = function () {
         $scope.reminderTime = 'Today 8:00 PM';
     }
-
 
     //panel for more option
     $scope.showMoreOptionMenu = function (ev, note) {

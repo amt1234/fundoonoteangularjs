@@ -22,19 +22,18 @@
                 <md-list-item ng-repeat="collaboratedUser in note.userset">
 
                     <div layout="row" layout-align="start center" style="width:100%;">
-                            <div class="collaborator">
-                                    <img ng-src="{{collaboratedUser.userProfileImage}}" style="width: 100%;">
-                                </div>
-                                <div>
-                                    <b>{{collaboratedUser.userName}}</b>
-                                    <br/>{{collaboratedUser.userEmail}}
-                                </div>
-                                <div class="collaborated-button" layout="row" layout-align="end center" flex>
-                                    <md-button ng-click="removeUserOnNote(collaboratedUser)"
-                                    style="margin: 0px;padding: 0px;">
-                                        <md-icon md-svg-src="assets/images/closebutton.svg"></md-icon>
-                                    </md-button>
-                                </div>
+                        <div class="collaborator">
+                            <img ng-src="{{collaboratedUser.userProfileImage}}" style="width: 100%;">
+                        </div>
+                        <div>
+                            <b>{{collaboratedUser.userName}}</b>
+                            <br/>{{collaboratedUser.userEmail}}
+                        </div>
+                        <div class="collaborated-button" layout="row" layout-align="end center" flex>
+                            <md-button ng-click="removeUserOnNote(collaboratedUser)" style="margin: 0px;padding: 0px;">
+                                <md-icon md-svg-src="assets/images/closebutton.svg"></md-icon>
+                            </md-button>
+                        </div>
                     </div>
                 </md-list-item>
                 <md-list-item>

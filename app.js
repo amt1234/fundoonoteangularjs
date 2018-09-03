@@ -1,4 +1,4 @@
-var app = angular.module('fundoonote', ['ui.router', 'ngMaterial', 'ngMessages', 'ngAnimate', 'ngAria', 'content-editable', 'ngSanitize','ngImgCrop']);
+var app = angular.module('fundoonote', ['ui.router', 'ngMaterial', 'ngMessages', 'ngAnimate', 'ngAria', 'content-editable', 'ngSanitize', 'ngImgCrop']);
 app.config(function ($stateProvider, $urlRouterProvider) {
 
   $stateProvider
@@ -72,20 +72,19 @@ app.run(function ($rootScope) {
         if (path[5] == "reminders") {
           $rootScope.color = "rgb(96, 125, 139)";
           $rootScope.title = "Reminders";
-        } else if(path[5]=="dashboard"){
+        } else if (path[5] == "dashboard") {
           $rootScope.color = "#fb0";
           $rootScope.title = "Google Keep";
         }
-        else if(path[5]=="archive"){
+        else if (path[5] == "archive") {
           $rootScope.color = "rgb(96, 125, 139)";
           $rootScope.title = "Archive";
         }
-        else if(path[5]=="trash")
-        {
+        else if (path[5] == "trash") {
           $rootScope.color = " rgb(99, 99, 99)";
-          $rootScope.title = "Trash";  
+          $rootScope.title = "Trash";
         }
-        else{
+        else {
           $rootScope.color = "rgb(96, 125, 139)";
           $rootScope.title = path[6];
         }

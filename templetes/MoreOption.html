@@ -24,7 +24,7 @@
                 </span>
             </div>
             <div ng-repeat="label in labels|filter:searchText">
-                <md-checkbox  ng-checked="exists(label, selected)" ng-click="toggle(label, selected,note.noteId)">
+                <md-checkbox ng-checked="exists(label, selected)" ng-click="toggle(label, selected,note.noteId)">
                     {{label.labelName}}
                 </md-checkbox>
             </div>
